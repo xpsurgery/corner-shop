@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Application {
 
@@ -9,7 +12,18 @@ public class Application {
 		System.out.println();
 		System.out.println("For help, type 'h' or 'help' or '?'");
 		System.out.println();
-		System.out.print("shop> ");
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		for (;;) {
+			System.out.print("shop> ");
+			try {
+				String command = in.readLine();
+				if (command == null || command.equals("q"))
+					break;
+			} catch (IOException e) {
+			}
+		}
+		System.out.println();
+		System.exit(0);
 	}
 
 }
