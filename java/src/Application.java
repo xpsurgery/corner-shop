@@ -4,9 +4,6 @@ import Ui.CommandLoop;
 
 public class Application {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		displayWelcomeMessage(System.out);
 		new CommandLoop(System.in).run();

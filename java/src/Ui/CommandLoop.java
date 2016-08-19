@@ -18,13 +18,35 @@ public class CommandLoop {
 		for (;;) {
 			System.out.print("shop> ");
 			try {
-				String command = in.readLine();
-				if (command == null || command.equals("q"))
+				String line = in.readLine();
+				if (line == null)
 					break;
-				if (command.equals("b"))
+				if (line.equals(""))
+					continue;
+				char command = line.charAt(0);
+				switch (command) {
+				case 'a':
+					break;
+				case 'b':
 					System.out.println("Your basket is empty");
-				else if (command.equals("h"))
+					break;
+				case 'c':
+				case 'd':
+					break;
+				case 'h':
 					printHelp(System.out);
+					break;
+				case 'p':
+					break;
+				case 'q':
+					return;
+				case 'r':
+				case 's':
+					break;
+				default:
+					System.out.println("Type h or ? for help");
+					break;
+				}
 			} catch (IOException e) {
 			}
 		}
