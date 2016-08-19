@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+import Products.Products;
+
 public class CommandLoop {
 
 	private BufferedReader in;
@@ -37,6 +39,7 @@ public class CommandLoop {
 					printHelp(System.out);
 					break;
 				case 'p':
+					new Products().list(System.out);
 					break;
 				case 'q':
 					return;
