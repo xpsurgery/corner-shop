@@ -4,11 +4,11 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Products {
+public class Catalogue {
 	
 	private List<Sku> products;
 
-	public Products() {
+	public Catalogue() {
 		products = new ArrayList<Sku>();
 		products.add(new Sku("1045", "Finest brie, 100g", 120));
 		products.add(new Sku("2761", "Philips screwdriver, small", 399));
