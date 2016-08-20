@@ -18,6 +18,7 @@ public class CommandLoop {
 	}
 
 	public void run() {
+		Warehouse warehouse = new Warehouse();
 		for (;;) {
 			System.out.print("shop> ");
 			try {
@@ -45,8 +46,13 @@ public class CommandLoop {
 				case 'q':
 					return;
 				case 'r':
+					String[] args = line.split(" ");					// error handling!
+					String sku = args[1];
+					int numItems = Integer.parseInt(args[2]);
+					warehouse.replenish(sku, numItems);
+					break;
 				case 's':
-					new Warehouse().stockReport(System.out);
+					warehouse.stockReport(System.out);
 					break;
 				default:
 					System.out.println("Type h or ? for help");
