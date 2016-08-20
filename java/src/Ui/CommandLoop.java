@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import Products.Catalogue;
+import Warehouse.Warehouse;
 
 public class CommandLoop {
 
@@ -45,6 +46,7 @@ public class CommandLoop {
 					return;
 				case 'r':
 				case 's':
+					new Warehouse().stockReport(System.out);
 					break;
 				default:
 					System.out.println("Type h or ? for help");
