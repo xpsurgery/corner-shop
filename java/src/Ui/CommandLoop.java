@@ -34,14 +34,14 @@ public class CommandLoop {
 				char command = line.charAt(0);
 				switch (command) {
 				case 'a':
-					String[] args = line.split(" ");					// TODO -- error handling!
-					String sku = args[1];								// TODO -- add more than one item
-					basket.add(sku);
+					addToBasket(basket, line);
 					break;
 				case 'b':
 					basket.list(System.out);
 					break;
 				case 'c':
+					checkout(basket, line);
+					break;
 				case 'd':
 					showDescription(catalogue, line);
 					break;
@@ -67,6 +67,16 @@ public class CommandLoop {
 			}
 		}
 		System.out.println();
+	}
+
+	private void checkout(Basket basket, String line) {
+		basket.checkout();
+	}
+
+	private void addToBasket(Basket basket, String line) {
+		String[] args = line.split(" ");					// TODO -- error handling!
+		String sku = args[1];								// TODO -- add more than one item
+		basket.add(sku);
 	}
 
 	private void replenish(Warehouse warehouse, String line) {

@@ -28,4 +28,8 @@ public class Basket {
 		items.put(sku, current+1);
 	}
 
+	public void checkout() {
+		items = new HashMap<String, Integer>();
+	}
+
 }
