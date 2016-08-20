@@ -28,4 +28,8 @@ public class Warehouse {
 		stock.put(sku, existing + numItems);
 	}
 
+	public void fulfill(String sku, Integer numItems) {
+		replenish(sku, -numItems);
+	}
+
 }

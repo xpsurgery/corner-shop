@@ -40,7 +40,7 @@ public class CommandLoop {
 					basket.list(System.out);
 					break;
 				case 'c':
-					checkout(basket, line);
+					checkout(basket, warehouse);
 					break;
 				case 'd':
 					showDescription(catalogue, line);
@@ -69,8 +69,8 @@ public class CommandLoop {
 		System.out.println();
 	}
 
-	private void checkout(Basket basket, String line) {
-		basket.checkout();
+	private void checkout(Basket basket, Warehouse warehouse) {
+		basket.checkout(warehouse);
 	}
 
 	private void addToBasket(Basket basket, String line) {

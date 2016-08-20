@@ -4,6 +4,8 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import Warehouse.Warehouse;
+
 public class Basket {
 
 	private Map<String, Integer> items;
@@ -25,10 +27,12 @@ public class Basket {
 		int current = 0;
 		if (items.containsKey(sku))
 			current = items.get(sku);
-		items.put(sku, current+1);
+		items.put(sku, current+1);								// TODO -- check stock levels
 	}
 
-	public void checkout() {
+	public void checkout(Warehouse warehouse) {
+		for (String sku : items.keySet())
+			warehouse.fulfill(sku, items.get(sku));
 		items = new HashMap<String, Integer>();
 	}
 
