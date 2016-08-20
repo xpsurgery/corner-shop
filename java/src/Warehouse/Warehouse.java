@@ -1,14 +1,24 @@
 package Warehouse;
 
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Warehouse {
+	
+	private Map<String, Integer> stock;
+
+	public Warehouse() {
+		stock = new HashMap<String, Integer>();
+		stock.put("1045", 3);
+		stock.put("2761", 17);
+		stock.put("5990", 50);
+		stock.put("6000", 105);
+	}
 
 	public void stockReport(PrintStream out) {
-		out.println("1045\t3");
-		out.println("2761\t17");
-		out.println("5990\t0");
-		out.println("6000\t105");
+		for (String sku : stock.keySet())
+			out.printf("%s\t%6d\n", sku, stock.get(sku));
 	}
 
 }
