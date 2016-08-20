@@ -10,16 +10,22 @@ public class Catalogue {
 
 	public Catalogue() {
 		products = new ArrayList<Sku>();
-		products.add(new Sku("1045", "Finest brie, 100g", 120));
-		products.add(new Sku("2761", "Philips screwdriver, small", 399));
-		products.add(new Sku("5990", "Raffle ticket", 50));
-		products.add(new Sku("6000", "Top hat, black, large", 4699));
+		products.add(new Sku("1045", "Finest brie, 100g", "Our French mature ripe Brie is from the Meuse Region in Eastern France. It serves three people, each 30g serving contains 81 calories. Full-flavoured, perfectly ripe with a runny centre and ready to eat immediately, this Brie is just how brie should be!", 120));			// TODO -- load from file
+		products.add(new Sku("2761", "Phillips screwdriver, small", "Large diameter handle with soft-grip for added grip and torque. Colour coded ends for ease of selection in the toolbox. With high quality chrome vanadium steel bar moulded to the handle for added durability.", 399));
+		products.add(new Sku("5990", "Raffle ticket", "Players must be 16 or over and physically located in the UK or Isle of Man", 50));
+		products.add(new Sku("6000", "Top hat, black, large", "A soft black wool Top Hat with 4cm ribbon band and bow. Fully lined, complete with a leather band. This traditional gentlemen’s top hat is suitable for all formal events; from weddings to a day at the races.", 4699));
 	}
 
 	public void list(PrintStream out) {
-		for (Sku sku : products) {
+		for (Sku sku : products)											// TODO -- sort by sku
 			out.printf("%s\t%dp\t%s\n", sku.id, sku.price, sku.title);
-		}
+	}
+
+	public Sku lookup(String id) {
+		for (Sku sku : products)
+			if (sku.id.equals(id))
+				return sku;
+		return null;
 	}
 
 }

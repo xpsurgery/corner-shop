@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import Products.Catalogue;
+import Products.Sku;
 import Warehouse.Warehouse;
 
 public class CommandLoop {
@@ -18,6 +19,7 @@ public class CommandLoop {
 	}
 
 	public void run() {
+		Catalogue catalogue = new Catalogue();
 		Warehouse warehouse = new Warehouse();
 		for (;;) {
 			System.out.print("shop> ");
@@ -36,17 +38,18 @@ public class CommandLoop {
 					break;
 				case 'c':
 				case 'd':
+					showDescription(catalogue, line);
 					break;
 				case 'h':
 					printHelp(System.out);
 					break;
 				case 'p':
-					new Catalogue().list(System.out);
+					catalogue.list(System.out);					// TODO -- filter/search
 					break;
 				case 'q':
 					return;
 				case 'r':
-					String[] args = line.split(" ");					// error handling!
+					String[] args = line.split(" ");					// TODO -- error handling!
 					String sku = args[1];
 					int numItems = Integer.parseInt(args[2]);
 					warehouse.replenish(sku, numItems);
@@ -62,6 +65,14 @@ public class CommandLoop {
 			}
 		}
 		System.out.println();
+	}
+
+	private void showDescription(Catalogue catalogue, String line) {
+		String[] args = line.split(" ");					// TODO -- error handling!
+		String id = args[1];
+		Sku sku = catalogue.lookup(id);						// TODO -- handle not found
+		System.out.printf("%s\t%s\n\n", sku.id, sku.title);
+		System.out.println(sku.description);				// TODO -- wrap free text
 	}
 
 	private static void printHelp(PrintStream out) {
