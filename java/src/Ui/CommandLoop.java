@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+import Basket.Basket;
 import Products.Catalogue;
 import Products.Sku;
 import Warehouse.Warehouse;
@@ -21,6 +22,7 @@ public class CommandLoop {
 	public void run() {
 		Catalogue catalogue = new Catalogue();
 		Warehouse warehouse = new Warehouse();
+		Basket basket = new Basket();
 		for (;;) {
 			System.out.print("shop> ");
 			try {
@@ -32,9 +34,12 @@ public class CommandLoop {
 				char command = line.charAt(0);
 				switch (command) {
 				case 'a':
+					String[] args = line.split(" ");					// TODO -- error handling!
+					String sku = args[1];								// TODO -- add more than one item
+					basket.add(sku);
 					break;
 				case 'b':
-					System.out.println("Your basket is empty");
+					basket.list(System.out);
 					break;
 				case 'c':
 				case 'd':
@@ -44,15 +49,12 @@ public class CommandLoop {
 					printHelp(System.out);
 					break;
 				case 'p':
-					catalogue.list(System.out);					// TODO -- filter/search
+					catalogue.list(System.out);							// TODO -- filter/search
 					break;
 				case 'q':
 					return;
 				case 'r':
-					String[] args = line.split(" ");					// TODO -- error handling!
-					String sku = args[1];
-					int numItems = Integer.parseInt(args[2]);
-					warehouse.replenish(sku, numItems);
+					replenish(warehouse, line);
 					break;
 				case 's':
 					warehouse.stockReport(System.out);
@@ -67,12 +69,19 @@ public class CommandLoop {
 		System.out.println();
 	}
 
-	private void showDescription(Catalogue catalogue, String line) {
+	private void replenish(Warehouse warehouse, String line) {
 		String[] args = line.split(" ");					// TODO -- error handling!
+		String sku = args[1];
+		int numItems = Integer.parseInt(args[2]);
+		warehouse.replenish(sku, numItems);
+	}
+
+	private void showDescription(Catalogue catalogue, String line) {
+		String[] args = line.split(" ");							// TODO -- error handling!
 		String id = args[1];
-		Sku sku = catalogue.lookup(id);						// TODO -- handle not found
+		Sku sku = catalogue.lookup(id);								// TODO -- handle not found
 		System.out.printf("%s\t%s\n\n", sku.id, sku.title);
-		System.out.println(sku.description);				// TODO -- wrap free text
+		System.out.println(sku.description);						// TODO -- wrap free text
 	}
 
 	private static void printHelp(PrintStream out) {
