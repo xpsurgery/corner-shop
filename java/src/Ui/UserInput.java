@@ -1,11 +1,11 @@
 package Ui;
 
-public class UserInput {
+class UserInput {
 
-	public char command;
-	public String[] args;
+	char command;
+	String[] args;
 
-	public UserInput(String line) {
+	UserInput(String line) {
 		command = line.charAt(0);
 		args = line.split(" ");								// TODO -- ignore multiple spaces
 															// TODO -- allow tabs

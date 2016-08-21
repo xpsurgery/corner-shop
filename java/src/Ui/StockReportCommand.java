@@ -2,11 +2,11 @@ package Ui;
 
 import Warehouse.Warehouse;
 
-public class StockReportCommand implements UserCommand {
+class StockReportCommand implements UserCommand {
 
 	private Warehouse warehouse;
 
-	public StockReportCommand(Warehouse warehouse) {
+	StockReportCommand(Warehouse warehouse) {
 		this.warehouse = warehouse;
 	}
 

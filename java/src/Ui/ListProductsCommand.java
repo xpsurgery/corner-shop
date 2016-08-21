@@ -2,11 +2,11 @@ package Ui;
 
 import Products.Catalogue;
 
-public class ListProductsCommand implements UserCommand {
+class ListProductsCommand implements UserCommand {
 
 	private Catalogue catalogue;
 
-	public ListProductsCommand(Catalogue catalogue) {
+	ListProductsCommand(Catalogue catalogue) {
 		this.catalogue = catalogue;
 	}
 

@@ -2,11 +2,11 @@ package Ui;
 
 import Warehouse.Warehouse;
 
-public class ReplenishStockCommand implements UserCommand {
+class ReplenishStockCommand implements UserCommand {
 
 	private Warehouse warehouse;
 
-	public ReplenishStockCommand(Warehouse warehouse) {
+	ReplenishStockCommand(Warehouse warehouse) {
 		this.warehouse = warehouse;
 	}
 

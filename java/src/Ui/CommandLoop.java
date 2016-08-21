@@ -12,22 +12,25 @@ import Warehouse.Warehouse;
 public class CommandLoop {
 
 	private BufferedReader in;
+	private Warehouse warehouse;
+	private Catalogue catalogue;
+	private Basket basket;
 
-	public CommandLoop(InputStream input) {
+	public CommandLoop(InputStream input, Warehouse warehouse, Catalogue catalogue, Basket basket) {
+		this.warehouse = warehouse;
+		this.catalogue = catalogue;
+		this.basket = basket;
 		in = new BufferedReader(new InputStreamReader(input));
 	}
 
 	public void run() {
-		Catalogue catalogue = new Catalogue();
-		Warehouse warehouse = new Warehouse();
-		Basket basket = new Basket();
 		for (;;) {
 			System.out.print("shop> ");
 			try {
 				String line = in.readLine();
 				if (line == null)
 					break;
-				if (line.equals(""))
+				if (line.equals(""))											// TODO -- trim
 					continue;
 				if (line.charAt(0) == 'q')
 					return;

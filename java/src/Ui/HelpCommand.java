@@ -2,11 +2,11 @@ package Ui;
 
 import java.io.PrintStream;
 
-public class HelpCommand implements UserCommand {
+class HelpCommand implements UserCommand {
 
 	private PrintStream out;
 
-	public HelpCommand(PrintStream out) {
+	HelpCommand(PrintStream out) {
 		this.out = out;
 	}
 

@@ -3,12 +3,12 @@ package Ui;
 import Warehouse.Warehouse;
 import Basket.Basket;
 
-public class AddToBasketCommand implements UserCommand {
+class AddToBasketCommand implements UserCommand {
 
 	private Basket basket;
 	private Warehouse warehouse;
 
-	public AddToBasketCommand(Basket basket, Warehouse warehouse) {
+	AddToBasketCommand(Basket basket, Warehouse warehouse) {
 		this.basket = basket;
 		this.warehouse = warehouse;
 	}

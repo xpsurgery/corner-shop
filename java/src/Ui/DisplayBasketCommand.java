@@ -2,11 +2,11 @@ package Ui;
 
 import Basket.Basket;
 
-public class DisplayBasketCommand implements UserCommand {
+class DisplayBasketCommand implements UserCommand {
 
 	private Basket basket;
 
-	public DisplayBasketCommand(Basket basket) {
+	DisplayBasketCommand(Basket basket) {
 		this.basket = basket;
 	}
 

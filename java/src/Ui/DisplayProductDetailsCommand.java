@@ -3,11 +3,11 @@ package Ui;
 import Products.Catalogue;
 import Products.Sku;
 
-public class DisplayProductDetailsCommand implements UserCommand {
+class DisplayProductDetailsCommand implements UserCommand {
 
 	private Catalogue catalogue;
 
-	public DisplayProductDetailsCommand(Catalogue catalogue) {
+	DisplayProductDetailsCommand(Catalogue catalogue) {
 		this.catalogue = catalogue;
 	}
 

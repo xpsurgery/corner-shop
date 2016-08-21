@@ -1,6 +1,6 @@
 package Ui;
 
-public interface UserCommand {
+interface UserCommand {
 
 	void run(UserInput cmd);
 
