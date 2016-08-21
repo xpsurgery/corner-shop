@@ -21,7 +21,7 @@ public class Basket {
 		}
 		for (String sku : items.keySet())						// TODO -- sort by SKU
 			out.printf("%s\t%6d\n", sku, items.get(sku));		// TODO -- validate SKU exists
-	}
+	}															// TODO -- print total
 
 	public void add(String sku) {
 		int current = 0;
@@ -34,6 +34,7 @@ public class Basket {
 		for (String sku : items.keySet())
 			warehouse.fulfill(sku, items.get(sku));
 		items = new HashMap<String, Integer>();
+		System.out.println("All items checked out.");			// TODO -- print total
 	}
 
 }

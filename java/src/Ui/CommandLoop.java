@@ -31,13 +31,13 @@ public class CommandLoop {
 					break;
 				if (line.equals(""))
 					continue;
-				char command = line.charAt(0);
-				switch (command) {
+				UserInput cmd = new UserInput(line);
+				switch (cmd.command) {
 				case 'a':
-					addToBasket(basket, line);
+					addToBasket(basket, cmd.args);
 					break;
 				case 'b':
-					basket.list(System.out);
+					new DisplayBasketCommand(basket).run(cmd);
 					break;
 				case 'c':
 					checkout(basket, warehouse);
@@ -73,14 +73,13 @@ public class CommandLoop {
 		basket.checkout(warehouse);
 	}
 
-	private void addToBasket(Basket basket, String line) {
-		String[] args = line.split(" ");					// TODO -- error handling!
-		String sku = args[1];								// TODO -- add more than one item
+	private void addToBasket(Basket basket, String[] args) {
+		String sku = args[1];										// TODO -- add more than one item
 		basket.add(sku);
 	}
 
 	private void replenish(Warehouse warehouse, String line) {
-		String[] args = line.split(" ");					// TODO -- error handling!
+		String[] args = line.split(" ");							// TODO -- error handling!
 		String sku = args[1];
 		int numItems = Integer.parseInt(args[2]);
 		warehouse.replenish(sku, numItems);
