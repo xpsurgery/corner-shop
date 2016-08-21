@@ -29,42 +29,39 @@ public class CommandLoop {
 					break;
 				if (line.equals(""))
 					continue;
-				UserInput cmd = new UserInput(line);
-				switch (cmd.command) {
-				case 'a':
-					new AddToBasketCommand(basket).run(cmd);
-					break;
-				case 'b':
-					new DisplayBasketCommand(basket).run(cmd);
-					break;
-				case 'c':
-					new CheckoutCommand(basket, warehouse).run(cmd);
-					break;
-				case 'd':
-					new DisplayProductDetailsCommand(catalogue).run(cmd);
-					break;
-				case 'h':
-					new HelpCommand(System.out).run(cmd);
-					break;
-				case 'p':
-					new ListProductsCommand(catalogue).run(cmd);
-					break;
-				case 'q':
+				if (line.charAt(0) == 'q')
 					return;
-				case 'r':
-					new ReplenishStockCommand(warehouse).run(cmd);
-					break;
-				case 's':
-					new StockReportCommand(warehouse).run(cmd);
-					break;
-				default:
-					new UnknownCommand().run(cmd);
-					break;
-				}
+				UserInput cmd = new UserInput(line);
+				createHandler(catalogue, warehouse, basket, cmd.command).run(cmd);
 			} catch (IOException e) {
+			} catch (RuntimeException e) {
+				System.out.println(e.getMessage());
 			}
 		}
 		System.out.println();
+	}
+
+	private UserCommand createHandler(Catalogue catalogue, Warehouse warehouse, Basket basket, char command) {
+		switch (command) {
+		case 'a':
+			return new AddToBasketCommand(basket, warehouse);
+		case 'b':
+			return new DisplayBasketCommand(basket);
+		case 'c':
+			return new CheckoutCommand(basket, warehouse);
+		case 'd':
+			return new DisplayProductDetailsCommand(catalogue);
+		case 'h':
+			return new HelpCommand(System.out);
+		case 'p':
+			return new ListProductsCommand(catalogue);
+		case 'r':
+			return new ReplenishStockCommand(warehouse);
+		case 's':
+			return new StockReportCommand(warehouse);
+		default:
+			return new UnknownCommand();
+		}
 	}
 
 }

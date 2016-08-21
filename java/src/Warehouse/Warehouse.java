@@ -32,4 +32,10 @@ public class Warehouse {
 		replenish(sku, -numItems);
 	}
 
+	public void mustStock(String sku, int numItems) {
+		if (stock.containsKey(sku) && stock.get(sku) >= numItems)
+			return;
+		throw new NotEnoughStockException(sku, numItems);
+	}
+
 }

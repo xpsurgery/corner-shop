@@ -2,7 +2,7 @@ package Ui;
 
 import Warehouse.Warehouse;
 
-public class ReplenishStockCommand {
+public class ReplenishStockCommand implements UserCommand {
 
 	private Warehouse warehouse;
 

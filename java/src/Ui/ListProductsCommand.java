@@ -2,7 +2,7 @@ package Ui;
 
 import Products.Catalogue;
 
-public class ListProductsCommand {
+public class ListProductsCommand implements UserCommand {
 
 	private Catalogue catalogue;
 

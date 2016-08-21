@@ -2,7 +2,7 @@ package Ui;
 
 import Basket.Basket;
 
-public class DisplayBasketCommand {
+public class DisplayBasketCommand implements UserCommand {
 
 	private Basket basket;
 

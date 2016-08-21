@@ -3,7 +3,7 @@ package Ui;
 import Products.Catalogue;
 import Products.Sku;
 
-public class DisplayProductDetailsCommand {
+public class DisplayProductDetailsCommand implements UserCommand {
 
 	private Catalogue catalogue;
 

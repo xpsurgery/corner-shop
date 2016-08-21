@@ -3,7 +3,7 @@ package Ui;
 import Basket.Basket;
 import Warehouse.Warehouse;
 
-public class CheckoutCommand {
+public class CheckoutCommand implements UserCommand {
 
 	private Basket basket;
 	private Warehouse warehouse;
