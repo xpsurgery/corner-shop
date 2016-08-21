@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 
 import Basket.Basket;
 import Products.Catalogue;
-import Products.Sku;
 import Warehouse.Warehouse;
 
 public class CommandLoop {
@@ -49,7 +47,7 @@ public class CommandLoop {
 					new HelpCommand(System.out).run(cmd);
 					break;
 				case 'p':
-					catalogue.list(System.out);							// TODO -- filter/search
+					new ListProductsCommand(catalogue).run(cmd);
 					break;
 				case 'q':
 					return;
@@ -60,7 +58,7 @@ public class CommandLoop {
 					new StockReportCommand(warehouse).run(cmd);
 					break;
 				default:
-					System.out.println("Type h or ? for help");
+					new UnknownCommand().run(cmd);
 					break;
 				}
 			} catch (IOException e) {
