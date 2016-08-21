@@ -1,7 +1,10 @@
 package Warehouse;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Warehouse {
@@ -17,18 +20,25 @@ public class Warehouse {
 	}
 
 	public void stockReport(PrintStream out) {
-		for (String sku : stock.keySet())					// TODO -- sort by SKU
+		for (String sku : sortedSkus())
 			out.printf("%s\t%6d\n", sku, stock.get(sku));
 	}
 
+	private List<String> sortedSkus() {
+		List<String> skus = new ArrayList<String>(stock.keySet());
+		java.util.Collections.sort(skus);
+		return skus;
+	}
+
 	public void replenish(String sku, int numItems) {
-		if (!stock.containsKey(sku))						// TODO -- defensive checks
-			stock.put(sku, 0);
-		int existing = stock.get(sku);
+		if (numItems <= 0)
+			throw new InvalidNumItemsException(numItems);
+		int existing = stock.containsKey(sku) ? stock.get(sku) : 0;
 		stock.put(sku, existing + numItems);
 	}
 
 	public void fulfill(String sku, Integer numItems) {
+		mustStock(sku, numItems);
 		replenish(sku, -numItems);
 	}
 
