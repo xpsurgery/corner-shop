@@ -46,7 +46,7 @@ public class CommandLoop {
 					new DisplayProductDetailsCommand(catalogue).run(cmd);
 					break;
 				case 'h':
-					printHelp(System.out);
+					new HelpCommand(System.out).run(cmd);
 					break;
 				case 'p':
 					catalogue.list(System.out);							// TODO -- filter/search
@@ -54,10 +54,10 @@ public class CommandLoop {
 				case 'q':
 					return;
 				case 'r':
-					replenish(warehouse, line);
+					new ReplenishStockCommand(warehouse).run(cmd);
 					break;
 				case 's':
-					warehouse.stockReport(System.out);
+					new StockReportCommand(warehouse).run(cmd);
 					break;
 				default:
 					System.out.println("Type h or ? for help");
@@ -67,25 +67,6 @@ public class CommandLoop {
 			}
 		}
 		System.out.println();
-	}
-
-	private void replenish(Warehouse warehouse, String line) {
-		String[] args = line.split(" ");							// TODO -- error handling!
-		String sku = args[1];
-		int numItems = Integer.parseInt(args[2]);
-		warehouse.replenish(sku, numItems);
-	}
-
-	private static void printHelp(PrintStream out) {
-		out.println("a sku [num]   Add SKU to basket; num defaults to 1");
-		out.println("b             List basket contents");
-		out.println("c             Checkout");
-		out.println("d sku         Show detailed product info for SKU");
-		out.println("h             Show this help");
-		out.println("p [filter]    List products (matching filter)");
-		out.println("q             Quit");
-		out.println("r sku num     Replenish SKU with num additional units");
-		out.println("s             Show stock levels");
 	}
 
 }
