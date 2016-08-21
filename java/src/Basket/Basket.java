@@ -22,6 +22,7 @@ public class Basket {
 		for (String sku : items.keySet())						// TODO -- sort by SKU
 			out.printf("%s\t%6d\n", sku, items.get(sku));		// TODO -- validate SKU exists
 	}															// TODO -- print total
+																// TODO -- print item titles
 
 	public void add(String sku) {
 		int current = 0;

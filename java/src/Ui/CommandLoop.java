@@ -34,16 +34,16 @@ public class CommandLoop {
 				UserInput cmd = new UserInput(line);
 				switch (cmd.command) {
 				case 'a':
-					addToBasket(basket, cmd.args);
+					new AddToBasketCommand(basket).run(cmd);
 					break;
 				case 'b':
 					new DisplayBasketCommand(basket).run(cmd);
 					break;
 				case 'c':
-					checkout(basket, warehouse);
+					new CheckoutCommand(basket, warehouse).run(cmd);
 					break;
 				case 'd':
-					showDescription(catalogue, line);
+					new DisplayProductDetailsCommand(catalogue).run(cmd);
 					break;
 				case 'h':
 					printHelp(System.out);
@@ -69,28 +69,11 @@ public class CommandLoop {
 		System.out.println();
 	}
 
-	private void checkout(Basket basket, Warehouse warehouse) {
-		basket.checkout(warehouse);
-	}
-
-	private void addToBasket(Basket basket, String[] args) {
-		String sku = args[1];										// TODO -- add more than one item
-		basket.add(sku);
-	}
-
 	private void replenish(Warehouse warehouse, String line) {
 		String[] args = line.split(" ");							// TODO -- error handling!
 		String sku = args[1];
 		int numItems = Integer.parseInt(args[2]);
 		warehouse.replenish(sku, numItems);
-	}
-
-	private void showDescription(Catalogue catalogue, String line) {
-		String[] args = line.split(" ");							// TODO -- error handling!
-		String id = args[1];
-		Sku sku = catalogue.lookup(id);								// TODO -- handle not found
-		System.out.printf("%s\t%s\n\n", sku.id, sku.title);
-		System.out.println(sku.description);						// TODO -- wrap free text
 	}
 
 	private static void printHelp(PrintStream out) {
