@@ -12,14 +12,18 @@ class DisplayProductDetailsCommand implements UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		String[] args = cmd.args;										// TODO -- error handling!
-		String id = args[1];
+		String id = cmd.args(1);
+		if (id == null || cmd.args.length != 2) {
+			System.err.println("ERROR: Usage: d sku");
+			return;
+		}
 		Sku sku = catalogue.lookup(id);
 		if (sku == null)
 			System.err.println("ERROR: product code " + id + " not found");
 		else {
 			System.out.printf("%s\t%s\n\n", sku.id, sku.title);
-			System.out.println(sku.description);						// TODO -- wrap free text
+			for (String line : sku.description())
+				System.out.println(line);
 		}
 	}
 
