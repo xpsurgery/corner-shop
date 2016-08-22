@@ -4,6 +4,8 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import Products.Catalogue;
+import Products.Sku;
 import Warehouse.Warehouse;
 
 public class Basket {
@@ -14,15 +16,17 @@ public class Basket {
 		items = new HashMap<String, Integer>();
 	}
 
-	public void list(PrintStream out) {
+	public void list(PrintStream out, Catalogue catalogue) {
 		if (items.isEmpty()) {
 			System.out.println("Your basket is empty");
 			return;
 		}
-		for (String sku : items.keySet())						// TODO -- sort by SKU
-			out.printf("%s\t%6d\n", sku, items.get(sku));		// TODO -- validate SKU exists
-	}															// TODO -- print total
-																// TODO -- print item titles
+		for (String skuId : items.keySet()) {						// TODO -- sort by SKU
+			Sku sku = catalogue.lookup(skuId);
+			Integer count = items.get(skuId);						// TODO -- print item titles
+			out.printf("%dp x%d\t%s\n", sku.price, count, sku.title);
+		}															// TODO -- print total
+	}
 
 	public void add(String sku, int numItems) {
 		int current = items.containsKey(sku) ? items.get(sku) : 0;
@@ -30,6 +34,10 @@ public class Basket {
 	}
 
 	public void checkout(Warehouse warehouse) {
+		if (items.isEmpty()) {
+			System.err.println("Your basket is empty!");
+			return;
+		}
 		for (String sku : items.keySet())
 			warehouse.fulfill(sku, items.get(sku));
 		items = new HashMap<String, Integer>();

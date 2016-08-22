@@ -51,7 +51,7 @@ public class CommandLoop {
 		case 'a':
 			return new AddToBasketCommand(basket, warehouse);
 		case 'b':
-			return new DisplayBasketCommand(basket);
+			return new DisplayBasketCommand(basket, catalogue);
 		case 'c':
 			return new CheckoutCommand(basket, warehouse);
 		case 'd':
