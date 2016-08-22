@@ -28,9 +28,12 @@ public class CommandLoop {
 			System.out.print("shop> ");
 			try {
 				String line = in.readLine();
-				if (line == null)
-					break;
-				if (line.equals(""))											// TODO -- trim
+				if (line == null) {
+					System.out.println();
+					return;
+				}
+				line = line.trim();
+				if (line.equals(""))
 					continue;
 				if (line.charAt(0) == 'q')
 					return;
@@ -41,7 +44,6 @@ public class CommandLoop {
 				System.out.println(e.getMessage());
 			}
 		}
-		System.out.println();
 	}
 
 	private UserCommand createHandler(Catalogue catalogue, Warehouse warehouse, Basket basket, char command) {

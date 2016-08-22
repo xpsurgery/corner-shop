@@ -13,7 +13,14 @@ public class Application {
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
 		new CommandLoop(System.in, warehouse, catalogue, basket).run();
+		displayGoodbyeMessage();
 		System.exit(0);
+	}
+
+	private static void displayGoodbyeMessage() {
+		System.out.println();
+		System.out.println("Goodbye. Thanks for your custom!");
+		System.out.println();
 	}
 
 	private static void displayWelcomeMessage(PrintStream out) {
