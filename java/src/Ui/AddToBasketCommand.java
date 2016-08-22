@@ -1,5 +1,6 @@
 package Ui;
 
+import Products.Catalogue;
 import Warehouse.Warehouse;
 import Basket.Basket;
 
@@ -7,9 +8,11 @@ class AddToBasketCommand implements UserCommand {
 
 	private Basket basket;
 	private Warehouse warehouse;
+	private Catalogue catalogue;
 
-	AddToBasketCommand(Basket basket, Warehouse warehouse) {
+	AddToBasketCommand(Basket basket, Catalogue catalogue, Warehouse warehouse) {
 		this.basket = basket;
+		this.catalogue = catalogue;
 		this.warehouse = warehouse;
 	}
 
@@ -30,7 +33,7 @@ class AddToBasketCommand implements UserCommand {
 		if (numItems <= 0)
 			throw new UsageException("The number of items must be a number greater than zero.");
 		warehouse.mustStock(sku, numItems);
-		basket.add(sku, numItems);
+		basket.add(sku, catalogue, numItems);
 	}
 
 }

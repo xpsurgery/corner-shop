@@ -10,10 +10,10 @@ import Warehouse.Warehouse;
 
 public class Basket {
 
-	private Map<String, Integer> items;
+	private Map<String, BasketItem> items;
 	
 	public Basket() {
-		items = new HashMap<String, Integer>();
+		items = new HashMap<String, BasketItem>();
 	}
 
 	public void list(PrintStream out, Catalogue catalogue) {
@@ -23,14 +23,19 @@ public class Basket {
 		}
 		for (String skuId : items.keySet()) {						// TODO -- sort by SKU
 			Sku sku = catalogue.lookup(skuId);
-			Integer count = items.get(skuId);						// TODO -- print item titles
+			Integer count = items.get(skuId).count;						// TODO -- print item titles
 			out.printf("%dp x%d\t%s\n", sku.price, count, sku.title);
 		}															// TODO -- print total
 	}
 
-	public void add(String sku, int numItems) {
-		int current = items.containsKey(sku) ? items.get(sku) : 0;
-		items.put(sku, current + numItems);
+	public void add(String skuId, Catalogue catalogue, int numItems) {
+		Sku sku = catalogue.lookup(skuId);
+		if (items.containsKey(skuId)) {
+			BasketItem existing = items.get(skuId);
+			items.put(skuId, new BasketItem(skuId, existing.title, existing.price, existing.count + numItems));
+		} else {
+			items.put(skuId, new BasketItem(skuId, sku.title, sku.price, numItems));
+		}
 	}
 
 	public void checkout(Warehouse warehouse) {
@@ -39,8 +44,8 @@ public class Basket {
 			return;
 		}
 		for (String sku : items.keySet())
-			warehouse.fulfill(sku, items.get(sku));
-		items = new HashMap<String, Integer>();
+			warehouse.fulfill(sku, items.get(sku).count);
+		items = new HashMap<String, BasketItem>();
 		System.out.println("All items checked out.");			// TODO -- print total
 	}
 

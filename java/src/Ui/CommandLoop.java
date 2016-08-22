@@ -49,7 +49,7 @@ public class CommandLoop {
 	private UserCommand createHandler(Catalogue catalogue, Warehouse warehouse, Basket basket, char command) {
 		switch (command) {
 		case 'a':
-			return new AddToBasketCommand(basket, warehouse);
+			return new AddToBasketCommand(basket, catalogue, warehouse);
 		case 'b':
 			return new DisplayBasketCommand(basket, catalogue);
 		case 'c':
