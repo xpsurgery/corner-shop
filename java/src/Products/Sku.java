@@ -1,6 +1,6 @@
 package Products;
 
-public class Sku {
+public class Sku implements Comparable<Sku> {
 
 	public String title;
 	public String id;
@@ -12,5 +12,10 @@ public class Sku {
 		this.title = title;
 		this.description = description;
 		this.price = price;
+	}
+
+	@Override
+	public int compareTo(Sku other) {
+		return id.compareTo(other.id);
 	}
 }

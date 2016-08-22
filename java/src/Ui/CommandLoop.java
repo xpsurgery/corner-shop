@@ -41,7 +41,7 @@ public class CommandLoop {
 				createHandler(catalogue, warehouse, basket, cmd.command).run(cmd);
 			} catch (IOException e) {
 			} catch (RuntimeException e) {
-				System.out.println(e.getMessage());
+				System.err.println("ERROR: " + e.getMessage());
 			}
 		}
 	}
