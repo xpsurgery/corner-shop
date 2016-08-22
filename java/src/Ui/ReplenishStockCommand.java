@@ -11,9 +11,17 @@ class ReplenishStockCommand implements UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		String sku = cmd.args[1];							// TODO -- error handling!
-		int numItems = Integer.parseInt(cmd.args[2]);
-		warehouse.replenish(sku, numItems);
+		if (cmd.args.length != 3) {
+			System.err.println("ERROR: Usage: r sku num");
+			return;
+		}
+		String sku = cmd.args(1);
+		try {
+			int numItems = Integer.parseInt(cmd.args[2]);
+			warehouse.replenish(sku, numItems);
+		} catch (NumberFormatException e) {
+			System.err.println("ERROR: Usage: r sku numitems");
+		}
 	}
 
 }
