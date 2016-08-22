@@ -32,13 +32,17 @@ public class Warehouse {
 	public void replenish(String sku, int numItems) {
 		if (numItems <= 0)
 			throw new InvalidNumItemsException(numItems);
+		changeStockLevel(sku, numItems);
+	}
+
+	private void changeStockLevel(String sku, int numItems) {
 		int existing = stock.containsKey(sku) ? stock.get(sku) : 0;
 		stock.put(sku, existing + numItems);
 	}
 
 	public void fulfill(String sku, Integer numItems) {
 		mustStock(sku, numItems);
-		replenish(sku, -numItems);
+		changeStockLevel(sku, -numItems);
 	}
 
 	public void mustStock(String sku, int numItems) {

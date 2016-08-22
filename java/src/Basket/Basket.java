@@ -24,11 +24,9 @@ public class Basket {
 	}															// TODO -- print total
 																// TODO -- print item titles
 
-	public void add(String sku) {
-		int current = 0;
-		if (items.containsKey(sku))
-			current = items.get(sku);
-		items.put(sku, current+1);								// TODO -- check stock levels
+	public void add(String sku, int numItems) {
+		int current = items.containsKey(sku) ? items.get(sku) : 0;
+		items.put(sku, current + numItems);
 	}
 
 	public void checkout(Warehouse warehouse) {
