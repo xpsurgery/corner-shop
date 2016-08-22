@@ -47,11 +47,11 @@ public class CommandLoop {
 	}
 
 	private UserCommand createHandler(Catalogue catalogue, Warehouse warehouse, Basket basket, char command) {
-		switch (command) {
+		switch (command) {																// TODO -- price changes
 		case 'a':
 			return new AddToBasketCommand(basket, catalogue, warehouse);
 		case 'b':
-			return new DisplayBasketCommand(basket, catalogue);
+			return new DisplayBasketCommand(basket);
 		case 'c':
 			return new CheckoutCommand(basket, warehouse);
 		case 'd':

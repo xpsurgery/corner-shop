@@ -1,7 +1,8 @@
 package Basket;
 
-import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Products.Catalogue;
@@ -16,16 +17,17 @@ public class Basket {
 		items = new HashMap<String, BasketItem>();
 	}
 
-	public void list(PrintStream out, Catalogue catalogue) {
-		if (items.isEmpty()) {
-			System.out.println("Your basket is empty");
-			return;
-		}
-		for (String skuId : items.keySet()) {						// TODO -- sort by SKU
-			Sku sku = catalogue.lookup(skuId);
-			Integer count = items.get(skuId).count;						// TODO -- print item titles
-			out.printf("%dp x%d\t%s\n", sku.price, count, sku.title);
-		}															// TODO -- print total
+	public List<BasketItem> list() {
+		List<BasketItem> result = new ArrayList<BasketItem>();
+		for (String sku : sortedSkus())
+			result.add(items.get(sku));
+		return result;
+	}
+
+	private List<String> sortedSkus() {
+		List<String> skus = new ArrayList<String>(items.keySet());
+		java.util.Collections.sort(skus);
+		return skus;
 	}
 
 	public void add(String skuId, Catalogue catalogue, int numItems) {
