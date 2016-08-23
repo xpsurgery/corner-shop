@@ -7,9 +7,7 @@ class UserInput {
 
 	UserInput(String line) {
 		command = line.charAt(0);
-		args = line.split(" ");								// TODO -- ignore multiple spaces
-															// TODO -- allow tabs
-															// TODO -- omit the command itself
+		args = line.split("\\s+");
 	}
 
 	public String args(int i) {

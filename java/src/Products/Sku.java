@@ -24,7 +24,7 @@ public class Sku implements Comparable<Sku> {
 
 	public List<String> description() {
 		List<String> result = new ArrayList<String>();
-		String[] words = description.split(" ");
+		String[] words = description.split("\\s+");
 		String currentLine = "  ";
 		for (String word : words) {
 			currentLine += word;
