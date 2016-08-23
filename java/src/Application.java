@@ -1,8 +1,9 @@
 import java.io.PrintStream;
 
 import Basket.Basket;
+import CatalogueActions.CatalogueActions;
 import Products.Catalogue;
-import Ui.CommandLoop;
+import Ui.UserInterface;
 import Warehouse.Warehouse;
 
 public class Application {
@@ -12,7 +13,7 @@ public class Application {
 		Warehouse warehouse = new Warehouse();
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
-		new CommandLoop(System.in, warehouse, catalogue, basket).run();
+		new UserInterface(System.in, warehouse, catalogue, basket, new CatalogueActions(catalogue)).start();
 		displayGoodbyeMessage();
 		System.exit(0);
 	}

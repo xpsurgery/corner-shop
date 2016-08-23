@@ -1,9 +1,9 @@
 package Ui;
 
-class UserInput {
+public class UserInput {
 
 	char command;
-	String[] args;
+	public String[] args;
 
 	UserInput(String line) {
 		command = line.charAt(0);

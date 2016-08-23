@@ -1,7 +1,9 @@
-package Ui;
+package CatalogueActions;
 
 import Products.Catalogue;
 import Products.Sku;
+import Ui.UserCommand;
+import Ui.UserInput;
 
 class DisplayProductDetailsCommand implements UserCommand {
 

@@ -8,22 +8,25 @@ import java.io.InputStreamReader;
 import Basket.Basket;
 import Products.Catalogue;
 import Warehouse.Warehouse;
+import CatalogueActions.CatalogueActions;
 
-public class CommandLoop {
+public class UserInterface {
 
 	private BufferedReader in;
 	private Warehouse warehouse;
 	private Catalogue catalogue;
 	private Basket basket;
+	private CatalogueActions catalogueActions;
 
-	public CommandLoop(InputStream input, Warehouse warehouse, Catalogue catalogue, Basket basket) {
+	public UserInterface(InputStream input, Warehouse warehouse, Catalogue catalogue, Basket basket, CatalogueActions catalogueActions) {
 		this.warehouse = warehouse;
 		this.catalogue = catalogue;
 		this.basket = basket;
+		this.catalogueActions = catalogueActions;
 		in = new BufferedReader(new InputStreamReader(input));
 	}
 
-	public void run() {
+	public void start() {
 		for (;;) {
 			System.out.print("shop> ");
 			try {
@@ -55,11 +58,11 @@ public class CommandLoop {
 		case 'c':
 			return new CheckoutCommand(basket, warehouse);
 		case 'd':
-			return new DisplayProductDetailsCommand(catalogue);
+			return catalogueActions.displayProductDetails();
 		case 'h':
 			return new HelpCommand(System.out);
 		case 'p':
-			return new ListProductsCommand(catalogue);
+			return catalogueActions.listProducts();
 		case 'r':
 			return new ReplenishStockCommand(warehouse);
 		case 's':
