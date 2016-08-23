@@ -45,10 +45,18 @@ public class Basket {
 			System.err.println("Your basket is empty!");
 			return;
 		}
+		double totalPrice = currentTotal() / 100.0;
 		for (String sku : items.keySet())
 			warehouse.fulfill(sku, items.get(sku).count);
 		items = new HashMap<String, BasketItem>();
-		System.out.println("All items checked out.");			// TODO -- print total
+		System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice);
+	}
+
+	private int currentTotal() {
+		int total = 0;
+		for (BasketItem item : items.values())
+			total += item.count * item.price;
+		return total;
 	}
 
 }
