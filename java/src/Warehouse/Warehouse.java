@@ -12,10 +12,10 @@ public class Warehouse {
 
 	public Warehouse() {
 		stock = new HashMap<String, Integer>();
-		stock.put("1045", 3);								// TODO -- read from file
-		stock.put("2761", 17);
-		stock.put("5990", 50);
-		stock.put("6000", 105);
+		stock.put("0020/1045", 3);								// TODO -- read from file
+		stock.put("1034/2761", 17);
+		stock.put("2477/5990", 50);
+		stock.put("3000/6000", 105);
 	}
 
 	public void stockReport(PrintStream out) {
