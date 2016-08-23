@@ -1,3 +1,5 @@
+package Main;
+
 import java.io.PrintStream;
 
 import Basket.Basket;
@@ -15,7 +17,10 @@ public class Application {
 		Warehouse warehouse = new Warehouse();
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
-		new UserInterface(System.in, new CatalogueActions(catalogue), new WarehouseActions(warehouse), new BasketActions(basket, catalogue, warehouse)).start();
+		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
+		WarehouseActions warehouseActions = new WarehouseActions(warehouse);
+		BasketActions basketActions = new BasketActions(basket, catalogue, warehouse);
+		new UserInterface(System.in, catalogueActions, warehouseActions, basketActions).start();
 		displayGoodbyeMessage();
 		System.exit(0);
 	}
