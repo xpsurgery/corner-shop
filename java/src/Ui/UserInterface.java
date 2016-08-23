@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import Basket.Basket;
 import Products.Catalogue;
 import Warehouse.Warehouse;
+import WarehouseActions.WarehouseActions;
 import CatalogueActions.CatalogueActions;
 
 public class UserInterface {
@@ -17,12 +18,14 @@ public class UserInterface {
 	private Catalogue catalogue;
 	private Basket basket;
 	private CatalogueActions catalogueActions;
+	private WarehouseActions warehouseActions;
 
-	public UserInterface(InputStream input, Warehouse warehouse, Catalogue catalogue, Basket basket, CatalogueActions catalogueActions) {
+	public UserInterface(InputStream input, Warehouse warehouse, Catalogue catalogue, Basket basket, CatalogueActions catalogueActions, WarehouseActions warehouseActions) {
 		this.warehouse = warehouse;
 		this.catalogue = catalogue;
 		this.basket = basket;
 		this.catalogueActions = catalogueActions;
+		this.warehouseActions = warehouseActions;
 		in = new BufferedReader(new InputStreamReader(input));
 	}
 
@@ -64,9 +67,9 @@ public class UserInterface {
 		case 'p':
 			return catalogueActions.listProducts();
 		case 'r':
-			return new ReplenishStockCommand(warehouse);
+			return warehouseActions.replenishStock();
 		case 's':
-			return new StockReportCommand(warehouse);
+			return warehouseActions.stockReport();
 		default:
 			return new UnknownCommand();
 		}

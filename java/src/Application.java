@@ -5,6 +5,7 @@ import CatalogueActions.CatalogueActions;
 import Products.Catalogue;
 import Ui.UserInterface;
 import Warehouse.Warehouse;
+import WarehouseActions.WarehouseActions;
 
 public class Application {
 
@@ -13,7 +14,7 @@ public class Application {
 		Warehouse warehouse = new Warehouse();
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
-		new UserInterface(System.in, warehouse, catalogue, basket, new CatalogueActions(catalogue)).start();
+		new UserInterface(System.in, warehouse, catalogue, basket, new CatalogueActions(catalogue), new WarehouseActions(warehouse)).start();
 		displayGoodbyeMessage();
 		System.exit(0);
 	}

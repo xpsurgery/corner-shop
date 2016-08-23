@@ -1,5 +1,7 @@
-package Ui;
+package WarehouseActions;
 
+import Ui.UserCommand;
+import Ui.UserInput;
 import Warehouse.Warehouse;
 
 class ReplenishStockCommand implements UserCommand {
@@ -10,6 +12,7 @@ class ReplenishStockCommand implements UserCommand {
 		this.warehouse = warehouse;
 	}
 
+	@Override
 	public void run(UserInput cmd) {
 		if (cmd.args.length != 3) {
 			System.err.println("ERROR: Usage: r sku num");
