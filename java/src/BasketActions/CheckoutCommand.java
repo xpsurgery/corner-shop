@@ -1,6 +1,8 @@
-package Ui;
+package BasketActions;
 
 import Basket.Basket;
+import Ui.UserCommand;
+import Ui.UserInput;
 import Warehouse.Warehouse;
 
 class CheckoutCommand implements UserCommand {
@@ -13,6 +15,7 @@ class CheckoutCommand implements UserCommand {
 		this.warehouse = warehouse;
 	}
 
+	@Override
 	public void run(UserInput cmd) {
 		basket.checkout(warehouse);
 	}

@@ -1,6 +1,7 @@
 import java.io.PrintStream;
 
 import Basket.Basket;
+import BasketActions.BasketActions;
 import CatalogueActions.CatalogueActions;
 import Products.Catalogue;
 import Ui.UserInterface;
@@ -14,7 +15,7 @@ public class Application {
 		Warehouse warehouse = new Warehouse();
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
-		new UserInterface(System.in, warehouse, catalogue, basket, new CatalogueActions(catalogue), new WarehouseActions(warehouse)).start();
+		new UserInterface(System.in, warehouse, catalogue, basket, new CatalogueActions(catalogue), new WarehouseActions(warehouse), new BasketActions(basket, catalogue, warehouse)).start();
 		displayGoodbyeMessage();
 		System.exit(0);
 	}
