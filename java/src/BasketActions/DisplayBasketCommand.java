@@ -23,10 +23,14 @@ class DisplayBasketCommand implements UserCommand {
 			System.out.println("Your basket is empty");
 			return;
 		}
-		for (BasketItem item : items) {
+		for (BasketItem item : items)
 			System.out.printf("£%5.02f x%d\t%s\n", item.price / 100.0, item.count, item.title);
-		}
 		int total = basketTotal(items);
+		if (total > 2000) {
+			int discount = total/10;
+			System.out.printf("£%5.02f   \t10%% discount\n", discount / -100.0);
+			total -= discount;
+		}
 		System.out.println("---------------");
 		System.out.printf("£%5.02f total\n", total / 100.0);
 	}

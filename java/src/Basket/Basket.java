@@ -56,6 +56,8 @@ public class Basket {
 		int total = 0;
 		for (BasketItem item : items.values())
 			total += item.count * item.price;
+		if (total > 2000)
+			total -= (total/10);
 		return total;
 	}
 
