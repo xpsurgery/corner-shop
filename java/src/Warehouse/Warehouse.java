@@ -7,37 +7,26 @@ import java.util.List;
 import java.util.Map;
 
 public class Warehouse {
-	
-	private Map<String, Integer> stock;
+
+	private Map<String[], Integer> stock;
 
 	public Warehouse() {
-		stock = new HashMap<String, Integer>();
-		stock.put("0020/1045", 3);								// TODO -- read from file
-		stock.put("1034/2761", 17);
-		stock.put("2477/5990", 50);
-		stock.put("3000/6000", 105);
+		stock = new HashMap<String[], Integer>();
+		stock.put(new String[] { "01", "12", "1045" }, 3);					// TODO -- read from file
+		stock.put(new String[] { "10", "04", "2761" }, 17);
+		stock.put(new String[] { "24", "17", "5990" }, 50);
+		stock.put(new String[] { "01", "01", "6000" }, 105);
 	}
 
 	public void stockReport(PrintStream out) {
-		for (String sku : sortedSkus())
-			out.printf("%s\t%6d\n", sku, stock.get(sku));
+		for (String[] skuCode : stock.keySet())
+			out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
 	}
 
-	private List<String> sortedSkus() {
-		List<String> skus = new ArrayList<String>(stock.keySet());
-		java.util.Collections.sort(skus);
-		return skus;
-	}
-
-	public void replenish(String sku, int numItems) {
+	public void replenish(String sku, int numItems) {		// TODO --change command to: r aisle loc code num
 		if (numItems <= 0)
 			throw new InvalidNumItemsException(numItems);
 		changeStockLevel(sku, numItems);
-	}
-
-	private void changeStockLevel(String sku, int numItems) {
-		int existing = stock.containsKey(sku) ? stock.get(sku) : 0;
-		stock.put(sku, existing + numItems);
 	}
 
 	public void fulfill(String sku, Integer numItems) {
@@ -46,9 +35,23 @@ public class Warehouse {
 	}
 
 	public void mustStock(String sku, int numItems) {
-		if (stock.containsKey(sku) && stock.get(sku) >= numItems)
-			return;
-		throw new NotEnoughStockException(sku, numItems);
+		String[] skuCode = lookup(sku);
+		if (skuCode == null || stock.get(skuCode) < numItems)
+			throw new NotEnoughStockException(sku, numItems);
+	}
+
+	private String[] lookup(String sku) {
+		for (String[] skuCode : stock.keySet()) {
+			if (skuCode[2].equals(sku))
+				return skuCode;
+		}
+		return null;
+	}
+
+	private void changeStockLevel(String sku, int numItems) {
+		String[] skuCode = lookup(sku);
+		int existing = skuCode == null ? 0 : stock.get(skuCode);
+		stock.put(skuCode, existing + numItems);
 	}
 
 }
