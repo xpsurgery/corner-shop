@@ -18,7 +18,7 @@ public class Application {
 		Catalogue catalogue = new Catalogue();
 		Basket basket = new Basket();
 		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
-		WarehouseActions warehouseActions = new WarehouseActions(warehouse);
+		WarehouseActions warehouseActions = new WarehouseActions(warehouse, catalogue);
 		BasketActions basketActions = new BasketActions(basket, catalogue, warehouse);
 		new UserInterface(System.in, catalogueActions, warehouseActions, basketActions).start();
 		displayGoodbyeMessage();

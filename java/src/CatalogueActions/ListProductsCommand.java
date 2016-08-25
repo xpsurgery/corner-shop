@@ -15,6 +15,6 @@ class ListProductsCommand implements UserCommand {
 	@Override
 	public void run(UserInput cmd) {
 		catalogue.list(System.out);
-	}														// TODO -- show which items are out of stock
+	}
 
 }

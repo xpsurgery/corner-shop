@@ -1,14 +1,17 @@
 package WarehouseActions;
 
+import Products.Catalogue;
 import Ui.UserCommand;
 import Warehouse.Warehouse;
 
 public class WarehouseActions {
 
 	private Warehouse warehouse;
+	private Catalogue catalogue;
 
-	public WarehouseActions(Warehouse warehouse) {
+	public WarehouseActions(Warehouse warehouse, Catalogue catalogue) {
 		this.warehouse = warehouse;
+		this.catalogue = catalogue;
 	}
 
 	public UserCommand stockReport() {
@@ -16,7 +19,7 @@ public class WarehouseActions {
 	}
 
 	public UserCommand replenishStock() {
-		return new ReplenishStockCommand(warehouse);
+		return new ReplenishStockCommand(warehouse, catalogue);
 	}
 
 }
