@@ -23,15 +23,15 @@ public class Warehouse {
 			out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
 	}
 
-	public void replenish(String sku, int numItems) {		// TODO --change command to: r aisle loc code num
+	public void replenish(String[] skuCode, int numItems) {
 		if (numItems <= 0)
 			throw new InvalidNumItemsException(numItems);
-		changeStockLevel(sku, numItems);
+		changeStockLevel(skuCode, numItems);
 	}
 
 	public void fulfill(String sku, Integer numItems) {
 		mustStock(sku, numItems);
-		changeStockLevel(sku, -numItems);
+		changeStockLevel(lookup(sku), -numItems);
 	}
 
 	public void mustStock(String sku, int numItems) {
@@ -48,10 +48,12 @@ public class Warehouse {
 		return null;
 	}
 
-	private void changeStockLevel(String sku, int numItems) {
-		String[] skuCode = lookup(sku);
-		int existing = skuCode == null ? 0 : stock.get(skuCode);
-		stock.put(skuCode, existing + numItems);
+	private void changeStockLevel(String[] skuCode, int numItems) {
+		String[] key = lookup(skuCode[2]);
+		if (key == null)
+			stock.put(skuCode, numItems);
+		else
+			stock.put(key, stock.get(key) + numItems);
 	}
 
 }
