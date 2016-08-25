@@ -9,17 +9,18 @@ import Filestore.WarehouseReader;
 public class Warehouse {
 	
 	public static Warehouse fromFile(WarehouseReader warehouseReader) {
-		return new Warehouse();
-	}
-
-	private Map<String[], Integer> stock;
-
-	public Warehouse() {
-		stock = new HashMap<String[], Integer>();
+		Map<String[], Integer> stock = new HashMap<String[], Integer>();
 		stock.put(new String[] { "01", "12", "1045" }, 3);					// TODO -- read from file
 		stock.put(new String[] { "10", "04", "2761" }, 17);
 		stock.put(new String[] { "24", "17", "5990" }, 50);
 		stock.put(new String[] { "01", "01", "6000" }, 105);
+		return new Warehouse(stock);
+	}
+
+	private Map<String[], Integer> stock;
+
+	public Warehouse(Map<String[], Integer> stock) {
+		this.stock = stock;
 	}
 
 	public void stockReport(PrintStream out) {
