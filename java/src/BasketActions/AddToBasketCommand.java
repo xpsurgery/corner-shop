@@ -36,7 +36,10 @@ class AddToBasketCommand implements UserCommand {
 		}
 		if (numItems <= 0)
 			throw new UsageException("The number of items must be a number greater than zero.");
-		warehouse.mustStock(sku, numItems);
+		String[] skuCode = catalogue.lookupCode(sku);
+		if (skuCode == null)
+			throw new UsageException("Product " + sku + " unknown.");
+		warehouse.mustStock(skuCode, numItems);
 		basket.add(sku, catalogue, numItems);
 	}
 

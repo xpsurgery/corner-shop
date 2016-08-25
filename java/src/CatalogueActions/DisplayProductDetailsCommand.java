@@ -23,7 +23,7 @@ class DisplayProductDetailsCommand implements UserCommand {
 		if (sku == null)
 			System.err.println("ERROR: product code " + id + " not found");
 		else {
-			System.out.printf("%s\t%s\t£%5.02f\n\n", sku.id, sku.title, sku.price / 100.0);
+			System.out.printf("%s\t%s\t£%5.02f\n\n", sku.code, sku.title, sku.price / 100.0);
 			for (String line : sku.description())
 				System.out.println(line);
 		}

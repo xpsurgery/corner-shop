@@ -1,9 +1,7 @@
 package Warehouse;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Warehouse {
@@ -30,12 +28,13 @@ public class Warehouse {
 	}
 
 	public void fulfill(String sku, Integer numItems) {
-		mustStock(sku, numItems);
-		changeStockLevel(lookup(sku), -numItems);
+		String[] skuCode = lookup(sku);
+		mustStock(skuCode, numItems);
+		changeStockLevel(skuCode, -numItems);
 	}
 
-	public void mustStock(String sku, int numItems) {
-		String[] skuCode = lookup(sku);
+	public void mustStock(String[] sku, int numItems) {
+		String[] skuCode = lookup(sku[2]);
 		if (skuCode == null || stock.get(skuCode) < numItems)
 			throw new NotEnoughStockException(sku, numItems);
 	}

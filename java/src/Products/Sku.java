@@ -6,12 +6,12 @@ import java.util.List;
 public class Sku implements Comparable<Sku> {
 
 	public String title;
-	public String id;
+	public String[] code;
 	public int price;
 	private String description;
 
-	public Sku(String id, String title, String description, int price) {
-		this.id = id;
+	public Sku(String[] code, String title, String description, int price) {
+		this.code = code;
 		this.title = title;
 		this.description = description;
 		this.price = price;
@@ -19,7 +19,9 @@ public class Sku implements Comparable<Sku> {
 
 	@Override
 	public int compareTo(Sku other) {
-		return id.compareTo(other.id);
+		String myCode = code[0] + code[1] + code[2];
+		String otherCode = other.code[0] + other.code[1] + other.code[2];
+		return myCode.compareTo(otherCode);
 	}
 
 	public List<String> description() {
