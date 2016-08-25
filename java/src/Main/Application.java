@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import Basket.Basket;
 import BasketActions.BasketActions;
 import CatalogueActions.CatalogueActions;
+import Filestore.CatalogueReader;
+import Filestore.WarehouseReader;
 import Products.Catalogue;
 import Ui.UserInterface;
 import Warehouse.Warehouse;
@@ -14,8 +16,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		displayWelcomeMessage(System.out);
-		Warehouse warehouse = Warehouse.fromFile("./warehouse.dat");
-		Catalogue catalogue = Catalogue.fromFile("./catalogue.dat");
+		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("./warehouse.dat"));
+		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("./catalogue.dat"));
 		Basket basket = new Basket();
 		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
 		WarehouseActions warehouseActions = new WarehouseActions(warehouse, catalogue);

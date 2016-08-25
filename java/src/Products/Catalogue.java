@@ -4,9 +4,11 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import Filestore.CatalogueReader;
+
 public class Catalogue {
 	
-	public static Catalogue fromFile(String string) {
+	public static Catalogue fromFile(CatalogueReader catalogueReader) {
 		return new Catalogue();
 	}
 	

@@ -4,9 +4,11 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import Filestore.WarehouseReader;
+
 public class Warehouse {
 	
-	public static Warehouse fromFile(String string) {
+	public static Warehouse fromFile(WarehouseReader warehouseReader) {
 		return new Warehouse();
 	}
 
