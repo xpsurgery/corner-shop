@@ -47,7 +47,7 @@ public class UserInterface {
 	}
 
 	private UserCommand createHandler(char command) {
-		switch (command) {																// TODO -- price changes
+		switch (command) {
 		case 'a':
 			return basketActions.addToBasket();
 		case 'b':
