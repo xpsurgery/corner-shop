@@ -16,7 +16,7 @@ class HelpCommand implements UserCommand {
 		out.println("  b             List basket contents");
 		out.println("  c             Checkout");
 		out.println("  d sku         Show detailed product info for SKU");
-		out.println("  p [filter]    List products (matching filter)");
+		out.println("  p             List all products");
 		out.println();
 		out.println("Warehouse actions:");
 		out.println("  r sku num     Replenish SKU with num additional units");
