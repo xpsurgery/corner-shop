@@ -2,18 +2,19 @@ package Warehouse;
 
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import Filestore.StockMemento;
 import Filestore.WarehouseReader;
 
 public class Warehouse {
 	
 	public static Warehouse fromFile(WarehouseReader warehouseReader) {
+		List<StockMemento> data = warehouseReader.readAll();
 		Map<String[], Integer> stock = new HashMap<String[], Integer>();
-		stock.put(new String[] { "01", "12", "1045" }, 3);					// TODO -- read from file
-		stock.put(new String[] { "10", "04", "2761" }, 17);
-		stock.put(new String[] { "24", "17", "5990" }, 50);
-		stock.put(new String[] { "01", "01", "6000" }, 105);
+		for (StockMemento line : data)
+			stock.put(line.skuCode, line.count);
 		return new Warehouse(stock);
 	}
 
