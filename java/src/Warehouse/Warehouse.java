@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Warehouse {
+	
+	public static Warehouse fromFile(String string) {
+		return new Warehouse();
+	}
 
 	private Map<String[], Integer> stock;
 

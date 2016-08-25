@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Catalogue {
 	
+	public static Catalogue fromFile(String string) {
+		return new Catalogue();
+	}
+	
 	private List<Sku> products;
 
 	public Catalogue() {
