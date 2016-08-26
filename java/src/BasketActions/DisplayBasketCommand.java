@@ -23,16 +23,20 @@ class DisplayBasketCommand implements UserCommand {
 			System.out.println("Your basket is empty");
 			return;
 		}
-		for (BasketItem item : items)
-			System.out.printf("£%5.02f x%d\t%s\n", item.price / 100.0, item.count, item.title);
+		for (BasketItem item : items) {
+			String leader = String.format("£%8.02f %5dx     ", item.price / 100.0, item.count);
+			int possLen = leader.length() + item.title.length();
+			String title = (possLen > 60) ? item.title.substring(0, 60-leader.length()-3)+"..." : item.title;
+			System.out.println(leader + title);
+		}
 		int total = basketTotal(items);
 		if (total > 2000) {
 			int discount = total/10;
-			System.out.printf("£%5.02f   \t10%% discount\n", discount / -100.0);
+			System.out.printf("£%8.02f            10%% discount\n", discount / -100.0);
 			total -= discount;
 		}
 		System.out.println("---------------");
-		System.out.printf("£%5.02f total\n", total / 100.0);
+		System.out.printf("£%8.02f total\n", total / 100.0);
 	}
 
 	private int basketTotal(List<BasketItem> items) {
