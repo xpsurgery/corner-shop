@@ -1,11 +1,9 @@
-using Products.Catalogue;
-using Ui.UsageException;
-using Ui.UserCommand;
-using Ui.UserInput;
-using Warehouse.Warehouse;
-using Basket.Basket;
-
 namespace BasketActions {
+
+using Products;
+using Ui;
+using Warehouse;
+using Basket;
 
 class AddToBasketCommand : UserCommand {
 
@@ -13,19 +11,18 @@ class AddToBasketCommand : UserCommand {
 	private Warehouse warehouse;
 	private Catalogue catalogue;
 
-	AddToBasketCommand(Basket basket, Catalogue catalogue, Warehouse warehouse) {
+	internal AddToBasketCommand(Basket basket, Catalogue catalogue, Warehouse warehouse) {
 		this.basket = basket;
 		this.catalogue = catalogue;
 		this.warehouse = warehouse;
 	}
 
-	@Override
 	public void run(UserInput cmd) {
 		if (cmd.args.length > 3) {
 			System.err.println("ERROR: Usage: a sku [numitems]");
 			return;
 		}
-		String sku = cmd.args(1);
+		string sku = cmd.args(1);
 		int numItems = 1;
 		if (cmd.args.length == 3) {
 			try {

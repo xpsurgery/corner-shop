@@ -1,12 +1,13 @@
 namespace Products {
 
 using Filestore;
+using System.Collections.Generic;
 
 public class Catalogue {
 	
 	public static Catalogue fromFile(CatalogueReader catalogueReader) {
-		List<Sku> products = new ArrayList<Sku>();
-		List<String[]> lines = catalogueReader.readAll();
+		List<Sku> products = new List<Sku>();
+		List<string[]> lines = catalogueReader.readAll();
 		foreach (string[] line in lines) {
 			Sku sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
 			products.add(sku);

@@ -6,7 +6,7 @@ using WarehouseActions;
 
 public class UserInterface {
 
-	private BufferedReader in;
+	private BufferedReader instr;
 	private CatalogueActions catalogueActions;
 	private WarehouseActions warehouseActions;
 	private BasketActions basketActions;
@@ -15,22 +15,22 @@ public class UserInterface {
 		this.catalogueActions = catalogueActions;
 		this.warehouseActions = warehouseActions;
 		this.basketActions = basketActions;
-		in = new BufferedReader(new InputStreamReader(input));
+		instr = new BufferedReader(new InputStreamReader(input));
 	}
 
 	public void start() {
 		for (;;) {
 			System.out.print("shop> ");
 			try {
-				String line = in.readLine();
+				string line = instr.readLine();
 				if (line == null) {
 					System.out.println();
 					return;
 				}
-				line = line.trim();
-				if (line.equals(""))
+				line = line.Trim();
+				if (line.Length == 0)
 					continue;
-				if (line.charAt(0) == 'q')
+				if (line[0] == 'q')
 					return;
 				UserInput cmd = new UserInput(line);
 				createHandler(cmd.command).run(cmd);

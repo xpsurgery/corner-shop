@@ -1,16 +1,17 @@
 namespace BasketActions {
 
+	using Ui;
+
 class CheckoutCommand : UserCommand {
 
-	private Basket basket;
-	private Warehouse warehouse;
+	private Basket.Basket basket;
+	private Warehouse.Warehouse warehouse;
 
-	CheckoutCommand(Basket basket, Warehouse warehouse) {
+	internal CheckoutCommand(Basket.Basket basket, Warehouse.Warehouse warehouse) {
 		this.basket = basket;
 		this.warehouse = warehouse;
 	}
 
-	@Override
 	public void run(UserInput cmd) {
 		basket.checkout(warehouse);
 	}

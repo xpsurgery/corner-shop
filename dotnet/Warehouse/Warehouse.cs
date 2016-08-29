@@ -1,12 +1,7 @@
-using java.io.PrintStream;
-using java.util.HashMap;
-using java.util.List;
-using java.util.Map;
-
-using Filestore.StockMemento;
-using Filestore.WarehouseReader;
-
 namespace Warehouse {
+
+using Filestore;
+using System.Collections.Generic;
 
 public class Warehouse {
 	

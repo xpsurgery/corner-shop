@@ -1,4 +1,5 @@
 namespace Filestore {
+	using System.Collections.Generic;
 
 public class CatalogueReader {
 
@@ -9,7 +10,7 @@ public class CatalogueReader {
 	}
 
 	public List<string[]> readAll() {
-		List<string[]> lines = new ArrayList<string[]>();
+		List<string[]> lines = new List<string[]>();
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(filename));

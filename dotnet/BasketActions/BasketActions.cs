@@ -1,9 +1,9 @@
-using Basket.Basket;
-using Products.Catalogue;
-using Ui.UserCommand;
-using Warehouse.Warehouse;
-
 namespace BasketActions {
+
+using Basket;
+using Products;
+using Ui;
+using Warehouse;
 
 public class BasketActions {
 

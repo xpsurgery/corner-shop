@@ -1,7 +1,7 @@
-using Products.Catalogue;
-using Ui.UserCommand;
-
 namespace CatalogueActions {
+
+using Products;
+using Ui;
 
 public class CatalogueActions {
 

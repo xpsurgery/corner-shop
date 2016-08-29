@@ -7,7 +7,7 @@ class ListProductsCommand : UserCommand {
 
 	private Catalogue catalogue;
 
-	ListProductsCommand(Catalogue catalogue) {
+	internal ListProductsCommand(Catalogue catalogue) {
 		this.catalogue = catalogue;
 	}
 

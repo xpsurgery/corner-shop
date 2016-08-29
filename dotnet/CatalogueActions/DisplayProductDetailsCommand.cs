@@ -1,15 +1,13 @@
-using Products.Catalogue;
-using Products.Sku;
-using Ui.UserCommand;
-using Ui.UserInput;
-
 namespace CatalogueActions {
+
+using Products;
+using Ui;
 
 class DisplayProductDetailsCommand : UserCommand {
 
 	private Catalogue catalogue;
 
-	DisplayProductDetailsCommand(Catalogue catalogue) {
+	internal DisplayProductDetailsCommand(Catalogue catalogue) {
 		this.catalogue = catalogue;
 	}
 
