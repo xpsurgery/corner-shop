@@ -24,9 +24,9 @@ public class Warehouse {
 		this.stock = stock;
 	}
 
-	public void stockReport(PrintStream out) {
+	public void stockReport(PrintStream str) {
 		foreach (string[] skuCode in stock.keySet())
-			out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
+			str.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
 	}
 
 	public void replenish(string[] skuCode, int numItems) {
@@ -49,7 +49,7 @@ public class Warehouse {
 
 	private string[] lookup(string sku) {
 		foreach (string[] skuCode in stock.keySet()) {
-			if (skuCode[2].equals(sku))
+			if (skuCode[2] == sku)
 				return skuCode;
 		}
 		return null;

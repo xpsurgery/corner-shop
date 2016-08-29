@@ -1,8 +1,7 @@
-using Products.Catalogue;
-using Ui.UserCommand;
-using Ui.UserInput;
-
 namespace CatalogueActions {
+
+using Products;
+using Ui;
 
 class ListProductsCommand : UserCommand {
 

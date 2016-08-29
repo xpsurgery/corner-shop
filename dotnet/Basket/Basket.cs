@@ -1,13 +1,7 @@
-using java.util.ArrayList;
-using java.util.HashMap;
-using java.util.List;
-using java.util.Map;
-
-using Products.Catalogue;
-using Products.Sku;
-using Warehouse.Warehouse;
-
 namespace Basket {
+
+using Products;
+using Warehouse;
 
 public class Basket {
 

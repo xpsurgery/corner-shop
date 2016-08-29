@@ -1,16 +1,13 @@
-using java.io.PrintStream;
-
-using Basket.Basket;
-using BasketActions.BasketActions;
-using CatalogueActions.CatalogueActions;
-using Filestore.CatalogueReader;
-using Filestore.WarehouseReader;
-using Products.Catalogue;
-using Ui.UserInterface;
-using Warehouse.Warehouse;
-using WarehouseActions.WarehouseActions;
-
 namespace Main {
+
+using Basket;
+using BasketActions;
+using CatalogueActions;
+using Filestore;
+using Products;
+using Ui;
+using Warehouse;
+using WarehouseActions;
 
 public class Application {
 
@@ -33,11 +30,11 @@ public class Application {
 		System.out.println();
 	}
 
-	private static void displayWelcomeMessage(PrintStream out) {
-		out.println("Welcome to our little corner shop!");
-		out.println();
-		out.println("For help, type 'h' or 'help' or '?'");
-		out.println();
+	private static void displayWelcomeMessage(PrintStream str) {
+		str.println("Welcome to our little corner shop!");
+		str.println();
+		str.println("For help, type 'h' or 'help' or '?'");
+		str.println();
 	}
 
 }

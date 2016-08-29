@@ -2,27 +2,27 @@ namespace Ui {
 
 class HelpCommand : UserCommand {
 
-	private PrintStream out;
+	private PrintStream str;
 
-	HelpCommand(PrintStream out) {
-		this.out = out;
+	HelpCommand(PrintStream str) {
+		this.str = str;
 	}
 
 	public void run(UserInput cmd) {
-		out.println("Customer actions:");
-		out.println("  a sku [num]             Add SKU to basket; num defaults to 1");
-		out.println("  b                       List basket contents");
-		out.println("  c                       Checkout");
-		out.println("  d sku                   Show detailed product info for SKU");
-		out.println("  p                       List all products");
-		out.println();
-		out.println("Warehouse actions:");
-		out.println("  r aisle loc sku num     Replenish SKU with num additional units");
-		out.println("  s                       Show stock levels");
-		out.println();
-		out.println("General:");
-		out.println("  h                       Show this help");
-		out.println("  q                       Quit");
+		str.println("Customer actions:");
+		str.println("  a sku [num]             Add SKU to basket; num defaults to 1");
+		str.println("  b                       List basket contents");
+		str.println("  c                       Checkout");
+		str.println("  d sku                   Show detailed product info for SKU");
+		str.println("  p                       List all products");
+		str.println();
+		str.println("Warehouse actions:");
+		str.println("  r aisle loc sku num     Replenish SKU with num additional units");
+		str.println("  s                       Show stock levels");
+		str.println();
+		str.println("General:");
+		str.println("  h                       Show this help");
+		str.println("  q                       Quit");
 	}
 
 }

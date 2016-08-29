@@ -1,9 +1,10 @@
-package WarehouseActions;
+namespace WarehouseActions {
 
-public class UnknownProductException extends RuntimeException {
+public class UnknownProductException : RuntimeException {
 
-	public UnknownProductException(String sku) {
+	public UnknownProductException(string sku) {
 		super("SKU code " + sku + " is not in the product catalogue.");
 	}
 
+}
 }

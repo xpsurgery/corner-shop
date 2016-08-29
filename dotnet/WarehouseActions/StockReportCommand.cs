@@ -1,10 +1,9 @@
-package WarehouseActions;
+namespace WarehouseActions {
 
-import Ui.UserCommand;
-import Ui.UserInput;
-import Warehouse.Warehouse;
+using Ui;
+using Warehouse;
 
-class StockReportCommand implements UserCommand {
+class StockReportCommand : UserCommand {
 
 	private Warehouse warehouse;
 
@@ -12,9 +11,9 @@ class StockReportCommand implements UserCommand {
 		this.warehouse = warehouse;
 	}
 
-	@Override
 	public void run(UserInput cmd) {
 		warehouse.stockReport(System.out);
 	}
 
+}
 }

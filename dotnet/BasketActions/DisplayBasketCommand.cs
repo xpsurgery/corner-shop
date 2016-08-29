@@ -1,12 +1,9 @@
-using Ui.UserCommand;
-using Ui.UserInput;
+namespace BasketActions
+{
+    using Ui;
+    using Basket;
 
-using Basket.Basket;
-using Basket.BasketItem;
-
-namespace BasketActions {
-
-class DisplayBasketCommand : UserCommand {
+    class DisplayBasketCommand : UserCommand {
 
 	private Basket basket;
 

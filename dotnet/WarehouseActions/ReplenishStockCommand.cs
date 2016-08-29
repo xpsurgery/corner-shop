@@ -1,11 +1,10 @@
-package WarehouseActions;
+namespace WarehouseActions {
 
-import Products.Catalogue;
-import Ui.UserCommand;
-import Ui.UserInput;
-import Warehouse.Warehouse;
+using Products;
+using Ui;
+using Warehouse;
 
-class ReplenishStockCommand implements UserCommand {
+class ReplenishStockCommand : UserCommand {
 
 	private Warehouse warehouse;
 	private Catalogue catalogue;
@@ -15,7 +14,6 @@ class ReplenishStockCommand implements UserCommand {
 		this.catalogue = catalogue;
 	}
 
-	@Override
 	public void run(UserInput cmd) {
 		if (cmd.args.length != 5) {
 			System.err.println("ERROR: Usage: r aisle loc sku num");
@@ -23,7 +21,7 @@ class ReplenishStockCommand implements UserCommand {
 		}
 		if (catalogue.lookup(cmd.args(3)) == null)
 			throw new UnknownProductException(cmd.args(3));
-		String[] sku = new String[]{ cmd.args(1), cmd.args(2), cmd.args(3) };
+		string[] sku = new string[]{ cmd.args(1), cmd.args(2), cmd.args(3) };
 		try {
 			int numItems = Integer.parseInt(cmd.args(4));
 			warehouse.replenish(sku, numItems);
@@ -32,4 +30,5 @@ class ReplenishStockCommand implements UserCommand {
 		}
 	}
 
+}
 }

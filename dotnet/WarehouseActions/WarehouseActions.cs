@@ -1,8 +1,8 @@
-package WarehouseActions;
+namespace WarehouseActions {
 
-import Products.Catalogue;
-import Ui.UserCommand;
-import Warehouse.Warehouse;
+using Products;
+using Ui;
+using Warehouse;
 
 public class WarehouseActions {
 
@@ -22,4 +22,5 @@ public class WarehouseActions {
 		return new ReplenishStockCommand(warehouse, catalogue);
 	}
 
+}
 }

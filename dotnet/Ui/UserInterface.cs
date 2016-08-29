@@ -1,13 +1,8 @@
-using java.io.BufferedReader;
-using java.io.IOException;
-using java.io.InputStream;
-using java.io.InputStreamReader;
-
-using BasketActions.BasketActions;
-using CatalogueActions.CatalogueActions;
-using WarehouseActions.WarehouseActions;
-
 namespace Ui {
+
+using BasketActions;
+using CatalogueActions;
+using WarehouseActions;
 
 public class UserInterface {
 
