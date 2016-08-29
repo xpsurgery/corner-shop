@@ -12,7 +12,7 @@ class StockReportCommand : UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		warehouse.stockReport(System.out);
+		warehouse.stockReport();
 	}
 
 }

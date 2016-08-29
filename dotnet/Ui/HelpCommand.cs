@@ -1,28 +1,24 @@
 namespace Ui {
 
+	using System;
+
 class HelpCommand : UserCommand {
 
-	private PrintStream str;
-
-	HelpCommand(PrintStream str) {
-		this.str = str;
-	}
-
 	public void run(UserInput cmd) {
-		str.println("Customer actions:");
-		str.println("  a sku [num]             Add SKU to basket; num defaults to 1");
-		str.println("  b                       List basket contents");
-		str.println("  c                       Checkout");
-		str.println("  d sku                   Show detailed product info for SKU");
-		str.println("  p                       List all products");
-		str.println();
-		str.println("Warehouse actions:");
-		str.println("  r aisle loc sku num     Replenish SKU with num additional units");
-		str.println("  s                       Show stock levels");
-		str.println();
-		str.println("General:");
-		str.println("  h                       Show this help");
-		str.println("  q                       Quit");
+		Console.WriteLine("Customer actions:");
+		Console.WriteLine("  a sku [num]             Add SKU to basket; num defaults to 1");
+		Console.WriteLine("  b                       List basket contents");
+		Console.WriteLine("  c                       Checkout");
+		Console.WriteLine("  d sku                   Show detailed product info for SKU");
+		Console.WriteLine("  p                       List all products");
+		Console.WriteLine();
+		Console.WriteLine("Warehouse actions:");
+		Console.WriteLine("  r aisle loc sku num     Replenish SKU with num additional units");
+		Console.WriteLine("  s                       Show stock levels");
+		Console.WriteLine();
+		Console.WriteLine("General:");
+		Console.WriteLine("  h                       Show this help");
+		Console.WriteLine("  q                       Quit");
 	}
 
 }

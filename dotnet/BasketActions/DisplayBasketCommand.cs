@@ -1,5 +1,6 @@
 namespace BasketActions
 {
+	using System;
     using Ui;
     using Basket;
 	using System.Collections.Generic;
@@ -15,23 +16,23 @@ namespace BasketActions
 	public void run(UserInput cmd) {
 		IList<BasketItem> items = basket.list();
 		if (items.Count == 0) {
-			System.out.println("Your basket is empty");
+			Console.WriteLine("Your basket is empty");
 			return;
 		}
 		foreach (BasketItem item in items) {
-			string leader = string.format("£%8.02f %5dx     ", item.price / 100.0, item.count);
+			string leader = string.Format("£{0,8:F2} {1,5D}x     ", item.price / 100.0, item.count);
 			int possLen = leader.Length + item.title.Length;
 			string title = (possLen > 60) ? item.title.Substring(0, 60-leader.Length-3)+"..." : item.title;
-			System.out.println(leader + title);
+			Console.WriteLine(leader + title);
 		}
 		int total = basketTotal(items);
 		if (total > 2000) {
 			int discount = total/10;
-			System.out.printf("£%8.02f            10%% discount\n", discount / -100.0);
+			Console.WriteLine("£{0,8:F2}            10% discount", discount / -100.0);
 			total -= discount;
 		}
-		System.out.println("---------------");
-		System.out.printf("£%8.02f total\n", total / 100.0);
+		Console.WriteLine("---------------");
+		Console.WriteLine("£{0,8:F2} total", total / 100.0);
 	}
 
 	private int basketTotal(IList<BasketItem> items) {

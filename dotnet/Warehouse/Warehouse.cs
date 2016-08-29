@@ -1,5 +1,6 @@
 namespace Warehouse {
 
+using System;
 using Filestore;
 using System.Collections.Generic;
 
@@ -19,9 +20,9 @@ public class Warehouse {
 		this.stock = stock;
 	}
 
-	public void stockReport(PrintStream str) {
+	public void stockReport() {
 		foreach (string[] skuCode in stock.Keys)
-			str.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
+			Console.Write("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
 	}
 
 	public void replenish(string[] skuCode, int numItems) {

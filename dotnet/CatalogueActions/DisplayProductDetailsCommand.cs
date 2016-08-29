@@ -1,5 +1,6 @@
 namespace CatalogueActions {
 
+using System;
 using Products;
 using Ui;
 
@@ -14,16 +15,17 @@ class DisplayProductDetailsCommand : UserCommand {
 	public void run(UserInput cmd) {
 		string id = cmd.Args(1);
 		if (id == null || cmd.args.Length != 2) {
-			System.err.println("ERROR: Usage: d sku");
+			Console.WriteLine("ERROR: Usage: d sku");
 			return;
 		}
 		Sku sku = catalogue.lookup(id);
 		if (sku == null)
-			System.err.println("ERROR: product code " + id + " not found");
+			Console.WriteLine("ERROR: product code " + id + " not found");
 		else {
-			System.out.printf("%s\t%s\t£%5.02f\n\n", sku.code[2], sku.title, sku.price / 100.0);
+			Console.WriteLine("{0}\t{1}\t£{2,5:F2}", sku.code[2], sku.title, sku.price / 100.0);
+			Console.WriteLine();
 			foreach (string line in sku.Description())
-				System.out.println(line);
+				Console.WriteLine(line);
 		}
 	}
 

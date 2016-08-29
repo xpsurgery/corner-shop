@@ -1,5 +1,6 @@
 namespace Products {
 
+using System;
 using Filestore;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,11 @@ public class Catalogue {
 		this.products = products;
 	}
 
-	public void list(PrintStream str) {
+	public void list() {
 		foreach (Sku sku in sortedSkus())
 			str.printf("%s\t%dp\t%s\n", sku.code[2], sku.price, sku.title);
-		str.println();
-		str.println("10% discount on orders over £20.00!");
+		Console.WriteLine();
+		Console.WriteLine("10% discount on orders over £20.00!");
 	}
 
 	private IList<Sku> sortedSkus() {

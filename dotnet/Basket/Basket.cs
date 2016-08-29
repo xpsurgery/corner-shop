@@ -1,5 +1,6 @@
 namespace Basket {
 
+using System;
 using Products;
 using Warehouse;
 using System.Collections.Generic;
@@ -36,14 +37,14 @@ public class Basket {
 
 	public void checkout(Warehouse warehouse) {
 		if (items.Count == 0) {
-			System.err.println("Your basket is empty!");
+			Console.WriteLine("Your basket is empty!");
 			return;
 		}
 		double totalPrice = currentTotal() / 100.0;
 		foreach (string sku in items.Keys)
 			warehouse.fulfill(sku, items[sku].count);
 		items = new Dictionary<string, BasketItem>();
-		System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice);
+		Console.WriteLine("All items checked out. Total price £{0,5:F2}", totalPrice);
 	}
 
 	private int currentTotal() {

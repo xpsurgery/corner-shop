@@ -12,7 +12,7 @@ class ListProductsCommand : UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		catalogue.list(System.out);
+		catalogue.list();
 	}
 
 }

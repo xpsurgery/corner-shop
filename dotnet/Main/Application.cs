@@ -1,5 +1,6 @@
 namespace Main {
 
+using System;
 using Basket;
 using BasketActions;
 using CatalogueActions;
@@ -12,29 +13,29 @@ using WarehouseActions;
 public class Application {
 
 	public static void main(string[] args) {
-		displayWelcomeMessage(System.out);
+		displayWelcomeMessage();
 		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("./warehouse.dat"));
 		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("./catalogue.dat"));
 		Basket basket = new Basket();
 		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
 		WarehouseActions warehouseActions = new WarehouseActions(warehouse, catalogue);
 		BasketActions basketActions = new BasketActions(basket, catalogue, warehouse);
-		new UserInterface(System.in, catalogueActions, warehouseActions, basketActions).start();
+		new UserInterface(catalogueActions, warehouseActions, basketActions).start();
 		displayGoodbyeMessage();
-		System.exit(0);
+		Environment.Exit(0);
 	}
 
 	private static void displayGoodbyeMessage() {
-		System.out.println();
-		System.out.println("Goodbye. Thanks for your custom!");
-		System.out.println();
+		Console.WriteLine();
+		Console.WriteLine("Goodbye. Thanks for your custom!");
+		Console.WriteLine();
 	}
 
-	private static void displayWelcomeMessage(PrintStream str) {
-		str.println("Welcome to our little corner shop!");
-		str.println();
-		str.println("For help, type 'h' or 'help' or '?'");
-		str.println();
+	private static void displayWelcomeMessage() {
+		Console.WriteLine("Welcome to our little corner shop!");
+		Console.WriteLine();
+		Console.WriteLine("For help, type 'h' or 'help' or '?'");
+		Console.WriteLine();
 	}
 
 }

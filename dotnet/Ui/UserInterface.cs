@@ -1,5 +1,6 @@
 namespace Ui {
 
+using System;
 using BasketActions;
 using CatalogueActions;
 using WarehouseActions;
@@ -11,7 +12,7 @@ public class UserInterface {
 	private WarehouseActions warehouseActions;
 	private BasketActions basketActions;
 
-	public UserInterface(InputStream input, CatalogueActions catalogueActions, WarehouseActions warehouseActions, BasketActions basketActions) {
+	public UserInterface(CatalogueActions catalogueActions, WarehouseActions warehouseActions, BasketActions basketActions) {
 		this.catalogueActions = catalogueActions;
 		this.warehouseActions = warehouseActions;
 		this.basketActions = basketActions;
@@ -20,11 +21,11 @@ public class UserInterface {
 
 	public void start() {
 		for (;;) {
-			System.out.print("shop> ");
+			Console.Write("shop> ");
 			try {
 				string line = instr.readLine();
 				if (line == null) {
-					System.out.println();
+					Console.WriteLine();
 					return;
 				}
 				line = line.Trim();
@@ -36,7 +37,7 @@ public class UserInterface {
 				createHandler(cmd.command).run(cmd);
 			} catch (IOException e) {
 			} catch (RuntimeException e) {
-				System.err.println("ERROR: " + e.getMessage());
+				Console.WriteLine("ERROR: " + e.getMessage());
 			}
 		}
 	}
@@ -52,7 +53,7 @@ public class UserInterface {
 		case 'd':
 			return catalogueActions.displayProductDetails();
 		case 'h':
-			return new HelpCommand(System.out);
+			return new HelpCommand();
 		case 'p':
 			return catalogueActions.listProducts();
 		case 'r':
