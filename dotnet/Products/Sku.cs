@@ -1,7 +1,7 @@
 namespace Products {
 	using System.Collections.Generic;
 
-public class Sku : Comparable<Sku> {
+public class Sku {
 
 	public string title;
 	public string[] code;
@@ -15,15 +15,9 @@ public class Sku : Comparable<Sku> {
 		this.price = price;
 	}
 
-	public int compareTo(Sku other) {
-		string myCode = code[0] + code[1] + code[2];
-		string otherCode = other.code[0] + other.code[1] + other.code[2];
-		return myCode.compareTo(otherCode);
-	}
-
 	public IList<string> Description() {
 		IList<string> result = new List<string>();
-		string[] words = description.Split("\\s+");
+		string[] words = description.Split(null);
 		string currentLine = "  ";
 		foreach (string word in words) {
 			currentLine += word;

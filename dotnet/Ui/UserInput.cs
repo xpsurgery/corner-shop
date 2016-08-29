@@ -7,7 +7,7 @@ public class UserInput {
 
 	UserInput(string line) {
 		command = line[0];
-		args = line.Split("\\s+");
+		args = line.Split(null);
 	}
 
 	public string Args(int i) {

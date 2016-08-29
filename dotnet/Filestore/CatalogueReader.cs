@@ -16,8 +16,8 @@ public class CatalogueReader {
 			br = new BufferedReader(new FileReader(filename));
 			string line;
 			while ((line = br.readLine()) != null) {
-				string[] args = line.Split("\\^");
-				lines.add(args);
+				string[] args = line.Split('^');
+				lines.Add(args);
 			}
 		} catch (IOException e) {
 			throw new DataFileException(filename);

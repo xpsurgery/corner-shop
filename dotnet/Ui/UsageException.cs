@@ -1,6 +1,6 @@
 namespace Ui {
 
-public class UsageException : RuntimeException {
+public class UsageException : System.Exception {
 
 	public UsageException(string message) {
 		super(message);

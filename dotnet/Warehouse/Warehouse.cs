@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class Warehouse {
 	
 	public static Warehouse fromFile(WarehouseReader warehouseReader) {
-		List<StockMemento> data = warehouseReader.readAll();
-		IDictionary<string[], Integer> stock = new Dictionary<string[], Integer>();
+		var data = warehouseReader.readAll();
+		var stock = new Dictionary<string[], Integer>();
 		foreach (StockMemento line in data)
 			stock.Add(line.skuCode, line.count);
 		return new Warehouse(stock);
@@ -31,13 +31,13 @@ public class Warehouse {
 	}
 
 	public void fulfill(string sku, Integer numItems) {
-		string[] skuCode = lookup(sku);
+		var skuCode = lookup(sku);
 		mustStock(skuCode, numItems);
 		changeStockLevel(skuCode, -numItems);
 	}
 
 	public void mustStock(string[] sku, int numItems) {
-		string[] skuCode = lookup(sku[2]);
+		var skuCode = lookup(sku[2]);
 		if (skuCode == null || stock[skuCode] < numItems)
 			throw new NotEnoughStockException(sku, numItems);
 	}
@@ -51,7 +51,7 @@ public class Warehouse {
 	}
 
 	private void changeStockLevel(string[] skuCode, int numItems) {
-		string[] key = lookup(skuCode[2]);
+		var key = lookup(skuCode[2]);
 		if (key == null)
 			stock.Add(skuCode, numItems);
 		else

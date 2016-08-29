@@ -1,6 +1,6 @@
 namespace Filestore {
 
-public class DataFormatException : RuntimeException {
+public class DataFormatException : System.Exception {
 
 	public DataFormatException(string message) {
 		super(message);

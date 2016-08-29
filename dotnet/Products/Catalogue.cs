@@ -2,14 +2,15 @@ namespace Products {
 
 using Filestore;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Catalogue {
 	
 	public static Catalogue fromFile(CatalogueReader catalogueReader) {
-		IList<Sku> products = new List<Sku>();
-		IList<string[]> lines = catalogueReader.readAll();
+		var products = new List<Sku>();
+		var lines = catalogueReader.readAll();
 		foreach (string[] line in lines) {
-			Sku sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
+			var sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
 			products.Add(sku);
 		}
 		return new Catalogue(products);
@@ -29,8 +30,7 @@ public class Catalogue {
 	}
 
 	private IList<Sku> sortedSkus() {
-		java.util.Collections.sort(products);
-		return products;
+		return products.OrderBy(p => p.code).ToList();
 	}
 
 	public Sku lookup(string id) {
