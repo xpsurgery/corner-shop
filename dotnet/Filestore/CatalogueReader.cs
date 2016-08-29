@@ -1,27 +1,21 @@
-package Filestore;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+namespace Filestore {
 
 public class CatalogueReader {
 
-	private String filename;
+	private string filename;
 
-	public CatalogueReader(String filename) {
+	public CatalogueReader(string filename) {
 		this.filename = filename;
 	}
 
-	public List<String[]> readAll() {
-		List<String[]> lines = new ArrayList<String[]>();
+	public List<string[]> readAll() {
+		List<string[]> lines = new ArrayList<string[]>();
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(filename));
-			String line;
+			string line;
 			while ((line = br.readLine()) != null) {
-				String[] args = line.split("\\^");
+				string[] args = line.split("\\^");
 				lines.add(args);
 			}
 		} catch (IOException e) {
@@ -32,4 +26,5 @@ public class CatalogueReader {
 		return lines;
 	}
 
+}
 }

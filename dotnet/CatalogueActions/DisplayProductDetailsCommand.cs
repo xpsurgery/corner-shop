@@ -24,7 +24,7 @@ class DisplayProductDetailsCommand : UserCommand {
 			System.err.println("ERROR: product code " + id + " not found");
 		else {
 			System.out.printf("%s\t%s\t£%5.02f\n\n", sku.code[2], sku.title, sku.price / 100.0);
-			for (string line : sku.description())
+			foreach (string line in sku.description())
 				System.out.println(line);
 		}
 	}

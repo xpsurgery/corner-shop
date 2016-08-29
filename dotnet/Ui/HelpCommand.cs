@@ -1,8 +1,6 @@
-package Ui;
+namespace Ui {
 
-import java.io.PrintStream;
-
-class HelpCommand implements UserCommand {
+class HelpCommand : UserCommand {
 
 	private PrintStream out;
 
@@ -27,4 +25,5 @@ class HelpCommand implements UserCommand {
 		out.println("  q                       Quit");
 	}
 
+}
 }

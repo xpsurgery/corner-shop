@@ -28,7 +28,7 @@ public class Sku : Comparable<Sku> {
 		List<string> result = new ArrayList<string>();
 		string[] words = description.split("\\s+");
 		string currentLine = "  ";
-		for (string word : words) {
+		foreach (string word in words) {
 			currentLine += word;
 			if (currentLine.length() >= 60) {
 				result.add(currentLine);

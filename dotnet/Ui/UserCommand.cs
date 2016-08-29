@@ -1,7 +1,8 @@
-package Ui;
+namespace Ui {
 
-public interface UserCommand {
+	public interface UserCommand {
 
-	void run(UserInput cmd);
+		void run(UserInput cmd);
 
+	}
 }

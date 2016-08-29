@@ -1,9 +1,10 @@
-package Warehouse;
+namespace Warehouse {
 
-class InvalidNumItemsException extends RuntimeException {
+class InvalidNumItemsException : RuntimeException {
 
 	InvalidNumItemsException(int numItems) {
 		super("Please supply a number of items greater than zero");
 	}
 
+}
 }

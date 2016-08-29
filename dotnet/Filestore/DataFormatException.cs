@@ -1,9 +1,10 @@
-package Filestore;
+namespace Filestore {
 
-public class DataFormatException extends RuntimeException {
+public class DataFormatException : RuntimeException {
 
-	public DataFormatException(String message) {
+	public DataFormatException(string message) {
 		super(message);
 	}
 
+}
 }

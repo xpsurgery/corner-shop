@@ -1,36 +1,36 @@
-package Basket;
+using java.util.ArrayList;
+using java.util.HashMap;
+using java.util.List;
+using java.util.Map;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+using Products.Catalogue;
+using Products.Sku;
+using Warehouse.Warehouse;
 
-import Products.Catalogue;
-import Products.Sku;
-import Warehouse.Warehouse;
+namespace Basket {
 
 public class Basket {
 
-	private Map<String, BasketItem> items;
+	private Map<string, BasketItem> items;
 	
 	public Basket() {
-		items = new HashMap<String, BasketItem>();
+		items = new HashMap<string, BasketItem>();
 	}
 
 	public List<BasketItem> list() {
 		List<BasketItem> result = new ArrayList<BasketItem>();
-		for (String sku : sortedSkus())
+		foreach (string sku in sortedSkus())
 			result.add(items.get(sku));
 		return result;
 	}
 
-	private List<String> sortedSkus() {
-		List<String> skus = new ArrayList<String>(items.keySet());
+	private List<string> sortedSkus() {
+		List<string> skus = new ArrayList<string>(items.keySet());
 		java.util.Collections.sort(skus);
 		return skus;
 	}
 
-	public void add(String skuId, Catalogue catalogue, int numItems) {
+	public void add(string skuId, Catalogue catalogue, int numItems) {
 		Sku sku = catalogue.lookup(skuId);
 		if (items.containsKey(skuId)) {
 			BasketItem existing = items.get(skuId);
@@ -46,19 +46,20 @@ public class Basket {
 			return;
 		}
 		double totalPrice = currentTotal() / 100.0;
-		for (String sku : items.keySet())
+		foreach (string sku in items.keySet())
 			warehouse.fulfill(sku, items.get(sku).count);
-		items = new HashMap<String, BasketItem>();
+		items = new HashMap<string, BasketItem>();
 		System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice);
 	}
 
 	private int currentTotal() {
 		int total = 0;
-		for (BasketItem item : items.values())
+		foreach (BasketItem item in items.values())
 			total += item.count * item.price;
 		if (total > 2000)
 			total -= (total/10);
 		return total;
 	}
 
+}
 }

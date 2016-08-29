@@ -20,7 +20,7 @@ class DisplayBasketCommand : UserCommand {
 			System.out.println("Your basket is empty");
 			return;
 		}
-		for (BasketItem item : items) {
+		foreach (BasketItem item in items) {
 			string leader = string.format("£%8.02f %5dx     ", item.price / 100.0, item.count);
 			int possLen = leader.length() + item.title.length();
 			string title = (possLen > 60) ? item.title.substring(0, 60-leader.length()-3)+"..." : item.title;
@@ -38,7 +38,7 @@ class DisplayBasketCommand : UserCommand {
 
 	private int basketTotal(List<BasketItem> items) {
 		int total = 0;
-		for (BasketItem item : items)
+		foreach (BasketItem item in items)
 			total += item.price * item.count;
 		return total;
 	}

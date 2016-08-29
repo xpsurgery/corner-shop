@@ -1,11 +1,6 @@
-package BasketActions;
+namespace BasketActions {
 
-import Basket.Basket;
-import Ui.UserCommand;
-import Ui.UserInput;
-import Warehouse.Warehouse;
-
-class CheckoutCommand implements UserCommand {
+class CheckoutCommand : UserCommand {
 
 	private Basket basket;
 	private Warehouse warehouse;
@@ -20,4 +15,5 @@ class CheckoutCommand implements UserCommand {
 		basket.checkout(warehouse);
 	}
 
+}
 }

@@ -1,20 +1,20 @@
-package Main;
+using java.io.PrintStream;
 
-import java.io.PrintStream;
+using Basket.Basket;
+using BasketActions.BasketActions;
+using CatalogueActions.CatalogueActions;
+using Filestore.CatalogueReader;
+using Filestore.WarehouseReader;
+using Products.Catalogue;
+using Ui.UserInterface;
+using Warehouse.Warehouse;
+using WarehouseActions.WarehouseActions;
 
-import Basket.Basket;
-import BasketActions.BasketActions;
-import CatalogueActions.CatalogueActions;
-import Filestore.CatalogueReader;
-import Filestore.WarehouseReader;
-import Products.Catalogue;
-import Ui.UserInterface;
-import Warehouse.Warehouse;
-import WarehouseActions.WarehouseActions;
+namespace Main {
 
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(string[] args) {
 		displayWelcomeMessage(System.out);
 		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("./warehouse.dat"));
 		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("./catalogue.dat"));
@@ -40,4 +40,5 @@ public class Application {
 		out.println();
 	}
 
+}
 }

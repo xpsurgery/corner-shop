@@ -1,9 +1,9 @@
-package BasketActions;
+using Basket.Basket;
+using Products.Catalogue;
+using Ui.UserCommand;
+using Warehouse.Warehouse;
 
-import Basket.Basket;
-import Products.Catalogue;
-import Ui.UserCommand;
-import Warehouse.Warehouse;
+namespace BasketActions {
 
 public class BasketActions {
 
@@ -29,4 +29,5 @@ public class BasketActions {
 		return new CheckoutCommand(basket, warehouse);
 	}
 
+}
 }

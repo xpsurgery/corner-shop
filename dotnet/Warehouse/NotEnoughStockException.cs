@@ -1,9 +1,10 @@
-package Warehouse;
+namespace Warehouse {
 
-class NotEnoughStockException extends RuntimeException {
+class NotEnoughStockException : RuntimeException {
 
-	NotEnoughStockException(String[] skuCode, int numItems) {
+	NotEnoughStockException(string[] skuCode, int numItems) {
 		super("The warehouse does not contain " + numItems + " item(s) of product " + skuCode);
 	}
 
+}
 }

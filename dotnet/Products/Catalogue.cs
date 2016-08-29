@@ -11,7 +11,7 @@ public class Catalogue {
 	public static Catalogue fromFile(CatalogueReader catalogueReader) {
 		List<Sku> products = new ArrayList<Sku>();
 		List<String[]> lines = catalogueReader.readAll();
-		for (String[] line : lines) {
+		foreach (String[] line in lines) {
 			Sku sku = new Sku(new String[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
 			products.add(sku);
 		}
@@ -25,7 +25,7 @@ public class Catalogue {
 	}
 
 	public void list(PrintStream out) {
-		for (Sku sku : sortedSkus())
+		foreach (Sku sku in sortedSkus())
 			out.printf("%s\t%dp\t%s\n", sku.code[2], sku.price, sku.title);
 		out.println();
 		out.println("10% discount on orders over £20.00!");
@@ -37,14 +37,14 @@ public class Catalogue {
 	}
 
 	public Sku lookup(String id) {
-		for (Sku sku : products)
+		foreach (Sku sku in products)
 			if (sku.code[2].equals(id))
 				return sku;
 		return null;
 	}
 
 	public String[] lookupCode(String sku) {
-		for (Sku s : products)
+		foreach (Sku s in products)
 			if (s.code[2].equals(sku))
 				return s.code;
 		return null;

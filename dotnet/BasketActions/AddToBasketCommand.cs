@@ -1,13 +1,13 @@
-package BasketActions;
+using Products.Catalogue;
+using Ui.UsageException;
+using Ui.UserCommand;
+using Ui.UserInput;
+using Warehouse.Warehouse;
+using Basket.Basket;
 
-import Products.Catalogue;
-import Ui.UsageException;
-import Ui.UserCommand;
-import Ui.UserInput;
-import Warehouse.Warehouse;
-import Basket.Basket;
+namespace BasketActions {
 
-class AddToBasketCommand implements UserCommand {
+class AddToBasketCommand : UserCommand {
 
 	private Basket basket;
 	private Warehouse warehouse;
@@ -36,11 +36,12 @@ class AddToBasketCommand implements UserCommand {
 		}
 		if (numItems <= 0)
 			throw new UsageException("The number of items must be a number greater than zero.");
-		String[] skuCode = catalogue.lookupCode(sku);
+		string[] skuCode = catalogue.lookupCode(sku);
 		if (skuCode == null)
 			throw new UsageException("Product " + sku + " unknown.");
 		warehouse.mustStock(skuCode, numItems);
 		basket.add(sku, catalogue, numItems);
 	}
 
+}
 }

@@ -1,16 +1,10 @@
-package Filestore;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+namespace Filestore {
 
 public class WarehouseReader {
 
-	private String filename;
+	private string filename;
 
-	public WarehouseReader(String filename) {
+	public WarehouseReader(string filename) {
 		this.filename = filename;
 	}
 
@@ -19,9 +13,9 @@ public class WarehouseReader {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(filename));
-			String line;
+			string line;
 			while ((line = br.readLine()) != null) {
-				String[] args = line.split("\\s+");
+				string[] args = line.split("\\s+");
 				lines.add(new StockMemento(args[0], args[1], args[2], args[3]));
 			}
 		} catch (IOException e) {
@@ -32,4 +26,5 @@ public class WarehouseReader {
 		return lines;
 	}
 
+}
 }

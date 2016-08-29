@@ -1,9 +1,10 @@
-package Filestore;
+namespace Filestore {
 
-public class DataFileException extends RuntimeException {
+public class DataFileException : RuntimeException {
 
-	public DataFileException(String filename) {
+	public DataFileException(string filename) {
 		super("Could not read file " + filename);
 	}
 
+}
 }
