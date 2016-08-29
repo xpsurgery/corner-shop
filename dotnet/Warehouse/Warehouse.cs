@@ -8,15 +8,15 @@ public class Warehouse {
 	
 	public static Warehouse fromFile(WarehouseReader warehouseReader) {
 		var data = warehouseReader.readAll();
-		var stock = new Dictionary<string[], Integer>();
+		var stock = new Dictionary<string[], int>();
 		foreach (StockMemento line in data)
 			stock.Add(line.skuCode, line.count);
 		return new Warehouse(stock);
 	}
 
-	private IDictionary<string[], Integer> stock;
+	private IDictionary<string[], int> stock;
 
-	public Warehouse(IDictionary<string[], Integer> stock) {
+	public Warehouse(IDictionary<string[], int> stock) {
 		this.stock = stock;
 	}
 
@@ -31,7 +31,7 @@ public class Warehouse {
 		changeStockLevel(skuCode, numItems);
 	}
 
-	public void fulfill(string sku, Integer numItems) {
+	public void fulfill(string sku, int numItems) {
 		var skuCode = lookup(sku);
 		mustStock(skuCode, numItems);
 		changeStockLevel(skuCode, -numItems);
