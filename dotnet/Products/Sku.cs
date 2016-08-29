@@ -21,21 +21,21 @@ public class Sku : Comparable<Sku> {
 		return myCode.compareTo(otherCode);
 	}
 
-	public List<string> description() {
-		List<string> result = new List<string>();
-		string[] words = description.split("\\s+");
+	public IList<string> Description() {
+		IList<string> result = new List<string>();
+		string[] words = description.Split("\\s+");
 		string currentLine = "  ";
 		foreach (string word in words) {
 			currentLine += word;
 			if (currentLine.Length >= 60) {
-				result.add(currentLine);
+				result.Add(currentLine);
 				currentLine = "  ";
 			} else {
 				currentLine += " ";
 			}
 		}
 		if (currentLine.Length > 2)
-			result.add(currentLine);
+			result.Add(currentLine);
 		return result;
 	}
 }

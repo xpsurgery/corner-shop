@@ -9,7 +9,7 @@ class ReplenishStockCommand : UserCommand {
 	private Warehouse warehouse;
 	private Catalogue catalogue;
 
-	ReplenishStockCommand(Warehouse warehouse, Catalogue catalogue) {
+	internal ReplenishStockCommand(Warehouse warehouse, Catalogue catalogue) {
 		this.warehouse = warehouse;
 		this.catalogue = catalogue;
 	}

@@ -6,18 +6,18 @@ using System.Collections.Generic;
 public class Catalogue {
 	
 	public static Catalogue fromFile(CatalogueReader catalogueReader) {
-		List<Sku> products = new List<Sku>();
-		List<string[]> lines = catalogueReader.readAll();
+		IList<Sku> products = new List<Sku>();
+		IList<string[]> lines = catalogueReader.readAll();
 		foreach (string[] line in lines) {
 			Sku sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
-			products.add(sku);
+			products.Add(sku);
 		}
 		return new Catalogue(products);
 	}
 	
-	private List<Sku> products;
+	private IList<Sku> products;
 
-	public Catalogue(List<Sku> products) {
+	public Catalogue(IList<Sku> products) {
 		this.products = products;
 	}
 
@@ -28,7 +28,7 @@ public class Catalogue {
 		str.println("10% discount on orders over £20.00!");
 	}
 
-	private List<Sku> sortedSkus() {
+	private IList<Sku> sortedSkus() {
 		java.util.Collections.sort(products);
 		return products;
 	}

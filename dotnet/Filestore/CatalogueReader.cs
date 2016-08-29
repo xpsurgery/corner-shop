@@ -16,7 +16,7 @@ public class CatalogueReader {
 			br = new BufferedReader(new FileReader(filename));
 			string line;
 			while ((line = br.readLine()) != null) {
-				string[] args = line.split("\\^");
+				string[] args = line.Split("\\^");
 				lines.add(args);
 			}
 		} catch (IOException e) {

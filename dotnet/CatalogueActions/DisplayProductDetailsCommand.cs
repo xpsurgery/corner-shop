@@ -12,8 +12,8 @@ class DisplayProductDetailsCommand : UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		string id = cmd.args(1);
-		if (id == null || cmd.args.length != 2) {
+		string id = cmd.Args(1);
+		if (id == null || cmd.args.Length != 2) {
 			System.err.println("ERROR: Usage: d sku");
 			return;
 		}

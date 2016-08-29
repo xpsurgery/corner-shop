@@ -18,15 +18,15 @@ class AddToBasketCommand : UserCommand {
 	}
 
 	public void run(UserInput cmd) {
-		if (cmd.args.length > 3) {
+		if (cmd.args.Length > 3) {
 			System.err.println("ERROR: Usage: a sku [numitems]");
 			return;
 		}
-		string sku = cmd.args(1);
+		string sku = cmd.Args(1);
 		int numItems = 1;
-		if (cmd.args.length == 3) {
+		if (cmd.args.Length == 3) {
 			try {
-				numItems = Integer.parseInt(cmd.args(2));
+				numItems = Integer.parseInt(cmd.Args(2));
 			} catch (NumberFormatException e) {
 				throw new UsageException("The number of items must be a number greater than zero.");
 			}

@@ -13,7 +13,7 @@ namespace BasketActions
 	}
 
 	public void run(UserInput cmd) {
-		List<BasketItem> items = basket.list();
+		IList<BasketItem> items = basket.list();
 		if (items.Count == 0) {
 			System.out.println("Your basket is empty");
 			return;
@@ -34,7 +34,7 @@ namespace BasketActions
 		System.out.printf("£%8.02f total\n", total / 100.0);
 	}
 
-	private int basketTotal(List<BasketItem> items) {
+	private int basketTotal(IList<BasketItem> items) {
 		int total = 0;
 		foreach (BasketItem item in items)
 			total += item.price * item.count;

@@ -7,7 +7,7 @@ class StockReportCommand : UserCommand {
 
 	private Warehouse warehouse;
 
-	StockReportCommand(Warehouse warehouse) {
+	internal StockReportCommand(Warehouse warehouse) {
 		this.warehouse = warehouse;
 	}
 
