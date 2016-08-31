@@ -20,7 +20,7 @@ namespace BasketActions
 			return;
 		}
 		foreach (BasketItem item in items) {
-			string leader = string.Format("£{0,8:F2} {1,5D}x     ", item.price / 100.0, item.count);
+			string leader = string.Format("£{0,8:F2} {1,5:D}x     ", item.price / 100.0, item.count);
 			int possLen = leader.Length + item.title.Length;
 			string title = (possLen > 60) ? item.title.Substring(0, 60-leader.Length-3)+"..." : item.title;
 			Console.WriteLine(leader + title);

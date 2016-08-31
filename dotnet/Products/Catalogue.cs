@@ -31,7 +31,7 @@ public class Catalogue {
 	}
 
 	private IList<Sku> sortedSkus() {
-		return products.OrderBy(p => p.code).ToList();
+		return products.OrderBy(p => p.code[2]).ToList();
 	}
 
 	public Sku lookup(string id) {
