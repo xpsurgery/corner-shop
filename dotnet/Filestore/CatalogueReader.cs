@@ -1,4 +1,6 @@
 namespace Filestore {
+
+	using System.IO;
 	using System.Collections.Generic;
 
 public class CatalogueReader {
@@ -11,18 +13,13 @@ public class CatalogueReader {
 
 	public List<string[]> readAll() {
 		List<string[]> lines = new List<string[]>();
-		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader(filename));
-			string line;
-			while ((line = br.readLine()) != null) {
+			foreach (string line in File.ReadLines(filename)) {
 				string[] args = line.Split('^');
 				lines.Add(args);
 			}
 		} catch (IOException e) {
 			throw new DataFileException(filename);
-		} finally {
-			try { if (br != null) br.close(); } catch (IOException ex) { }
 		}
 		return lines;
 	}

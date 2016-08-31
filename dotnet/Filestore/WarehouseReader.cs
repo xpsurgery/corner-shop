@@ -1,4 +1,6 @@
 namespace Filestore {
+
+	using System.IO;
 	using System.Collections.Generic;
 
 public class WarehouseReader {
@@ -10,19 +12,14 @@ public class WarehouseReader {
 	}
 
 	public IList<StockMemento> readAll() {
-		List<StockMemento> lines = new ArrayList<StockMemento>();
-		BufferedReader br = null;
+		IList<StockMemento> lines = new List<StockMemento>();
 		try {
-			br = new BufferedReader(new FileReader(filename));
-			string line;
-			while ((line = br.readLine()) != null) {
+			foreach (string line in File.ReadLines(filename)) {
 				string[] args = line.Split(null);
 				lines.Add(new StockMemento(args[0], args[1], args[2], args[3]));
 			}
 		} catch (IOException e) {
 			throw new DataFileException(filename);
-		} finally {
-			try { if (br != null) br.close(); } catch (IOException ex) { }
 		}
 		return lines;
 	}

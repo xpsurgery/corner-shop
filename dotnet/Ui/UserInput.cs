@@ -5,7 +5,7 @@ public class UserInput {
 	internal char command;
 	public string[] args;
 
-	UserInput(string line) {
+	internal UserInput(string line) {
 		command = line[0];
 		args = line.Split(null);
 	}

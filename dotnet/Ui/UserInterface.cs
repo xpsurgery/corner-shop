@@ -1,13 +1,13 @@
 namespace Ui {
 
 using System;
+using System.IO;
 using BasketActions;
 using CatalogueActions;
 using WarehouseActions;
 
 public class UserInterface {
 
-	private BufferedReader instr;
 	private CatalogueActions catalogueActions;
 	private WarehouseActions warehouseActions;
 	private BasketActions basketActions;
@@ -16,14 +16,13 @@ public class UserInterface {
 		this.catalogueActions = catalogueActions;
 		this.warehouseActions = warehouseActions;
 		this.basketActions = basketActions;
-		instr = new BufferedReader(new InputStreamReader(input));
 	}
 
 	public void start() {
 		for (;;) {
 			Console.Write("shop> ");
 			try {
-				string line = instr.readLine();
+				string line = Console.ReadLine();
 				if (line == null) {
 					Console.WriteLine();
 					return;
@@ -36,8 +35,8 @@ public class UserInterface {
 				UserInput cmd = new UserInput(line);
 				createHandler(cmd.command).run(cmd);
 			} catch (IOException e) {
-			} catch (RuntimeException e) {
-				Console.WriteLine("ERROR: " + e.getMessage());
+			} catch (Exception e) {
+				Console.WriteLine("ERROR: " + e.Message);
 			}
 		}
 	}
