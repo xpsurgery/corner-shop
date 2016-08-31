@@ -1,5 +1,6 @@
 namespace BasketActions {
 
+using System;
 using Products;
 using Ui;
 using Warehouse;
@@ -19,7 +20,7 @@ class AddToBasketCommand : UserCommand {
 
 	public void run(UserInput cmd) {
 		if (cmd.args.Length > 3) {
-			System.err.println("ERROR: Usage: a sku [numitems]");
+			Console.WriteLine("ERROR: Usage: a sku [numitems]");
 			return;
 		}
 		string sku = cmd.Args(1);

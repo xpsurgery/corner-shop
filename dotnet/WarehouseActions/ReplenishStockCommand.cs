@@ -1,5 +1,6 @@
 namespace WarehouseActions {
 
+using System;
 using Products;
 using Ui;
 using Warehouse;
@@ -16,7 +17,7 @@ class ReplenishStockCommand : UserCommand {
 
 	public void run(UserInput cmd) {
 		if (cmd.args.Length != 5) {
-			System.err.println("ERROR: Usage: r aisle loc sku num");
+			Console.WriteLine("ERROR: Usage: r aisle loc sku num");
 			return;
 		}
 		if (catalogue.lookup(cmd.Args(3)) == null)
@@ -26,7 +27,7 @@ class ReplenishStockCommand : UserCommand {
 			int numItems = Integer.parseInt(cmd.Args(4));
 			warehouse.replenish(sku, numItems);
 		} catch (NumberFormatException e) {
-			System.err.println("ERROR: Usage: r sku numitems");
+			Console.WriteLine("ERROR: Usage: r sku numitems");
 		}
 	}
 

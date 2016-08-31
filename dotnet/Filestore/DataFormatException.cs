@@ -1,10 +1,10 @@
 namespace Filestore {
 
-public class DataFormatException : System.Exception {
+	public class DataFormatException : System.Exception {
 
-	public DataFormatException(string message) {
-		super(message);
+		public DataFormatException(string message) : base(message)
+		{
+		}
+
 	}
-
-}
 }

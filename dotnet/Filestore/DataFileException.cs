@@ -1,10 +1,10 @@
 namespace Filestore {
 
-public class DataFileException : System.Exception {
+	public class DataFileException : System.Exception {
 
-	public DataFileException(string filename) {
-		super("Could not read file " + filename);
+		public DataFileException(string filename) : base("Could not read file " + filename)
+		{
+		}
+
 	}
-
-}
 }

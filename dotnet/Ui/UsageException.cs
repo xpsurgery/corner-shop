@@ -1,10 +1,10 @@
 namespace Ui {
 
-public class UsageException : System.Exception {
+	public class UsageException : System.Exception {
 
-	public UsageException(string message) {
-		super(message);
+		public UsageException(string message) : base(message)
+		{
+		}
+
 	}
-
-}
 }

@@ -1,11 +1,13 @@
 namespace Ui {
 
-class UnknownCommand : UserCommand {
+	using System;
 
-	public void run(UserInput cmd) {
-		System.err.println("ERROR: Unknown command " + cmd.command);
-		System.err.println("Type h or ? for help");
+	class UnknownCommand : UserCommand {
+
+		public void run(UserInput cmd) {
+			Console.WriteLine("ERROR: Unknown command " + cmd.command);
+			Console.WriteLine("Type h or ? for help");
+		}
+
 	}
-
-}
 }
