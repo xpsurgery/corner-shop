@@ -56,7 +56,7 @@ namespace Warehouse {
 			if (key == null)
 				stock.Add(skuCode, numItems);
 			else
-				stock.Add(key, stock[key] + numItems);
+				stock[key] = stock[key] + numItems;
 		}
 
 	}
