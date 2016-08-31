@@ -18,7 +18,7 @@ public class CatalogueReader {
 				string[] args = line.Split('^');
 				lines.Add(args);
 			}
-		} catch (IOException e) {
+		} catch (IOException) {
 			throw new DataFileException(filename);
 		}
 		return lines;

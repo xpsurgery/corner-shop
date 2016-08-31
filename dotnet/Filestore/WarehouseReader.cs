@@ -18,7 +18,7 @@ public class WarehouseReader {
 				string[] args = line.Split(null);
 				lines.Add(new StockMemento(args[0], args[1], args[2], args[3]));
 			}
-		} catch (IOException e) {
+		} catch (IOException) {
 			throw new DataFileException(filename);
 		}
 		return lines;

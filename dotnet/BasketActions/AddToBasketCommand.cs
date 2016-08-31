@@ -27,8 +27,8 @@ class AddToBasketCommand : UserCommand {
 		int numItems = 1;
 		if (cmd.args.Length == 3) {
 			try {
-				numItems = Integer.parseInt(cmd.Args(2));
-			} catch (NumberFormatException e) {
+				numItems = int.Parse(cmd.Args(2));
+			} catch (FormatException) {
 				throw new UsageException("The number of items must be a number greater than zero.");
 			}
 		}

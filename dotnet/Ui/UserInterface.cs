@@ -34,7 +34,7 @@ public class UserInterface {
 					return;
 				UserInput cmd = new UserInput(line);
 				createHandler(cmd.command).run(cmd);
-			} catch (IOException e) {
+			} catch (IOException) {
 			} catch (Exception e) {
 				Console.WriteLine("ERROR: " + e.Message);
 			}

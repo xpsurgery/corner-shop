@@ -24,9 +24,9 @@ class ReplenishStockCommand : UserCommand {
 			throw new UnknownProductException(cmd.Args(3));
 		string[] sku = new string[]{ cmd.Args(1), cmd.Args(2), cmd.Args(3) };
 		try {
-			int numItems = Integer.parseInt(cmd.Args(4));
+			int numItems = int.Parse(cmd.Args(4));
 			warehouse.replenish(sku, numItems);
-		} catch (NumberFormatException e) {
+		} catch (FormatException) {
 			Console.WriteLine("ERROR: Usage: r sku numitems");
 		}
 	}

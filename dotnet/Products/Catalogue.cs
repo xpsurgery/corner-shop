@@ -11,7 +11,7 @@ public class Catalogue {
 		var products = new List<Sku>();
 		var lines = catalogueReader.readAll();
 		foreach (string[] line in lines) {
-			var sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], Integer.parseInt(line[5]));
+			var sku = new Sku(new string[] { line[0], line[1], line[2] }, line[3], line[4], int.Parse(line[5]));
 			products.Add(sku);
 		}
 		return new Catalogue(products);
@@ -25,7 +25,7 @@ public class Catalogue {
 
 	public void list() {
 		foreach (Sku sku in sortedSkus())
-			str.printf("%s\t%dp\t%s\n", sku.code[2], sku.price, sku.title);
+			Console.WriteLine("{0}\t{1}p\t{2}", sku.code[2], sku.price, sku.title);
 		Console.WriteLine();
 		Console.WriteLine("10% discount on orders over £20.00!");
 	}
