@@ -16,8 +16,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		displayWelcomeMessage(System.out);
-		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("./warehouse.dat"));
-		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("./catalogue.dat"));
+		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("../warehouse.dat"));
+		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("../catalogue.dat"));
 		Basket basket = new Basket();
 		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
 		WarehouseActions warehouseActions = new WarehouseActions(warehouse, catalogue);
