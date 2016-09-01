@@ -1,19 +1,15 @@
 
+FIND     := find
+JAVAC    := javac
+MKDIR    := mkdir -p
+RM       := rm -rf
+
 SOURCE_DIR  := src
 OUTPUT_DIR  := bin
 
-FIND        := find
-MKDIR       := mkdir -p
-RM          := rm -rf
-
 JFLAGS = -sourcepath $(SOURCE_DIR) -d $(OUTPUT_DIR)
-JAVAC = javac
-.SUFFIXES: .java .class
 
 all_javas := $(OUTPUT_DIR)/all.javas
-
-.java.class:
-	$(JC) $(JFLAGS) $*.java
 
 default: run
 
@@ -31,10 +27,9 @@ $(all_javas): $(OUTPUT_DIR)
 $(OUTPUT_DIR):
 	$(MKDIR) $(OUTPUT_DIR)
 
-clean:
-	$(RM) $(OUTPUT_DIR)
-
 run: compile
 	@java -classpath $(OUTPUT_DIR) Main.Application
 
-# DO NOT DELETE
+clean:
+	$(RM) $(OUTPUT_DIR)
+
