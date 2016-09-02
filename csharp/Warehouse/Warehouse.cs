@@ -6,8 +6,8 @@ namespace Warehouse {
 
 	public class Warehouse {
 		
-		public static Warehouse fromFile(WarehouseReader warehouseReader) {
-			var data = warehouseReader.readAll();
+		public static Warehouse FromFile(WarehouseReader warehouseReader) {
+			var data = warehouseReader.ReadAll();
 			var stock = new Dictionary<string[], int>();
 			foreach (StockMemento line in data)
 				stock.Add(line.skuCode, line.count);
@@ -20,30 +20,30 @@ namespace Warehouse {
 			this.stock = stock;
 		}
 
-		public void stockReport() {
+		public void StockReport() {
 			foreach (string[] skuCode in stock.Keys)
 				Console.WriteLine("{0} {1} {2}   {3,6:D}", skuCode[0], skuCode[1], skuCode[2], stock[skuCode]);
 		}
 
-		public void replenish(string[] skuCode, int numItems) {
+		public void Replenish(string[] skuCode, int numItems) {
 			if (numItems <= 0)
 				throw new InvalidNumItemsException(numItems);
-			changeStockLevel(skuCode, numItems);
+			ChangeStockLevel(skuCode, numItems);
 		}
 
-		public void fulfill(string sku, int numItems) {
-			var skuCode = lookup(sku);
-			mustStock(skuCode, numItems);
-			changeStockLevel(skuCode, -numItems);
+		public void Fulfill(string sku, int numItems) {
+			var skuCode = Lookup(sku);
+			MustStock(skuCode, numItems);
+			ChangeStockLevel(skuCode, -numItems);
 		}
 
-		public void mustStock(string[] sku, int numItems) {
-			var skuCode = lookup(sku[2]);
+		public void MustStock(string[] sku, int numItems) {
+			var skuCode = Lookup(sku[2]);
 			if (skuCode == null || stock[skuCode] < numItems)
 				throw new NotEnoughStockException(sku, numItems);
 		}
 
-		private string[] lookup(string sku) {
+		private string[] Lookup(string sku) {
 			foreach (string[] skuCode in stock.Keys) {
 				if (skuCode[2] == sku)
 					return skuCode;
@@ -51,8 +51,8 @@ namespace Warehouse {
 			return null;
 		}
 
-		private void changeStockLevel(string[] skuCode, int numItems) {
-			var key = lookup(skuCode[2]);
+		private void ChangeStockLevel(string[] skuCode, int numItems) {
+			var key = Lookup(skuCode[2]);
 			if (key == null)
 				stock.Add(skuCode, numItems);
 			else

@@ -12,8 +12,8 @@ namespace BasketActions {
 			this.warehouse = warehouse;
 		}
 
-		public void run(UserInput cmd) {
-			basket.checkout(warehouse);
+		public void Run(UserInput cmd) {
+			basket.Checkout(warehouse);
 		}
 
 	}

@@ -12,13 +12,13 @@ class DisplayProductDetailsCommand : UserCommand {
 		this.catalogue = catalogue;
 	}
 
-	public void run(UserInput cmd) {
+	public void Run(UserInput cmd) {
 		string id = cmd.Args(1);
 		if (id == null || cmd.args.Length != 2) {
 			Console.WriteLine("ERROR: Usage: d sku");
 			return;
 		}
-		Sku sku = catalogue.lookup(id);
+		Sku sku = catalogue.Lookup(id);
 		if (sku == null)
 			Console.WriteLine("ERROR: product code " + id + " not found");
 		else {

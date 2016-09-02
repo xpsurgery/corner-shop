@@ -1,19 +1,19 @@
 namespace WarehouseActions {
 
-using Ui;
-using Warehouse;
+	using Ui;
+	using Warehouse;
 
-class StockReportCommand : UserCommand {
+	class StockReportCommand : UserCommand {
 
-	private Warehouse warehouse;
+		private Warehouse warehouse;
 
-	internal StockReportCommand(Warehouse warehouse) {
-		this.warehouse = warehouse;
+		internal StockReportCommand(Warehouse warehouse) {
+			this.warehouse = warehouse;
+		}
+
+		public void Run(UserInput cmd) {
+			warehouse.StockReport();
+		}
+
 	}
-
-	public void run(UserInput cmd) {
-		warehouse.stockReport();
-	}
-
-}
 }

@@ -14,19 +14,19 @@ namespace Basket {
 			items = new Dictionary<string, BasketItem>();
 		}
 
-		public IList<BasketItem> list() {
+		public IList<BasketItem> List() {
 			var result = new List<BasketItem>();
-			foreach (string sku in sortedSkus())
+			foreach (string sku in SortedSkus())
 				result.Add(items[sku]);
 			return result;
 		}
 
-		private IList<string> sortedSkus() {
+		private IList<string> SortedSkus() {
 			return items.Keys.OrderBy(k => k).ToList();
 		}
 
-		public void add(string skuId, Catalogue catalogue, int numItems) {
-			var sku = catalogue.lookup(skuId);
+		public void Add(string skuId, Catalogue catalogue, int numItems) {
+			var sku = catalogue.Lookup(skuId);
 			if (items.ContainsKey(skuId)) {
 				var existing = items[skuId];
 				items.Add(skuId, new BasketItem(skuId, existing.title, existing.price, existing.count + numItems));
@@ -35,19 +35,19 @@ namespace Basket {
 			}
 		}
 
-		public void checkout(Warehouse warehouse) {
+		public void Checkout(Warehouse warehouse) {
 			if (items.Count == 0) {
 				Console.WriteLine("Your basket is empty!");
 				return;
 			}
-			double totalPrice = currentTotal() / 100.0;
+			double totalPrice = CurrentTotal() / 100.0;
 			foreach (string sku in items.Keys)
-				warehouse.fulfill(sku, items[sku].count);
+				warehouse.Fulfill(sku, items[sku].count);
 			items = new Dictionary<string, BasketItem>();
 			Console.WriteLine("All items checked out. Total price £{0,5:F2}", totalPrice);
 		}
 
-		private int currentTotal() {
+		private int CurrentTotal() {
 			var total = 0;
 			foreach (BasketItem item in items.Values)
 				total += item.count * item.price;

@@ -18,7 +18,7 @@ public class UserInterface {
 		this.basketActions = basketActions;
 	}
 
-	public void start() {
+	public void Start() {
 		for (;;) {
 			Console.Write("shop> ");
 			try {
@@ -33,7 +33,7 @@ public class UserInterface {
 				if (line[0] == 'q')
 					return;
 				UserInput cmd = new UserInput(line);
-				createHandler(cmd.command).run(cmd);
+				CreateHandler(cmd.command).Run(cmd);
 			} catch (IOException) {
 			} catch (Exception e) {
 				Console.WriteLine("ERROR: " + e.Message);
@@ -41,24 +41,24 @@ public class UserInterface {
 		}
 	}
 
-	private UserCommand createHandler(char command) {
+	private UserCommand CreateHandler(char command) {
 		switch (command) {
 		case 'a':
-			return basketActions.addToBasket();
+			return basketActions.AddToBasket();
 		case 'b':
-			return basketActions.displayBasket();
+			return basketActions.DisplayBasket();
 		case 'c':
-			return basketActions.checkout();
+			return basketActions.Checkout();
 		case 'd':
-			return catalogueActions.displayProductDetails();
+			return catalogueActions.DisplayProductDetails();
 		case 'h':
 			return new HelpCommand();
 		case 'p':
-			return catalogueActions.listProducts();
+			return catalogueActions.ListProducts();
 		case 'r':
-			return warehouseActions.replenishStock();
+			return warehouseActions.ReplenishStock();
 		case 's':
-			return warehouseActions.stockReport();
+			return warehouseActions.StockReport();
 		default:
 			return new UnknownCommand();
 		}

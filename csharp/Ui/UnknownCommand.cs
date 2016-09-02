@@ -4,7 +4,7 @@ namespace Ui {
 
 	class UnknownCommand : UserCommand {
 
-		public void run(UserInput cmd) {
+		public void Run(UserInput cmd) {
 			Console.WriteLine("ERROR: Unknown command " + cmd.command);
 			Console.WriteLine("Type h or ? for help");
 		}
