@@ -15,9 +15,9 @@ module Basket
 		end
 
 		def add(skuId, catalogue, numItems)
-			Sku sku = catalogue.lookup(skuId)
-			if @items.containsKey(skuId)
-				BasketItem existing = @items.get(skuId)
+			sku = catalogue.lookup(skuId)
+			if @items.include?(skuId)
+				existing = @items[skuId]
 				@items[skuId] = BasketItem.new(skuId, existing.title, existing.price, existing.count + numItems)
 			else
 				@items[skuId] = BasketItem.new(skuId, sku.title, sku.price, numItems)
@@ -26,12 +26,13 @@ module Basket
 
 		def checkout(warehouse)
 			if @items.empty?
-				System.err.println("Your basket is empty!")
+				$stderr.println("Your basket is empty!")
 				return
 			end
-			double totalPrice = currentTotal / 100.0
-			# for (String sku : @items.keySet)
-			# 	warehouse.fulfill(sku, @items.get(sku).count)
+			totalPrice = currentTotal / 100.0
+			@items.keys.each do |sku|
+				warehouse.fulfill(sku, @items.get(sku).count)
+			end
 			@items = {}
 			System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice)
 		end
@@ -44,8 +45,9 @@ module Basket
 
 		def currentTotal
 			total = 0
-			# for (BasketItem item : @items.values)
-			# 	total += item.count * item.price
+			@items.values.each do |item|
+				total += item.count * item.price
+			end
 			if (total > 2000)
 				total -= (total/10)
 			end

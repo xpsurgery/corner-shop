@@ -15,28 +15,26 @@ module BasketActions
 		end
 
 		def run(cmd)
-			if (cmd.args.length > 3)
-				System.err.println("ERROR: Usage: a sku [numitems]")
+			if cmd.args.length > 3
+				$stderr.puts "ERROR: Usage: a sku [numitems]"
 				return
 			end
-			String sku = cmd.args(1)
-			int numItems = 1
-			if (cmd.args.length == 3)
+			sku = cmd.arg(1)
+			numItems = 1
+			if cmd.args.length == 3
 				begin
-					numItems = Integer.parseInt(cmd.args(2))
-				rescue (NumberFormatException e)
+					numItems = Integer(cmd.arg(2))
+				rescue ArgumentError
 					throw new UsageException("The number of items must be a number greater than zero.")
 				end
 			end
-			if (numItems <= 0)
-				throw new UsageException("The number of items must be a number greater than zero.")
+			if numItems <= 0
+				throw UsageException.new("The number of items must be a number greater than zero.")
 			end
-			skuCode = catalogue.lookupCode(sku)
-			if skuCode.nil?
-				throw new UsageException("Product " + sku + " unknown.")
-			end
-			warehouse.mustStock(skuCode, numItems)
-			basket.add(sku, catalogue, numItems)
+			skuCode = @catalogue.lookupCode(sku)
+			throw UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
+			@warehouse.mustStock(skuCode, numItems)
+			@basket.add(sku, @catalogue, numItems)
 		end
 
 	end

@@ -17,7 +17,7 @@ module BasketActions
 				return
 			end
 			items.each do |item|
-				leader = String.format("£%8.02f %5dx     ", item.price / 100.0, item.count)
+				leader = sprintf("£%8.02f %5dx     ", item.price / 100.0, item.count)
 				possLen = leader.length + item.title.length()
 				title = (possLen > 60) ? item.title.substring(0, 60-leader.length-3)+"..." : item.title
 				puts leader + title
@@ -25,11 +25,11 @@ module BasketActions
 			total = basketTotal(items)
 			if total > 2000
 				discount = total/10
-				System.out.printf("£%8.02f            10%% discount\n", discount / -100.0)
+				printf("£%8.02f            10%% discount\n", discount / -100.0)
 				total -= discount
 			end
 			puts "---------------"
-			System.out.printf("£%8.02f total\n", total / 100.0)
+			printf("£%8.02f total\n", total / 100.0)
 		end
 
 		private
