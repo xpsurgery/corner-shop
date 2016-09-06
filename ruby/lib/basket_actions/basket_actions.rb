@@ -1,32 +1,29 @@
+require_relative '../basket/basket'
+require_relative '../products/catalogue'
+require_relative '../user_interface/user_command'
+require_relative '../warehouse/warehouse'
+
 module BasketActions
 
-require_relative Basket.Basket
-require_relative Products.Catalogue
-require_relative Ui.UserCommand
-require_relative Warehouse.Warehouse
+	class BasketActions
 
-public class BasketActions
+		def initialize(basket, catalogue, warehouse)
+			@basket = basket
+			@catalogue = catalogue
+			@warehouse = warehouse
+		end
 
-	private Basket basket
-	private Catalogue catalogue
-	private Warehouse warehouse
+		def addToBasket
+			AddToBasketCommand.new(basket, catalogue, warehouse)
+		end
 
-	public BasketActions(Basket basket, Catalogue catalogue, Warehouse warehouse)
-		this.basket = basket
-		this.catalogue = catalogue
-		this.warehouse = warehouse
+		def displayBasket
+			DisplayBasketCommand.new(basket)
+		end
+
+		def checkout
+			CheckoutCommand.new(basket, warehouse)
+		end
+
 	end
-
-	public UserCommand addToBasket
-		return new AddToBasketCommand(basket, catalogue, warehouse)
-	end
-
-	public UserCommand displayBasket
-		return new DisplayBasketCommand(basket)
-	end
-
-	public UserCommand checkout
-		return new CheckoutCommand(basket, warehouse)
-	end
-
 end

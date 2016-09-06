@@ -1,22 +1,21 @@
+require_relative '../products/catalogue'
+require_relative '../user_interface/user_command'
+
 module CatalogueActions
 
-require_relative Products.Catalogue
-require_relative Ui.UserCommand
+	class CatalogueActions
 
-public class CatalogueActions
+		def initialize(catalogue)
+			@catalogue = catalogue
+		end
 
-	private Catalogue catalogue
+		def displayProductDetails
+			DisplayProductDetailsCommand.new(@catalogue)
+		end
 
-	public CatalogueActions(Catalogue catalogue)
-		this.catalogue = catalogue
+		def listProducts
+			ListProductsCommand.new(@catalogue)
+		end
+
 	end
-
-	public UserCommand displayProductDetails
-		return new DisplayProductDetailsCommand(catalogue)
-	end
-
-	public UserCommand listProducts
-		return new ListProductsCommand(catalogue)
-	end
-
 end

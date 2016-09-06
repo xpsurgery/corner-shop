@@ -1,23 +1,20 @@
+require_relative '../basket/basket'
+require_relative '../user_interface/user_command'
+require_relative '../user_interface/user_input'
+require_relative '../warehouse/warehouse'
+
 module BasketActions
 
-require_relative Basket.Basket
-require_relative Ui.UserCommand
-require_relative Ui.UserInput
-require_relative Warehouse.Warehouse
+	class CheckoutCommand # implements UserCommand
 
-class CheckoutCommand implements UserCommand
+		def initialize(basket, warehouse)
+			@basket = basket
+			@warehouse = warehouse
+		end
 
-	private Basket basket
-	private Warehouse warehouse
+		def run(cmd)
+			basket.checkout(warehouse)
+		end
 
-	CheckoutCommand(Basket basket, Warehouse warehouse)
-		this.basket = basket
-		this.warehouse = warehouse
 	end
-
-	@Override
-	public void run(UserInput cmd)
-		basket.checkout(warehouse)
-	end
-
 end

@@ -1,20 +1,18 @@
+require_relative '../products/catalogue'
+require_relative '../user_interface/user_command'
+require_relative '../user_interface/user_input'
+
 module CatalogueActions
 
-require_relative Products.Catalogue
-require_relative Ui.UserCommand
-require_relative Ui.UserInput
+  class ListProductsCommand # implements UserCommand
 
-class ListProductsCommand implements UserCommand
+  	def initialize(catalogue)
+  		@catalogue = catalogue
+  	end
 
-	private Catalogue catalogue
+  	def run(cmd)
+  		@catalogue.list(System.out)
+  	end
 
-	ListProductsCommand(Catalogue catalogue)
-		this.catalogue = catalogue
-	end
-
-	@Override
-	public void run(UserInput cmd)
-		catalogue.list(System.out)
-	end
-
+  end
 end

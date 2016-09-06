@@ -1,15 +1,10 @@
+require_relative '../filestore/stock_memento'
+require_relative '../filestore/warehouse_reader'
+
 module Warehouse
 
-require_relative java.io.PrintStream
-require_relative java.util.HashMap
-require_relative java.util.List
-require_relative java.util.Map
-
-require_relative Filestore.StockMemento
-require_relative Filestore.WarehouseReader
-
 public class Warehouse
-	
+
 	public static Warehouse fromFile(WarehouseReader warehouseReader)
 		List<StockMemento> data = warehouseReader.readAll
 		Map<String[], Integer> stock = new HashMap<String[], Integer>
@@ -63,4 +58,5 @@ public class Warehouse
 			stock.put(key, stock.get(key) + numItems)
 	end
 
+end
 end

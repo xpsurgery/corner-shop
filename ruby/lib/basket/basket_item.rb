@@ -1,16 +1,14 @@
 module Basket
 
-public class BasketItem
+	class BasketItem
 
-	public String skuId
-	public String title
-	public int price
-	public int count
+		attr_reader :skuId, :title, :price, :count
 
-	public BasketItem(String skuId, String title, int price, int count)
-		this.skuId = skuId
-		this.title = title
-		this.price = price
-		this.count = count
+		def initialize(skuId, title, price, count)
+			@skuId = skuId
+			@title = title
+			@price = price
+			@count = count
+		end
 	end
 end
