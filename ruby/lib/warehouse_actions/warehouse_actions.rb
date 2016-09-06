@@ -3,18 +3,18 @@ require_relative '../warehouse/warehouse'
 
 module WarehouseActions
 
-	public class WarehouseActions
+	class WarehouseActions
 
 		def initialize(warehouse, catalogue)
 			@warehouse = warehouse
 			@catalogue = catalogue
 		end
 
-		def stockReport
+		def stock_report
 			StockReportCommand.new(@warehouse)
 		end
 
-		def replenishStock
+		def replenish_stock
 			ReplenishStockCommand.new(@warehouse, @catalogue)
 		end
 
