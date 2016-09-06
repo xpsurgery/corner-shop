@@ -1,6 +1,6 @@
 module WarehouseActions
 
-  class UnknownProductException
+  class UnknownProductException < StandardError
 
   	def initialize(sku)
   		super("SKU code " + sku + " is not in the product catalogue.")

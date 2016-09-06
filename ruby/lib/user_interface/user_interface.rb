@@ -39,21 +39,21 @@ module UserInterface
 		def createHandler(command)
 			case (command)
 			when 'a'
-				return basketActions.addToBasket
+				return @basketActions.addToBasket
 			when 'b'
-				return basketActions.displayBasket
+				return @basketActions.displayBasket
 			when 'c'
-				return basketActions.checkout
+				return @basketActions.checkout
 			when 'd'
-				return catalogueActions.displayProductDetails
+				return @catalogueActions.displayProductDetails
 			when 'h'
 				return HelpCommand.new
 			when 'p'
-				return catalogueActions.listProducts
+				return @catalogueActions.listProducts
 			when 'r'
-				return warehouseActions.replenishStock
+				return @warehouseActions.replenishStock
 			when 's'
-				return warehouseActions.stockReport
+				return @warehouseActions.stockReport
 			else
 				return UnknownCommand.new
 			end

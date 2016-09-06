@@ -1,9 +1,10 @@
 module UserInterface
 
-public class UsageException extends RuntimeException
+  class UsageException < StandardError
 
-	public UsageException(String message)
-		super(message)
-	end
+  	def initialize(message)
+  		super(message)
+  	end
 
+  end
 end

@@ -1,6 +1,5 @@
-require_relative '../products/Catalogue'
+require_relative '../products/catalogue'
 require_relative '../user_interface/usage_exception'
-require_relative '../user_interface/user_command'
 require_relative '../user_interface/user_input'
 require_relative '../warehouse/warehouse'
 require_relative '../basket/basket'
@@ -32,8 +31,8 @@ module BasketActions
 			if (numItems <= 0)
 				throw new UsageException("The number of items must be a number greater than zero.")
 			end
-			String[] skuCode = catalogue.lookupCode(sku)
-			if (skuCode == null)
+			skuCode = catalogue.lookupCode(sku)
+			if skuCode.nil?
 				throw new UsageException("Product " + sku + " unknown.")
 			end
 			warehouse.mustStock(skuCode, numItems)
