@@ -5,7 +5,7 @@ require_relative '../warehouse/warehouse'
 
 module BasketActions
 
-	class CheckoutCommand # implements UserCommand
+	class CheckoutCommand
 
 		def initialize(basket, warehouse)
 			@basket = basket

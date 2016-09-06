@@ -3,60 +3,70 @@ require_relative '../filestore/warehouse_reader'
 
 module Warehouse
 
-public class Warehouse
+	class Warehouse
 
-	public static Warehouse fromFile(WarehouseReader warehouseReader)
-		List<StockMemento> data = warehouseReader.readAll
-		Map<String[], Integer> stock = new HashMap<String[], Integer>
-		for (StockMemento line : data)
-			stock.put(line.skuCode, line.count)
-		return new Warehouse(stock)
-	end
+		class << self
 
-	private Map<String[], Integer> stock
+			def fromFile(warehouseReader)
+				data = warehouseReader.readAll
+				stock = {}
+				data.each do |line|
+					stock.put(line.skuCode, line.count)
+				end
+				return new Warehouse(stock)
+			end
 
-	public Warehouse(Map<String[], Integer> stock)
-		this.stock = stock
-	end
-
-	public void stockReport(PrintStream out)
-		for (String[] skuCode : stock.keySet)
-			out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode))
-	end
-
-	public void replenish(String[] skuCode, int numItems)
-		if (numItems <= 0)
-			throw new InvalidNumItemsException(numItems)
-		changeStockLevel(skuCode, numItems)
-	end
-
-	public void fulfill(String sku, Integer numItems)
-		String[] skuCode = lookup(sku)
-		mustStock(skuCode, numItems)
-		changeStockLevel(skuCode, -numItems)
-	end
-
-	public void mustStock(String[] sku, int numItems)
-		String[] skuCode = lookup(sku[2])
-		if (skuCode == null || stock.get(skuCode) < numItems)
-			throw new NotEnoughStockException(sku, numItems)
-	end
-
-	private String[] lookup(String sku)
-		for (String[] skuCode : stock.keySet)
-			if (skuCode[2].equals(sku))
-				return skuCode
 		end
-		return null
-	end
 
-	private void changeStockLevel(String[] skuCode, int numItems)
-		String[] key = lookup(skuCode[2])
-		if (key == null)
-			stock.put(skuCode, numItems)
-		else
-			stock.put(key, stock.get(key) + numItems)
-	end
+		def initialize(stock)
+			@stock = stock
+		end
 
-end
+		def stockReport(out)
+			@stock.keys.each do |skuCode|
+				out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode))
+			end
+		end
+
+		def replenish(skuCode, numItems)
+			if (numItems <= 0)
+				throw InvalidNumItemsException.new(numItems)
+			end
+			changeStockLevel(skuCode, numItems)
+		end
+
+		def fulfill(sku, numItems)
+			skuCode = lookup(sku)
+			mustStock(skuCode, numItems)
+			changeStockLevel(skuCode, -numItems)
+		end
+
+		def mustStock(sku, numItems)
+			skuCode = lookup(sku[2])
+			if (skuCode == null || stock.get(skuCode) < numItems)
+				throw NotEnoughStockException.new(sku, numItems)
+			end
+		end
+
+		private
+
+		def lookup(sku)
+			@stock.keys.each do | skuCode|
+				if (skuCode[2].equals(sku))
+					return skuCode
+				end
+			end
+			nil
+		end
+
+		def changeStockLevel(skuCode, numItems)
+			key = lookup(skuCode[2])
+			if (key == nil)
+				@stock[skuCode] = numItems
+			else
+				@stock[key] = @stock[key] + numItems
+			end
+		end
+
+	end
 end

@@ -1,18 +1,17 @@
 module Filestore
 
-public class StockMemento
+	class StockMemento
 
-	public String[] skuCode
-	public Integer count
+		attr_reader :sku_code, :count
 
-	public StockMemento(String aisle, String loc, String sku, String count)
-		skuCode = new String[] { aisle, loc, sku end
-		try
-		this.count = Integer.parseInt(count)
-	end catch (NumberFormatException e)
-		throw new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
+		def initialize(aisle, loc, sku, count)
+			@sku_code = [aisle, loc, sku]
+			begin
+				@count = Integer.parseInt(count)
+			rescue (NumberFormatException e)
+				throw new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
+			end
+		end
+
 	end
-	end
-
-end
 end

@@ -5,7 +5,7 @@ require_relative '../basket/basket_item'
 
 module BasketActions
 
-	class DisplayBasketCommand # implements UserCommand
+	class DisplayBasketCommand
 
 		private Basket basket
 

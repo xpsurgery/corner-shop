@@ -7,7 +7,7 @@ require_relative '../basket/basket'
 
 module BasketActions
 
-	class AddToBasketCommand # implements UserCommand
+	class AddToBasketCommand
 
 		def initialize(basket, catalogue, warehouse)
 			@basket = basket

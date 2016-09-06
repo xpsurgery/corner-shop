@@ -1,5 +1,4 @@
 require_relative '../products/catalogue'
-require_relative '../user_interface/user_command'
 require_relative '../warehouse/warehouse'
 
 module WarehouseActions

@@ -5,7 +5,7 @@ require_relative '../user_interface/user_input'
 
 module CatalogueActions
 
-	class DisplayProductDetailsCommand # implements UserCommand
+	class DisplayProductDetailsCommand
 
 		def initialize(catalogue)
 			@catalogue = catalogue

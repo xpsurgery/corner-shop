@@ -2,9 +2,7 @@ module Filestore
 
 	class WarehouseReader
 
-		private String filename
-
-		public WarehouseReader(String filename)
+		def initialize(filename)
 			@filename = filename
 		end
 

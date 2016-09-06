@@ -4,7 +4,7 @@ require_relative '../warehouse/warehouse'
 
 module WarehouseActions
 
-  class StockReportCommand # implements UserCommand
+  class StockReportCommand
 
   	def initialize(warehouse)
   		@warehouse = warehouse
