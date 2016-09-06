@@ -16,7 +16,7 @@ module Filestore
 					lines << StockMemento.new(args[0], args[1], args[2], args[3])
 				end
 			rescue Exception => e
-				throw DataFileException.new(@filename, e)
+				raise DataFileException.new(@filename, e)
 			end
 			lines
 		end

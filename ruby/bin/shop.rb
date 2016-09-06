@@ -16,8 +16,8 @@ class Application
 
 		def main(args)
 			displayWelcomeMessage
-			warehouse = Warehouse::Warehouse.fromFile(Filestore::WarehouseReader.new("../warehouse.dat"))
-			catalogue = Products::Catalogue.fromFile(Filestore::CatalogueReader.new("../catalogue.dat"))
+			warehouse = Warehouse::Warehouse.from_file(Filestore::WarehouseReader.new("../warehouse.dat"))
+			catalogue = Products::Catalogue.from_file(Filestore::CatalogueReader.new("../catalogue.dat"))
 			basket = Basket::Basket.new
 			catalogueActions = CatalogueActions::CatalogueActions.new(catalogue)
 			warehouseActions = WarehouseActions::WarehouseActions.new(warehouse, catalogue)

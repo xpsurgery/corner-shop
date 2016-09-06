@@ -1,10 +1,10 @@
 module Warehouse
 
-class NotEnoughStockException extends RuntimeException
+  class NotEnoughStockException < StandardError
 
-	NotEnoughStockException(String[] skuCode, int numItems)
-		super("The warehouse does not contain " + numItems + " item(s) of product " + skuCode)
-	end
+  	def initialize(sku_code, num_items)
+  		super("The warehouse does not contain #{num_items} item(s) of product #{sku_code}")
+  	end
 
-end
+  end
 end

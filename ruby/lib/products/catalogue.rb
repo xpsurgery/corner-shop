@@ -6,10 +6,8 @@ module Products
 
 		class << self
 
-			def fromFile(catalogueReader)
-				products = []
-				lines = catalogueReader.readAll
-				products = lines.map { |line|
+			def from_file(catalogueReader)
+				products = catalogueReader.readAll.map { |line|
 					Sku.new([ line[0], line[1], line[2] ], line[3], line[4], Integer(line[5]))
 				}
 				Catalogue.new(products)
@@ -22,7 +20,7 @@ module Products
 		end
 
 		def list(out)
-			sortedSkus.each do |sku|
+			sorted_skus.each do |sku|
 				out.printf("%s\t%dp\t%s\n", sku.code[2], sku.price, sku.title)
 			end
 			out.puts
@@ -38,7 +36,7 @@ module Products
 			nil
 		end
 
-		def lookupCode(sku)
+		def lookup_code(sku)
 			@products.each do |s|
 				if s.code[2] == sku
 					return s.code
@@ -49,7 +47,7 @@ module Products
 
 		private
 
-		def sortedSkus
+		def sorted_skus
 			@products.sort
 		end
 

@@ -17,9 +17,7 @@ module WarehouseActions
 				$stderr.puts "ERROR: Usage: r aisle loc sku num"
 				return
 			end
-			if @catalogue.lookup(cmd.arg(3)).nil?
-				throw UnknownProductException.new(cmd.arg(3))
-			end
+			raise UnknownProductException.new(cmd.arg(3)) if @catalogue.lookup(cmd.arg(3)).nil?
 			sku = [cmd.arg(1), cmd.arg(2), cmd.arg(3)]
 			begin
 				numItems = Integer(cmd.arg(4))

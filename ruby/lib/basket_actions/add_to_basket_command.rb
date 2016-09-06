@@ -20,21 +20,21 @@ module BasketActions
 				return
 			end
 			sku = cmd.arg(1)
-			numItems = 1
+			num_items = 1
 			if cmd.args.length == 3
 				begin
-					numItems = Integer(cmd.arg(2))
+					num_items = Integer(cmd.arg(2))
 				rescue ArgumentError
-					throw new UsageException("The number of items must be a number greater than zero.")
+					raise new UsageException("The number of items must be a number greater than zero.")
 				end
 			end
-			if numItems <= 0
-				throw UsageException.new("The number of items must be a number greater than zero.")
+			if num_items <= 0
+				raise UsageException.new("The number of items must be a number greater than zero.")
 			end
-			skuCode = @catalogue.lookupCode(sku)
-			throw UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
-			@warehouse.mustStock(skuCode, numItems)
-			@basket.add(sku, @catalogue, numItems)
+			skuCode = @catalogue.lookup_code(sku)
+			raise UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
+			@warehouse.must_stock(skuCode, num_items)
+			@basket.add(sku, @catalogue, num_items)
 		end
 
 	end

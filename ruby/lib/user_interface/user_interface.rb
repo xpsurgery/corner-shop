@@ -3,6 +3,7 @@ require_relative '../catalogue_actions/catalogue_actions'
 require_relative '../warehouse_actions/warehouse_actions'
 require_relative './user_input'
 require_relative './help_command'
+require_relative './unknown_command'
 
 module UserInterface
 
@@ -30,7 +31,7 @@ module UserInterface
 						cmd = UserInput.new(line)
 						createHandler(cmd.command).run(cmd)
 					end
-				rescue Exception => e
+				rescue StandardError => e
 					$stderr.puts "ERROR: #{e}"
 				end
 			end

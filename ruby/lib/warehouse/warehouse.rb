@@ -1,5 +1,6 @@
 require_relative '../filestore/stock_memento'
 require_relative '../filestore/warehouse_reader'
+require_relative './not_enough_stock_exception'
 
 module Warehouse
 
@@ -7,7 +8,7 @@ module Warehouse
 
 		class << self
 
-			def fromFile(warehouseReader)
+			def from_file(warehouseReader)
 				data = warehouseReader.readAll
 				stock = {}
 				data.each do |line|
@@ -29,21 +30,19 @@ module Warehouse
 		end
 
 		def replenish(sku_code, numItems)
-			throw InvalidNumItemsException.new(numItems) if numItems <= 0
-			changeStockLevel(sku_code, numItems)
+			raise InvalidNumItemsException.new(numItems) if numItems <= 0
+			change_stock_level(sku_code, numItems)
 		end
 
 		def fulfill(sku, numItems)
 			sku_code = lookup(sku)
-			mustStock(sku_code, numItems)
-			changeStockLevel(sku_code, -numItems)
+			must_stock(sku_code, numItems)
+			change_stock_level(sku_code, -numItems)
 		end
 
-		def mustStock(sku, numItems)
+		def must_stock(sku, numItems)
 			sku_code = lookup(sku[2])
-			if sku_code.nil? || @stock[sku_code] < numItems
-				throw NotEnoughStockException.new(sku, numItems)
-			end
+			raise NotEnoughStockException.new(sku, numItems) if (sku_code.nil? || @stock[sku_code] < numItems)
 		end
 
 		private
@@ -57,7 +56,7 @@ module Warehouse
 			nil
 		end
 
-		def changeStockLevel(sku_code, numItems)
+		def change_stock_level(sku_code, numItems)
 			key = lookup(sku_code[2])
 			if key.nil?
 				@stock[sku_code] = numItems

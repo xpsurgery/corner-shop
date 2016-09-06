@@ -10,9 +10,7 @@ module UserInterface
 		end
 
 		def arg(i)
-			if i < 0
-				throw IllegalArgumentException.new
-			end
+			raise IllegalArgumentException.new if i < 0
 			return (i < args.length) ? args[i] : nil
 		end
 

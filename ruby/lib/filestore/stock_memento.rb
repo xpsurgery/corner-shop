@@ -8,8 +8,8 @@ module Filestore
 			@sku_code = [aisle, loc, sku]
 			begin
 				@count = Integer(count)
-			rescue ArgumentError => e
-				throw new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
+			rescue ArgumentError
+				raise new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
 			end
 		end
 

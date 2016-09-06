@@ -1,10 +1,11 @@
 module UserInterface
 
-class UnknownCommand implements UserCommand
+  class UnknownCommand < StandardError
 
-	public void run(UserInput cmd)
-		System.err.println("ERROR: Unknown command " + cmd.command)
-		System.err.println("Type h or ? for help")
-	end
+  	def run(cmd)
+  		$stderr.puts "ERROR: Unknown command #{cmd.command}"
+  		$stderr.puts "Type h or ? for help"
+  	end
 
+  end
 end

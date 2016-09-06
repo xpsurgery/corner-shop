@@ -15,7 +15,7 @@ module Filestore
 					lines << line.split(/\^/)
 				end
 			rescue Exception => e
-				throw DataFileException.new(@filename, e)
+				raise DataFileException.new(@filename, e)
 			end
 			lines
 		end
