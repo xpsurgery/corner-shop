@@ -6,10 +6,10 @@ module UserInterface
 
 		def initialize(line)
 			@command = line[0]
-			@args = line.split("\\s+")
+			@args = line.split(/\s+/)
 		end
 
-		def args(i)
+		def arg(i)
 			if i < 0
 				throw IllegalArgumentException.new
 			end

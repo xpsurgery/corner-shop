@@ -11,8 +11,8 @@ module CatalogueActions
 		end
 
 		def run(cmd)
-			id = cmd.args(1)
-			if (id == null || cmd.args.length != 2)
+			id = cmd.arg(1)
+			if id.nil? || cmd.args.length != 2
 				$stderr.puts "ERROR: Usage: d sku"
 				return
 			end
@@ -20,7 +20,7 @@ module CatalogueActions
 			if sku.nil?
 				$stderr.puts "ERROR: product code #{id} not found"
 			else
-				System.out.printf("%s\t%s\t£%5.02f\n\n", sku.code[2], sku.title, sku.price / 100.0)
+				printf("%s\t%s\t£%5.02f\n\n", sku.code[2], sku.title, sku.price / 100.0)
 				sku.description.each do |line|
 					puts line
 				end

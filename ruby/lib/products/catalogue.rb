@@ -31,7 +31,7 @@ module Products
 
 		def lookup(id)
 			@products.each do |sku|
-				if (sku.code[2].equals(id))
+				if sku.code[2] == id
 					return sku
 				end
 			end
@@ -40,7 +40,7 @@ module Products
 
 		def lookupCode(sku)
 			@products.each do |s|
-				if (s.code[2].equals(sku))
+				if s.code[2] == sku
 					return s.code
 				end
 			end

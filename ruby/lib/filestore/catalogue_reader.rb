@@ -12,8 +12,7 @@ module Filestore
 			lines = []
 			begin
 				File.foreach(@filename) do |line|
-					args = line.split(/\^/)
-					lines << args
+					lines << line.split(/\^/)
 				end
 			rescue Exception => e
 				throw DataFileException.new(@filename, e)

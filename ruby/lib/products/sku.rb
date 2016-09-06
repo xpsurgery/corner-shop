@@ -2,7 +2,7 @@ module Products
 
 	class Sku
 
-		attr_reader :code, :title, :description, :price
+		attr_reader :code, :title, :price
 
 		def initialize(code, title, description, price)
 			@code = code
@@ -19,19 +19,19 @@ module Products
 
 		def description
 			result = []
-			words = description.split("\\s+")
+			words = @description.split(/\s+/)
 			currentLine = "  "
 			words.each do |word|
 				currentLine += word
 				if (currentLine.length >= 60)
-					result.add(currentLine)
+					result << currentLine
 					currentLine = "  "
 				else
 					currentLine += " "
 				end
 			end
-			if (currentLine.length > 2)
-				result.add(currentLine)
+			if currentLine.length > 2
+				result << currentLine
 			end
 			return result
 		end
