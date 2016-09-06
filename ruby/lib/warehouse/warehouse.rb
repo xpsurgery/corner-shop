@@ -29,9 +29,7 @@ module Warehouse
 		end
 
 		def replenish(sku_code, numItems)
-			if (numItems <= 0)
-				throw InvalidNumItemsException.new(numItems)
-			end
+			throw InvalidNumItemsException.new(numItems) if numItems <= 0
 			changeStockLevel(sku_code, numItems)
 		end
 

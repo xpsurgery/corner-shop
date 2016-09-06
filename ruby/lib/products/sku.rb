@@ -23,7 +23,7 @@ module Products
 			currentLine = "  "
 			words.each do |word|
 				currentLine += word
-				if (currentLine.length >= 60)
+				if currentLine.length >= 60
 					result << currentLine
 					currentLine = "  "
 				else

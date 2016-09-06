@@ -48,7 +48,7 @@ module Basket
 			@items.values.each do |item|
 				total += item.count * item.price
 			end
-			if (total > 2000)
+			if total > 2000
 				total -= (total/10)
 			end
 			total

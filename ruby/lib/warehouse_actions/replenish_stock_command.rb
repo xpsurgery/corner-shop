@@ -13,7 +13,7 @@ module WarehouseActions
 		end
 
 		def run(cmd)
-			if (cmd.args.length != 5)
+			if cmd.args.length != 5
 				$stderr.puts "ERROR: Usage: r aisle loc sku num"
 				return
 			end
