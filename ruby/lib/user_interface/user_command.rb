@@ -1,7 +1,7 @@
-package Ui;
+module Ui
 
-public interface UserCommand {
+public interface UserCommand
 
-	void run(UserInput cmd);
+	void run(UserInput cmd)
 
-}
+end

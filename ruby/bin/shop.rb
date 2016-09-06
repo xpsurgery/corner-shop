@@ -1,43 +1,48 @@
-package Main;
+#! /usr/bin/env ruby
 
-import java.io.PrintStream;
+require_relative '../lib/basket/basket'
+require_relative '../lib/basket_actions/basket_actions'
+require_relative '../lib/catalogue_actions/catalogue_actions'
+require_relative '../lib/filestore/catalogue_reader'
+require_relative '../lib/filestore/warehouse_reader'
+require_relative '../lib/products/catalogue'
+require_relative '../lib/user_interface/user_interface'
+require_relative '../lib/warehouse/warehouse'
+require_relative '../lib/warehouse_actions/warehouse_actions'
 
-import Basket.Basket;
-import BasketActions.BasketActions;
-import CatalogueActions.CatalogueActions;
-import Filestore.CatalogueReader;
-import Filestore.WarehouseReader;
-import Products.Catalogue;
-import Ui.UserInterface;
-import Warehouse.Warehouse;
-import WarehouseActions.WarehouseActions;
+class Application
 
-public class Application {
+	class << self
 
-	public static void main(String[] args) {
-		displayWelcomeMessage(System.out);
-		Warehouse warehouse = Warehouse.fromFile(new WarehouseReader("../warehouse.dat"));
-		Catalogue catalogue = Catalogue.fromFile(new CatalogueReader("../catalogue.dat"));
-		Basket basket = new Basket();
-		CatalogueActions catalogueActions = new CatalogueActions(catalogue);
-		WarehouseActions warehouseActions = new WarehouseActions(warehouse, catalogue);
-		BasketActions basketActions = new BasketActions(basket, catalogue, warehouse);
-		new UserInterface(System.in, catalogueActions, warehouseActions, basketActions).start();
-		displayGoodbyeMessage();
-		System.exit(0);
-	}
+		def main(args)
+			displayWelcomeMessage
+			warehouse = Warehouse.fromFile(WarehouseReader.new("../warehouse.dat"))
+			catalogue = Catalogue.fromFile(CatalogueReader.new("../catalogue.dat"))
+			basket = Basket.new
+			catalogueActions = CatalogueActions.new(catalogue)
+			warehouseActions = WarehouseActions.new(warehouse, catalogue)
+			basketActions = BasketActions.new(basket, catalogue, warehouse)
+			UserInterface.new(System.in, catalogueActions, warehouseActions, basketActions).start
+			displayGoodbyeMessage
+			exit 0
+		end
 
-	private static void displayGoodbyeMessage() {
-		System.out.println();
-		System.out.println("Goodbye. Thanks for your custom!");
-		System.out.println();
-	}
+		private
 
-	private static void displayWelcomeMessage(PrintStream out) {
-		out.println("Welcome to our little corner shop!");
-		out.println();
-		out.println("For help, type 'h' or 'help' or '?'");
-		out.println();
-	}
+		def displayGoodbyeMessage
+			puts
+			puts "Goodbye. Thanks for your custom!"
+			puts
+		end
 
-}
+		def displayWelcomeMessage
+			puts "Welcome to our little corner shop!"
+			puts
+			puts "For help, type 'h' or 'help' or '?'"
+			puts
+		end
+	end
+
+end
+
+Application.main $*

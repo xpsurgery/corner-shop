@@ -1,20 +1,20 @@
-package WarehouseActions;
+module WarehouseActions
 
-import Ui.UserCommand;
-import Ui.UserInput;
-import Warehouse.Warehouse;
+require_relative Ui.UserCommand
+require_relative Ui.UserInput
+require_relative Warehouse.Warehouse
 
-class StockReportCommand implements UserCommand {
+class StockReportCommand implements UserCommand
 
-	private Warehouse warehouse;
+	private Warehouse warehouse
 
-	StockReportCommand(Warehouse warehouse) {
-		this.warehouse = warehouse;
-	}
+	StockReportCommand(Warehouse warehouse)
+		this.warehouse = warehouse
+	end
 
 	@Override
-	public void run(UserInput cmd) {
-		warehouse.stockReport(System.out);
-	}
+	public void run(UserInput cmd)
+		warehouse.stockReport(System.out)
+	end
 
-}
+end

@@ -1,9 +1,9 @@
-package Warehouse;
+module Warehouse
 
-class InvalidNumItemsException extends RuntimeException {
+class InvalidNumItemsException extends RuntimeException
 
-	InvalidNumItemsException(int numItems) {
-		super("Please supply a number of items greater than zero");
-	}
+	InvalidNumItemsException(int numItems)
+		super("Please supply a number of items greater than zero")
+	end
 
-}
+end

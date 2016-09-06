@@ -1,64 +1,56 @@
-package Basket;
+require_relative '../products/catalogue'
+require_relative '../products/sku'
+require_relative '../warehouse/warehouse'
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+module Basket
 
-import Products.Catalogue;
-import Products.Sku;
-import Warehouse.Warehouse;
+	class Basket
 
-public class Basket {
+		def initialize
+			@items = {}
+		end
 
-	private Map<String, BasketItem> items;
-	
-	public Basket() {
-		items = new HashMap<String, BasketItem>();
-	}
+		def list
+			sortedSkus.map {|sku| @items[sku] }
+		end
 
-	public List<BasketItem> list() {
-		List<BasketItem> result = new ArrayList<BasketItem>();
-		for (String sku : sortedSkus())
-			result.add(items.get(sku));
-		return result;
-	}
+		def add(skuId, catalogue, numItems)
+			Sku sku = catalogue.lookup(skuId)
+			if @items.containsKey(skuId)
+				BasketItem existing = @items.get(skuId)
+				@items[skuId] = BasketItem.new(skuId, existing.title, existing.price, existing.count + numItems)
+			else
+				@items[skuId] = BasketItem.new(skuId, sku.title, sku.price, numItems)
+			end
+		end
 
-	private List<String> sortedSkus() {
-		List<String> skus = new ArrayList<String>(items.keySet());
-		java.util.Collections.sort(skus);
-		return skus;
-	}
+		def checkout(warehouse)
+			if @items.empty?
+				System.err.println("Your basket is empty!")
+				return
+			end
+			double totalPrice = currentTotal / 100.0
+			# for (String sku : @items.keySet)
+			# 	warehouse.fulfill(sku, @items.get(sku).count)
+			@items = {}
+			System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice)
+		end
 
-	public void add(String skuId, Catalogue catalogue, int numItems) {
-		Sku sku = catalogue.lookup(skuId);
-		if (items.containsKey(skuId)) {
-			BasketItem existing = items.get(skuId);
-			items.put(skuId, new BasketItem(skuId, existing.title, existing.price, existing.count + numItems));
-		} else {
-			items.put(skuId, new BasketItem(skuId, sku.title, sku.price, numItems));
-		}
-	}
+		private
 
-	public void checkout(Warehouse warehouse) {
-		if (items.isEmpty()) {
-			System.err.println("Your basket is empty!");
-			return;
-		}
-		double totalPrice = currentTotal() / 100.0;
-		for (String sku : items.keySet())
-			warehouse.fulfill(sku, items.get(sku).count);
-		items = new HashMap<String, BasketItem>();
-		System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice);
-	}
+		def sortedSkus
+			@items.keys.sort
+		end
 
-	private int currentTotal() {
-		int total = 0;
-		for (BasketItem item : items.values())
-			total += item.count * item.price;
-		if (total > 2000)
-			total -= (total/10);
-		return total;
-	}
+		def currentTotal
+			total = 0
+			# for (BasketItem item : @items.values)
+			# 	total += item.count * item.price
+			if (total > 2000)
+				total -= (total/10)
+			end
+			total
+		end
 
-}
+	end
+end
