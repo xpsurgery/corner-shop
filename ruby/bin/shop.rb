@@ -22,7 +22,7 @@ class Application
 			catalogueActions = CatalogueActions::CatalogueActions.new(catalogue)
 			warehouseActions = WarehouseActions::WarehouseActions.new(warehouse, catalogue)
 			basketActions = BasketActions::BasketActions.new(basket, catalogue, warehouse)
-			Ui::UserInterface.new(catalogueActions, warehouseActions, basketActions).start
+			UserInterface::UserInterface.new(catalogueActions, warehouseActions, basketActions).start
 			displayGoodbyeMessage
 			exit 0
 		end

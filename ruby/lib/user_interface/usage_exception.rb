@@ -1,4 +1,4 @@
-module Ui
+module UserInterface
 
 public class UsageException extends RuntimeException
 

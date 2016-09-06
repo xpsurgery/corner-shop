@@ -1,19 +1,20 @@
-module Ui
+module UserInterface
 
-public class UserInput
+	class UserInput
 
-	char command
-	public String[] args
+		attr_reader :command, :args
 
-	UserInput(String line)
-		command = line.charAt(0)
-		args = line.split("\\s+")
+		def initialize(line)
+			@command = line[0]
+			@args = line.split("\\s+")
+		end
+
+		def args(i)
+			if i < 0
+				throw IllegalArgumentException.new
+			end
+			return (i < args.length) ? args[i] : nil
+		end
+
 	end
-
-	public String args(int i)
-		if (i < 0)
-			throw new IllegalArgumentException
-		return (i < args.length) ? args[i] : null
-	end
-
 end

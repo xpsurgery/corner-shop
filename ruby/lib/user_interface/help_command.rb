@@ -1,30 +1,23 @@
-module Ui
+module UserInterface
 
-require_relative java.io.PrintStream
+	class HelpCommand
 
-class HelpCommand implements UserCommand
+		def run(cmd)
+			puts "Customer actions:"
+			puts "  a sku [num]             Add SKU to basket; num defaults to 1"
+			puts "  b                       List basket contents"
+			puts "  c                       Checkout"
+			puts "  d sku                   Show detailed product info for SKU"
+			puts "  p                       List all products"
+			puts
+			puts "Warehouse actions:"
+			puts "  r aisle loc sku num     Replenish SKU with num additional units"
+			puts "  s                       Show stock levels"
+			puts
+			puts "General:"
+			puts "  h                       Show this help"
+			puts "  q                       Quit"
+		end
 
-	private PrintStream out
-
-	HelpCommand(PrintStream out)
-		this.out = out
 	end
-
-	public void run(UserInput cmd)
-		out.println("Customer actions:")
-		out.println("  a sku [num]             Add SKU to basket; num defaults to 1")
-		out.println("  b                       List basket contents")
-		out.println("  c                       Checkout")
-		out.println("  d sku                   Show detailed product info for SKU")
-		out.println("  p                       List all products")
-		out.println
-		out.println("Warehouse actions:")
-		out.println("  r aisle loc sku num     Replenish SKU with num additional units")
-		out.println("  s                       Show stock levels")
-		out.println
-		out.println("General:")
-		out.println("  h                       Show this help")
-		out.println("  q                       Quit")
-	end
-
 end

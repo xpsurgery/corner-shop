@@ -1,8 +1,10 @@
 require_relative '../basket_actions/basket_actions'
 require_relative '../catalogue_actions/catalogue_actions'
 require_relative '../warehouse_actions/warehouse_actions'
+require_relative './user_input'
+require_relative './help_command'
 
-module Ui
+module UserInterface
 
 	class UserInterface
 
@@ -45,7 +47,7 @@ module Ui
 			when 'd'
 				return catalogueActions.displayProductDetails
 			when 'h'
-				return new HelpCommand(System.out)
+				return HelpCommand.new
 			when 'p'
 				return catalogueActions.listProducts
 			when 'r'
@@ -53,7 +55,7 @@ module Ui
 			when 's'
 				return warehouseActions.stockReport
 			else
-				return new UnknownCommand
+				return UnknownCommand.new
 			end
 		end
 
