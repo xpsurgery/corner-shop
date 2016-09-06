@@ -18,8 +18,8 @@ module BasketActions
 			end
 			items.each do |item|
 				leader = sprintf("£%8.02f %5dx     ", item.price / 100.0, item.count)
-				possLen = leader.length + item.title.length()
-				title = (possLen > 60) ? item.title.substring(0, 60-leader.length-3)+"..." : item.title
+				possLen = leader.length + item.title.length
+				title = (possLen > 60) ? item.title[0, 60-leader.length-3]+"..." : item.title
 				puts leader + title
 			end
 			total = basketTotal(items)
