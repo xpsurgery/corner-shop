@@ -14,7 +14,7 @@ module Warehouse
 				data.each do |line|
 					stock[line.sku_code] = line.count
 				end
-				return Warehouse.new(stock)
+				Warehouse.new(stock)
 			end
 
 		end
@@ -48,10 +48,8 @@ module Warehouse
 		private
 
 		def lookup(sku)
-			@stock.keys.each do | sku_code|
-				if sku_code[2] == sku
-					return sku_code
-				end
+			@stock.keys.each do |sku_code|										# TODO -- select
+				return sku_code if sku_code[2] == sku
 			end
 			nil
 		end

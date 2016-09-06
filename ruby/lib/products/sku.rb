@@ -33,7 +33,7 @@ module Products
 			if currentLine.length > 2
 				result << currentLine
 			end
-			return result
+			result
 		end
 	end
 end

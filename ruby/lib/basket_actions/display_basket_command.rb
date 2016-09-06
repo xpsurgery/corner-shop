@@ -36,10 +36,10 @@ module BasketActions
 
 		def basketTotal(items)
 			total = 0
-			items.each do |item|
+			items.each do |item|																# TODO -- inject
 				total += item.price * item.count
 			end
-			return total
+			total
 		end
 
 	end

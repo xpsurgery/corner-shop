@@ -28,19 +28,15 @@ module Products
 		end
 
 		def lookup(id)
-			@products.each do |sku|
-				if sku.code[2] == id
-					return sku
-				end
+			@products.each do |sku|											# TODO -- select
+				return sku if sku.code[2] == id
 			end
 			nil
 		end
 
 		def lookup_code(sku)
-			@products.each do |s|
-				if s.code[2] == sku
-					return s.code
-				end
+			@products.each do |s|												# TODO -- select
+				return s.code if s.code[2] == sku
 			end
 			nil
 		end
