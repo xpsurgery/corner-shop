@@ -51,7 +51,7 @@ module UserInterface
 			when 'p'
 				return @catalogueActions.listProducts
 			when 'r'
-				return @warehouseActions.replenishStock
+				return @warehouseActions.replenish_stock
 			when 's'
 				return @warehouseActions.stock_report
 			else

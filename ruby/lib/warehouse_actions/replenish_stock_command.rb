@@ -1,6 +1,7 @@
 require_relative '../products/catalogue'
 require_relative '../user_interface/user_input'
 require_relative '../warehouse/warehouse'
+require_relative './unknown_product_exception'
 
 module WarehouseActions
 
@@ -13,18 +14,18 @@ module WarehouseActions
 
 		def run(cmd)
 			if (cmd.args.length != 5)
-				System.err.println("ERROR: Usage: r aisle loc sku num")
+				$stderr.puts "ERROR: Usage: r aisle loc sku num"
 				return
 			end
-			if (@catalogue.lookup(cmd.args(3)) == null)
-				throw new UnknownProductException(cmd.args(3))
+			if @catalogue.lookup(cmd.arg(3)).nil?
+				throw UnknownProductException.new(cmd.arg(3))
 			end
-			sku = [cmd.args(1), cmd.args(2), cmd.args(3)]
+			sku = [cmd.arg(1), cmd.arg(2), cmd.arg(3)]
 			begin
-				int numItems = Integer.parseInt(cmd.args(4))
+				numItems = Integer(cmd.arg(4))
 				@warehouse.replenish(sku, numItems)
-			rescue (NumberFormatException e)
-				System.err.println("ERROR: Usage: r sku numitems")
+			rescue ArgumentError
+				$stderr.puts "ERROR: Usage: r sku numitems"
 			end
 		end
 
