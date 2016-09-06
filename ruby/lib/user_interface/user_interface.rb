@@ -53,7 +53,7 @@ module UserInterface
 			when 'r'
 				return @warehouseActions.replenishStock
 			when 's'
-				return @warehouseActions.stockReport
+				return @warehouseActions.stock_report
 			else
 				return UnknownCommand.new
 			end

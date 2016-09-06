@@ -10,7 +10,7 @@ module CatalogueActions
   	end
 
   	def run(cmd)
-  		@catalogue.list(System.out)
+  		@catalogue.list($stdout)
   	end
 
   end

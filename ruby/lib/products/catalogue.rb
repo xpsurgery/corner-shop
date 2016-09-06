@@ -9,11 +9,10 @@ module Products
 			def fromFile(catalogueReader)
 				products = []
 				lines = catalogueReader.readAll
-				lines.each do |line|
-					Sku sku = Sku.new([ line[0], line[1], line[2] ], line[3], line[4], Integer.parseInt(line[5]))
-					products.add(sku)
-				end
-				return Catalogue.new(products)
+				products = lines.map { |line|
+					Sku.new([ line[0], line[1], line[2] ], line[3], line[4], Integer(line[5]))
+				}
+				Catalogue.new(products)
 			end
 
 		end
@@ -26,8 +25,8 @@ module Products
 			sortedSkus.each do |sku|
 				out.printf("%s\t%dp\t%s\n", sku.code[2], sku.price, sku.title)
 			end
-			out.println
-			out.println("10% discount on orders over £20.00!")
+			out.puts
+			out.puts "10% discount on orders over £20.00!"
 		end
 
 		def lookup(id)

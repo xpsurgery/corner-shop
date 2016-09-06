@@ -11,18 +11,19 @@ module CatalogueActions
 		end
 
 		def run(cmd)
-			String id = cmd.args(1)
+			id = cmd.args(1)
 			if (id == null || cmd.args.length != 2)
-				System.err.println("ERROR: Usage: d sku")
+				$stderr.puts "ERROR: Usage: d sku"
 				return
 			end
-			Sku sku = @catalogue.lookup(id)
-			if (sku == null)
-				System.err.println("ERROR: product code " + id + " not found")
+			sku = @catalogue.lookup(id)
+			if sku.nil?
+				$stderr.puts "ERROR: product code #{id} not found"
 			else
 				System.out.printf("%s\t%s\t£%5.02f\n\n", sku.code[2], sku.title, sku.price / 100.0)
-				for (String line : sku.description)
-					System.out.println(line)
+				sku.description.each do |line|
+					puts line
+				end
 			end
 		end
 

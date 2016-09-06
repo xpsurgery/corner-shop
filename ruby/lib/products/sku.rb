@@ -1,6 +1,8 @@
 module Products
 
-	class Sku #implements Comparable<Sku>
+	class Sku
+
+		attr_reader :code, :title, :description, :price
 
 		def initialize(code, title, description, price)
 			@code = code
@@ -9,10 +11,10 @@ module Products
 			@price = price
 		end
 
-		def compareTo(other)
+		def <=>(other)
 			myCode = code[0] + code[1] + code[2]
 			otherCode = other.code[0] + other.code[1] + other.code[2]
-			myCode.compareTo(otherCode)
+			myCode <=> otherCode
 		end
 
 		def description

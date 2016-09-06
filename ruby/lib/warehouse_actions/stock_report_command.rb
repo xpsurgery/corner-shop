@@ -10,7 +10,7 @@ module WarehouseActions
   	end
 
   	def run(cmd)
-  		@warehouse.stockReport(System.out)
+  		@warehouse.stock_report($stdout)
   	end
 
   end
