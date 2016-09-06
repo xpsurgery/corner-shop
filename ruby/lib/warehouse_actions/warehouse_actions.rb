@@ -1,25 +1,23 @@
+require_relative '../products/catalogue'
+require_relative '../user_interface/user_command'
+require_relative '../warehouse/warehouse'
+
 module WarehouseActions
 
-require_relative Products.Catalogue
-require_relative Ui.UserCommand
-require_relative Warehouse.Warehouse
+	public class WarehouseActions
 
-public class WarehouseActions
+		def initialize(warehouse, catalogue)
+			@warehouse = warehouse
+			@catalogue = catalogue
+		end
 
-	private Warehouse warehouse
-	private Catalogue catalogue
+		def stockReport
+			StockReportCommand.new(@warehouse)
+		end
 
-	public WarehouseActions(Warehouse warehouse, Catalogue catalogue)
-		this.warehouse = warehouse
-		this.catalogue = catalogue
+		def replenishStock
+			ReplenishStockCommand.new(@warehouse, @catalogue)
+		end
+
 	end
-
-	public UserCommand stockReport
-		return new StockReportCommand(warehouse)
-	end
-
-	public UserCommand replenishStock
-		return new ReplenishStockCommand(warehouse, catalogue)
-	end
-
 end

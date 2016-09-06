@@ -7,3 +7,4 @@ class InvalidNumItemsException extends RuntimeException
 	end
 
 end
+end

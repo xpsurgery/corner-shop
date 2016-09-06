@@ -15,3 +15,4 @@ public class StockMemento
 	end
 
 end
+end

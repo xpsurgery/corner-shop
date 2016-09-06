@@ -7,3 +7,4 @@ class NotEnoughStockException extends RuntimeException
 	end
 
 end
+end
