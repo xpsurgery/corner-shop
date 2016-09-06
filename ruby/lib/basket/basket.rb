@@ -26,15 +26,15 @@ module Basket
 
 		def checkout(warehouse)
 			if @items.empty?
-				$stderr.println("Your basket is empty!")
+				$stderr.puts "Your basket is empty!"
 				return
 			end
 			totalPrice = currentTotal / 100.0
 			@items.keys.each do |sku|
-				warehouse.fulfill(sku, @items.get(sku).count)
+				warehouse.fulfill(sku, @items[sku].count)
 			end
 			@items = {}
-			System.out.printf("All items checked out. Total price £%5.02f\n", totalPrice)
+			printf("All items checked out. Total price £%5.02f\n", totalPrice)
 		end
 
 		private

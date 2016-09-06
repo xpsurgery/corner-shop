@@ -12,7 +12,7 @@ module BasketActions
 		end
 
 		def run(cmd)
-			basket.checkout(warehouse)
+			@basket.checkout(@warehouse)
 		end
 
 	end
