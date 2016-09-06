@@ -13,7 +13,7 @@ module Warehouse
 				data.each do |line|
 					stock.put(line.skuCode, line.count)
 				end
-				return new Warehouse(stock)
+				return Warehouse.new(stock)
 			end
 
 		end

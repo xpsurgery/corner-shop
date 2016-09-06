@@ -16,13 +16,13 @@ class Application
 
 		def main(args)
 			displayWelcomeMessage
-			warehouse = Warehouse.fromFile(WarehouseReader.new("../warehouse.dat"))
-			catalogue = Catalogue.fromFile(CatalogueReader.new("../catalogue.dat"))
-			basket = Basket.new
-			catalogueActions = CatalogueActions.new(catalogue)
-			warehouseActions = WarehouseActions.new(warehouse, catalogue)
-			basketActions = BasketActions.new(basket, catalogue, warehouse)
-			UserInterface.new(System.in, catalogueActions, warehouseActions, basketActions).start
+			warehouse = Warehouse::Warehouse.fromFile(Filestore::WarehouseReader.new("../warehouse.dat"))
+			catalogue = Products::Catalogue.fromFile(Filestore::CatalogueReader.new("../catalogue.dat"))
+			basket = Basket::Basket.new
+			catalogueActions = CatalogueActions::CatalogueActions.new(catalogue)
+			warehouseActions = WarehouseActions::WarehouseActions.new(warehouse, catalogue)
+			basketActions = BasketActions::BasketActions.new(basket, catalogue, warehouse)
+			Ui::UserInterface.new(catalogueActions, warehouseActions, basketActions).start
 			displayGoodbyeMessage
 			exit 0
 		end

@@ -6,7 +6,7 @@ module Ui
 
 	class UserInterface
 
-		def initialize(input, catalogueActions, warehouseActions, basketActions)
+		def initialize(catalogueActions, warehouseActions, basketActions)
 			@catalogueActions = catalogueActions
 			@warehouseActions = warehouseActions
 			@basketActions = basketActions
