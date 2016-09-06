@@ -1,3 +1,5 @@
+require_relative './data_file_exception'
+
 module Filestore
 
 	class CatalogueReader
@@ -14,7 +16,7 @@ module Filestore
 					lines << args
 				end
 			rescue Exception => e
-				throw DataFileException.new(filename)
+				throw DataFileException.new(@filename, e)
 			end
 			lines
 		end

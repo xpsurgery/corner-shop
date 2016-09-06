@@ -1,10 +1,10 @@
 module Filestore
 
-public class DataFileException extends RuntimeException
+  class DataFileException < StandardError
 
-	public DataFileException(String filename)
-		super("Could not read file " + filename)
-	end
+  	def initialize(filename, e)
+  		super("Could not read file #{filename}: #{e}")
+  	end
 
-end
+  end
 end

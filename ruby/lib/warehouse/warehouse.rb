@@ -11,7 +11,7 @@ module Warehouse
 				data = warehouseReader.readAll
 				stock = {}
 				data.each do |line|
-					stock.put(line.skuCode, line.count)
+					stock[line.sku_code] = line.count
 				end
 				return Warehouse.new(stock)
 			end
@@ -23,27 +23,27 @@ module Warehouse
 		end
 
 		def stock_report(out)
-			@stock.keys.each do |skuCode|
-				out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode))
+			@stock.keys.each do |sku_code|
+				out.printf("%s %s %s   %6d\n", sku_code[0], sku_code[1], sku_code[2], @stock[sku_code])
 			end
 		end
 
-		def replenish(skuCode, numItems)
+		def replenish(sku_code, numItems)
 			if (numItems <= 0)
 				throw InvalidNumItemsException.new(numItems)
 			end
-			changeStockLevel(skuCode, numItems)
+			changeStockLevel(sku_code, numItems)
 		end
 
 		def fulfill(sku, numItems)
-			skuCode = lookup(sku)
-			mustStock(skuCode, numItems)
-			changeStockLevel(skuCode, -numItems)
+			sku_code = lookup(sku)
+			mustStock(sku_code, numItems)
+			changeStockLevel(sku_code, -numItems)
 		end
 
 		def mustStock(sku, numItems)
-			skuCode = lookup(sku[2])
-			if (skuCode == null || stock.get(skuCode) < numItems)
+			sku_code = lookup(sku[2])
+			if sku_code.nil? || @stock[sku_code] < numItems
 				throw NotEnoughStockException.new(sku, numItems)
 			end
 		end
@@ -51,18 +51,18 @@ module Warehouse
 		private
 
 		def lookup(sku)
-			@stock.keys.each do | skuCode|
-				if (skuCode[2].equals(sku))
-					return skuCode
+			@stock.keys.each do | sku_code|
+				if sku_code[2] == sku
+					return sku_code
 				end
 			end
 			nil
 		end
 
-		def changeStockLevel(skuCode, numItems)
-			key = lookup(skuCode[2])
-			if (key == nil)
-				@stock[skuCode] = numItems
+		def changeStockLevel(sku_code, numItems)
+			key = lookup(sku_code[2])
+			if key.nil?
+				@stock[sku_code] = numItems
 			else
 				@stock[key] = @stock[key] + numItems
 			end

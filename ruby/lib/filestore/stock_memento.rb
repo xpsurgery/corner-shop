@@ -7,8 +7,8 @@ module Filestore
 		def initialize(aisle, loc, sku, count)
 			@sku_code = [aisle, loc, sku]
 			begin
-				@count = Integer.parseInt(count)
-			rescue (NumberFormatException e)
+				@count = Integer(count)
+			rescue ArgumentError => e
 				throw new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
 			end
 		end
