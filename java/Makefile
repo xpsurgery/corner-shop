@@ -11,10 +11,10 @@ JFLAGS = -sourcepath $(SOURCE_DIR) -d $(OUTPUT_DIR)
 
 all_javas := $(OUTPUT_DIR)/all.javas
 
-default: run
+default: all
 
 .PHONY: all
-all: compile
+all: compile run
 
 .PHONY: compile
 compile: $(all_javas)
@@ -27,7 +27,7 @@ $(all_javas): $(OUTPUT_DIR)
 $(OUTPUT_DIR):
 	$(MKDIR) $(OUTPUT_DIR)
 
-run: compile
+run:
 	@java -classpath $(OUTPUT_DIR) Main.Application
 
 clean:

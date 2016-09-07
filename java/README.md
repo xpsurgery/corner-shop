@@ -1,7 +1,7 @@
 # To build and run the application
 
 ```
-make run
+make all
 ```
 
 This assumes you have a Java compiler on your path,
