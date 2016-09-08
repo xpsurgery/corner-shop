@@ -16,4 +16,20 @@ describe('basket') do
     end
   end
 
+  example('allows multiple items to be added at once') do
+    Shop.create do |shop|
+      shop.send('a 6000 5')
+      expect(shop.send('b')[0]).to include('3.99     5x     Phillips screwdriver, small, with co...')
+      expect(shop.send('b')[2]).to include('19.95 total')
+    end
+  end
+
+  example('applies a 10% discount over £20') do
+    Shop.create do |shop|
+      shop.send('a 6000 6')
+      expect(shop.send('b')[1]).to include('10% discount')
+      expect(shop.send('b')[3]).to include('21.55 total')
+    end
+  end
+
 end
