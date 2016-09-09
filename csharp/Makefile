@@ -1,0 +1,3 @@
+
+run:
+	@dotnet run

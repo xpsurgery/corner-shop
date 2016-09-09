@@ -5,7 +5,7 @@ class Shop
   def initialize(opts)
     @echo_lines = opts[:echo_lines]
     @first_command = true
-    @stdout, @stdin, @pid = PTY.spawn(opts[:command])
+    @stdout, @stdin, @pid = PTY.spawn('make run')
     read__all_command_output
   end
 
