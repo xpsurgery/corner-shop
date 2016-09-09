@@ -1,3 +1,5 @@
+require_relative './data_format_exception'
+
 module Filestore
 
 	class StockMemento
@@ -9,7 +11,7 @@ module Filestore
 			begin
 				@count = Integer(count)
 			rescue ArgumentError
-				raise new DataFormatException("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
+				raise DataFormatException.new("Last argument must be a number: " + aisle + " " + loc + " " + sku + " " + count)
 			end
 		end
 

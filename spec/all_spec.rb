@@ -1,5 +1,5 @@
 require 'spec_helper'
-Dir["./spec/shared/**/*.rb"].sort.each { |f| require f}
+Dir['./spec/shared/**/*.rb'].sort.each { |f| require f }
 
 {
   'csharp' => {

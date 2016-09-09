@@ -1,10 +1,10 @@
 module Filestore
 
-public class DataFormatException extends RuntimeException
+  class DataFormatException < StandardError
 
-	public DataFormatException(String message)
-		super(message)
-	end
+  	def initialize(message)
+  		super(message)
+  	end
 
-end
+  end
 end
