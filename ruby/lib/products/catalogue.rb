@@ -1,5 +1,3 @@
-require_relative '../filestore/catalogue_reader'
-
 module Products
 
 	class Catalogue

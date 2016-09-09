@@ -1,4 +1,5 @@
 require_relative './data_file_exception'
+require_relative './stock_memento'
 
 module Filestore
 

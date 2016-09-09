@@ -1,5 +1,4 @@
-require_relative '../filestore/stock_memento'
-require_relative '../filestore/warehouse_reader'
+require_relative './invalid_num_items_exception'
 require_relative './not_enough_stock_exception'
 
 module Warehouse

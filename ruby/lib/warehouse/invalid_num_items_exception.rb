@@ -1,10 +1,10 @@
 module Warehouse
 
-class InvalidNumItemsException extends RuntimeException
+  class InvalidNumItemsException < StandardError
 
-	InvalidNumItemsException(int numItems)
-		super("Please supply a number of items greater than zero")
-	end
+    def initialize(numItems)
+      super("Please supply a number of items greater than zero")
+    end
 
-end
+  end
 end
