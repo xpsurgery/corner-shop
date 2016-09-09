@@ -27,6 +27,8 @@ $(all_javas): $(OUTPUT_DIR)
 $(OUTPUT_DIR):
 	$(MKDIR) $(OUTPUT_DIR)
 
+build: compile
+
 run:
 	@java -classpath $(OUTPUT_DIR) Main.Application
 
