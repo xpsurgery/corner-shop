@@ -1,20 +1,14 @@
+.PHONY: build clean spec
 
 default: spec
 
 LANGUAGES = java csharp ruby
 
-.PHONY: subdirs $(LANGUAGES)
+build:
+	for d in $(LANGUAGES); do $(MAKE) -C $$d build; done
 
-subdirs: $(LANGUAGES)
-
-$(LANGUAGES):
-	$(MAKE) -C $@ build
-
-build: $(LANGUAGES)
-
-.PHONY: spec
 spec: build
 	rspec --color -fdoc
 
 clean:
-	-for d in $(LANGUAGES); do (cd $$d; $(MAKE) clean ); done
+	-for d in $(LANGUAGES); do $(MAKE) -C $$d clean; done
