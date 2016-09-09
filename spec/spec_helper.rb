@@ -2,22 +2,27 @@ require 'pty'
 
 class Shop
 
-  def self.create(dir, cmd)
+  def self.create(dir, opts)
     Dir.chdir(dir) do
-      shop = Shop.new(cmd)
+      shop = Shop.new(opts)
       yield(shop)
       shop.close
     end
   end
 
-  def initialize(cmd)
-    @stdout, @stdin, @pid = PTY.spawn(cmd)
+  def initialize(opts)
+    @echo_lines = opts[:echo_lines]
+    @first_command = true
+    @stdout, @stdin, @pid = PTY.spawn(opts[:command])
     get
   end
 
   def send(s)
     @stdin.write(s + "\n")
-    get.split(/\r\n/)[1..-2]
+    reply = get
+    echo_lines = @first_command ? @echo_lines : 1
+    @first_command = false
+    reply.split(/\r\n/)[echo_lines..-2]
   end
 
   def close
