@@ -1,6 +1,4 @@
-require_relative '../products/catalogue'
-require_relative '../products/sku'
-require_relative '../warehouse/warehouse'
+require_relative './basket_item'
 
 module Basket
 

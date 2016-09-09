@@ -15,7 +15,7 @@ module BasketActions
 		end
 
 		def run(cmd)
-			if cmd.args.length > 3
+			if cmd.args.length > 3 || cmd.args.length < 2
 				$stderr.puts "ERROR: Usage: a sku [numitems]"
 				return
 			end
@@ -25,14 +25,14 @@ module BasketActions
 				begin
 					num_items = Integer(cmd.arg(2))
 				rescue ArgumentError
-					raise new UsageException("The number of items must be a number greater than zero.")
+					raise UserInterface::UsageException.new("The number of items must be a number greater than zero.")
 				end
 			end
 			if num_items <= 0
-				raise UsageException.new("The number of items must be a number greater than zero.")
+				raise UserInterface::UsageException.new("The number of items must be a number greater than zero.")
 			end
 			skuCode = @catalogue.lookup_code(sku)
-			raise UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
+			raise UserInterface::UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
 			@warehouse.must_stock(skuCode, num_items)
 			@basket.add(sku, @catalogue, num_items)
 		end

@@ -19,7 +19,7 @@ namespace BasketActions {
 		}
 
 		public void Run(UserInput cmd) {
-			if (cmd.args.Length > 3) {
+			if (cmd.args.Length > 3 || cmd.args.Length < 2) {
 				Console.WriteLine("ERROR: Usage: a sku [numitems]");
 				return;
 			}

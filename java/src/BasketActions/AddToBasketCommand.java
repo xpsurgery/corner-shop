@@ -21,7 +21,7 @@ class AddToBasketCommand implements UserCommand {
 
 	@Override
 	public void run(UserInput cmd) {
-		if (cmd.args.length > 3) {
+		if (cmd.args.length > 3 || cmd.args.length < 2) {
 			System.err.println("ERROR: Usage: a sku [numitems]");
 			return;
 		}

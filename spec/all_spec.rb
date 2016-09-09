@@ -1,7 +1,5 @@
 require 'spec_helper'
-require 'shared/basket'
-require 'shared/default_stock_levels'
-require 'shared/replenish_stock'
+Dir["./spec/shared/**/*.rb"].sort.each { |f| require f}
 
 {
   'csharp' => {
@@ -21,6 +19,7 @@ require 'shared/replenish_stock'
     shopkeeper = Shopkeeper.new(dir, opts)
     describe(dir) do
       include_examples 'basket', shopkeeper
+      include_examples 'add to basket', shopkeeper
       include_examples 'default stock levels', shopkeeper
       include_examples 'replenishing stock', shopkeeper
     end
