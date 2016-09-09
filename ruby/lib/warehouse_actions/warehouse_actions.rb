@@ -1,5 +1,3 @@
-require_relative '../products/catalogue'
-require_relative '../warehouse/warehouse'
 require_relative './stock_report_command'
 require_relative './replenish_stock_command'
 

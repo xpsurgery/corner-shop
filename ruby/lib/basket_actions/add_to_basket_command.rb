@@ -1,8 +1,4 @@
-require_relative '../products/catalogue'
 require_relative '../user_interface/usage_exception'
-require_relative '../user_interface/user_input'
-require_relative '../warehouse/warehouse'
-require_relative '../basket/basket'
 
 module BasketActions
 

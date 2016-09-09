@@ -1,4 +1,3 @@
-require_relative '../products/catalogue'
 require_relative './display_product_details_command'
 require_relative './list_products_command'
 

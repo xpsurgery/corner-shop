@@ -1,7 +1,3 @@
-require_relative '../user_interface/user_input'
-require_relative '../basket/basket'
-require_relative '../basket/basket_item'
-
 module BasketActions
 
 	class DisplayBasketCommand

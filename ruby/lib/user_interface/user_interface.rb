@@ -1,9 +1,6 @@
-require_relative '../basket_actions/basket_actions'
-require_relative '../catalogue_actions/catalogue_actions'
-require_relative '../warehouse_actions/warehouse_actions'
-require_relative './user_input'
 require_relative './help_command'
 require_relative './unknown_command'
+require_relative './user_input'
 
 module UserInterface
 

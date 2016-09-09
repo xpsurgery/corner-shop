@@ -1,7 +1,3 @@
-require_relative '../basket/basket'
-require_relative '../products/catalogue'
-require_relative '../warehouse/warehouse'
-
 require_relative './add_to_basket_command'
 require_relative './checkout_command'
 require_relative './display_basket_command'

@@ -1,6 +1,3 @@
-require_relative '../user_interface/user_input'
-require_relative '../warehouse/warehouse'
-
 module WarehouseActions
 
   class StockReportCommand

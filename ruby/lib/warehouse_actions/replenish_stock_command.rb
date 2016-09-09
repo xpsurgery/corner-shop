@@ -1,6 +1,3 @@
-require_relative '../products/catalogue'
-require_relative '../user_interface/user_input'
-require_relative '../warehouse/warehouse'
 require_relative './unknown_product_exception'
 
 module WarehouseActions

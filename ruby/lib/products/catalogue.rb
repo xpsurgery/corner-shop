@@ -1,3 +1,5 @@
+require_relative './sku'
+
 module Products
 
 	class Catalogue

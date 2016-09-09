@@ -1,7 +1,3 @@
-require_relative '../products/catalogue'
-require_relative '../products/sku'
-require_relative '../user_interface/user_input'
-
 module CatalogueActions
 
 	class DisplayProductDetailsCommand
