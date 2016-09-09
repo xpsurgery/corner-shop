@@ -1,3 +1,4 @@
+.PHONY: build run clean
 
 FIND     := find
 JAVAC    := javac
@@ -34,4 +35,3 @@ run:
 
 clean:
 	$(RM) $(OUTPUT_DIR)
-
