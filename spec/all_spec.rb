@@ -18,10 +18,11 @@ require 'shared/replenish_stock'
   }
 }.each do |dir, opts|
   Dir.chdir(dir) do
+    shopkeeper = Shopkeeper.new(dir, opts)
     describe(dir) do
-      include_examples 'basket', dir, opts
-      include_examples 'default stock levels', dir, opts
-      include_examples 'replenishing stock', dir, opts
+      include_examples 'basket', shopkeeper
+      include_examples 'default stock levels', shopkeeper
+      include_examples 'replenishing stock', shopkeeper
     end
   end
 end
