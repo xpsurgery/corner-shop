@@ -31,7 +31,7 @@ $(OUTPUT_DIR):
 build: compile
 
 run:
-	@java -classpath $(OUTPUT_DIR) Main.Application
+	@java -classpath $(OUTPUT_DIR) com.xpsurgery.cornershop.main.Application
 
 clean:
 	$(RM) $(OUTPUT_DIR)
