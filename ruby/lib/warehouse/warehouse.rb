@@ -23,7 +23,7 @@ module Warehouse
 		end
 
 		def stock_report(out)
-			@stock.keys.each do |sku_code|
+			@stock.keys.sort.each do |sku_code|
 				out.printf("%s %s %s   %6d\n", sku_code[0], sku_code[1], sku_code[2], @stock[sku_code])
 			end
 		end

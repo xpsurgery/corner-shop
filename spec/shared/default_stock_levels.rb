@@ -4,7 +4,7 @@ shared_examples('default stock levels') do |shopkeeper|
 
     example('match those in the file') do
       shopkeeper.open do |shop|
-        expect(shop.send('s')).to eq(['24 17 5990       50', '10 04 2761       17', '01 01 6000      105', '01 12 1045        3'])
+        expect(shop.send('s')).to eq(['01 01 6000      105', '01 12 1045        3', '10 04 2761       17', '24 17 5990       50'])
       end
     end
 

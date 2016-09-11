@@ -5,7 +5,7 @@ namespace Warehouse {
 	using System.Collections.Generic;
 
 	public class Warehouse {
-		
+
 		public static Warehouse FromFile(WarehouseReader warehouseReader) {
 			var data = warehouseReader.ReadAll();
 			var stock = new Dictionary<string[], int>();
@@ -21,7 +21,9 @@ namespace Warehouse {
 		}
 
 		public void StockReport() {
-			foreach (string[] skuCode in stock.Keys)
+			var keys = new List<string[]>(stock.Keys);
+			keys.Sort((a, b) => (a[0]+a[1]+a[2]).CompareTo(b[0]+b[1]+b[2]));
+			foreach (string[] skuCode in keys)
 				Console.WriteLine("{0} {1} {2}   {3,6:D}", skuCode[0], skuCode[1], skuCode[2], stock[skuCode]);
 		}
 

@@ -1,15 +1,18 @@
 package Warehouse;
 
 import java.io.PrintStream;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import Filestore.StockMemento;
 import Filestore.WarehouseReader;
 
 public class Warehouse {
-	
+
 	public static Warehouse fromFile(WarehouseReader warehouseReader) {
 		List<StockMemento> data = warehouseReader.readAll();
 		Map<String[], Integer> stock = new HashMap<String[], Integer>();
@@ -25,7 +28,14 @@ public class Warehouse {
 	}
 
 	public void stockReport(PrintStream out) {
-		for (String[] skuCode : stock.keySet())
+		Comparator<String[]> comp = new Comparator<String[]>() {
+			public int compare(String[] a, String[] b) {
+				return (a[0]+a[1]+a[2]).compareTo(b[0]+b[1]+b[2]);
+			}
+		};
+		SortedSet<String[]> keys = new TreeSet<String[]>(comp);
+		keys.addAll(stock.keySet());
+		for (String[] skuCode : keys)
 			out.printf("%s %s %s   %6d\n", skuCode[0], skuCode[1], skuCode[2], stock.get(skuCode));
 	}
 
