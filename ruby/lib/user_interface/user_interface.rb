@@ -6,10 +6,10 @@ module UserInterface
 
 	class UserInterface
 
-		def initialize(catalogueActions, warehouseActions, basketActions)
-			@catalogueActions = catalogueActions
-			@warehouseActions = warehouseActions
-			@basketActions = basketActions
+		def initialize(catalogue_actions, warehouse_actions, basket_actions)
+			@catalogue_actions = catalogue_actions
+			@warehouse_actions = warehouse_actions
+			@basket_actions = basket_actions
 		end
 
 		def start
@@ -37,21 +37,21 @@ module UserInterface
 		def createHandler(command)
 			case (command)
 			when 'a'
-				return @basketActions.addToBasket
+				return @basket_actions.add_to_basket
 			when 'b'
-				return @basketActions.displayBasket
+				return @basket_actions.display_basket
 			when 'c'
-				return @basketActions.checkout
+				return @basket_actions.checkout
 			when 'd'
-				return @catalogueActions.displayProductDetails
+				return @catalogue_actions.display_product_details
 			when 'h'
 				return HelpCommand.new
 			when 'p'
-				return @catalogueActions.listProducts
+				return @catalogue_actions.list_products
 			when 'r'
-				return @warehouseActions.replenish_stock
+				return @warehouse_actions.replenish_stock
 			when 's'
-				return @warehouseActions.stock_report
+				return @warehouse_actions.stock_report
 			else
 				return UnknownCommand.new
 			end

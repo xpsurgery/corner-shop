@@ -9,11 +9,11 @@ module CatalogueActions
 			@catalogue = catalogue
 		end
 
-		def displayProductDetails
+		def display_product_details
 			DisplayProductDetailsCommand.new(@catalogue)
 		end
 
-		def listProducts
+		def list_products
 			ListProductsCommand.new(@catalogue)
 		end
 

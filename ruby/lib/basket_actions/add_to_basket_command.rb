@@ -27,9 +27,9 @@ module BasketActions
 			if num_items <= 0
 				raise UserInterface::UsageException.new("The number of items must be a number greater than zero.")
 			end
-			skuCode = @catalogue.lookup_code(sku)
-			raise UserInterface::UsageException.new("Product " + sku + " unknown.") if skuCode.nil?
-			@warehouse.must_stock(skuCode, num_items)
+			sku_code = @catalogue.lookup_code(sku)
+			raise UserInterface::UsageException.new("Product " + sku + " unknown.") if sku_code.nil?
+			@warehouse.must_stock(sku_code, num_items)
 			@basket.add(sku, @catalogue, num_items)
 		end
 

@@ -14,11 +14,11 @@ module BasketActions
 			end
 			items.each do |item|
 				leader = sprintf("£%8.02f %5dx     ", item.price / 100.0, item.count)
-				possLen = leader.length + item.title.length
-				title = (possLen > 60) ? item.title[0, 60-leader.length-3]+"..." : item.title
+				poss_len = leader.length + item.title.length
+				title = (poss_len > 60) ? item.title[0, 60-leader.length-3]+"..." : item.title
 				puts leader + title
 			end
-			total = basketTotal(items)
+			total = basket_total(items)
 			if total > 2000
 				discount = total/10
 				printf("£%8.02f            10%% discount\n", discount / -100.0)
@@ -30,7 +30,7 @@ module BasketActions
 
 		private
 
-		def basketTotal(items)
+		def basket_total(items)
 			total = 0
 			items.each do |item|																# TODO -- inject
 				total += item.price * item.count

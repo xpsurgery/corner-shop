@@ -2,10 +2,10 @@ module Basket
 
 	class BasketItem
 
-		attr_reader :skuId, :title, :price, :count
+		attr_reader :sku, :title, :price, :count
 
-		def initialize(skuId, title, price, count)
-			@skuId = skuId
+		def initialize(sku, title, price, count)
+			@sku = sku
 			@title = title
 			@price = price
 			@count = count

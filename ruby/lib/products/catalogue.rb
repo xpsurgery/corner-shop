@@ -6,8 +6,8 @@ module Products
 
 		class << self
 
-			def from_file(catalogueReader)
-				products = catalogueReader.readAll.map { |line|
+			def from_file(catalogue_reader)
+				products = catalogue_reader.read_all.map { |line|
 					Sku.new([ line[0], line[1], line[2] ], line[3], line[4], Integer(line[5]))
 				}
 				Catalogue.new(products)

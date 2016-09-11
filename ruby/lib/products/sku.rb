@@ -20,18 +20,18 @@ module Products
 		def description
 			result = []
 			words = @description.split(/\s+/)
-			currentLine = "  "
+			current_line = "  "
 			words.each do |word|
-				currentLine += word
-				if currentLine.length >= 60
-					result << currentLine
-					currentLine = "  "
+				current_line += word
+				if current_line.length >= 60
+					result << current_line
+					current_line = "  "
 				else
-					currentLine += " "
+					current_line += " "
 				end
 			end
-			if currentLine.length > 2
-				result << currentLine
+			if current_line.length > 2
+				result << current_line
 			end
 			result
 		end

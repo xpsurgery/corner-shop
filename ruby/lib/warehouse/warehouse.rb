@@ -7,8 +7,8 @@ module Warehouse
 
 		class << self
 
-			def from_file(warehouseReader)
-				data = warehouseReader.readAll
+			def from_file(warehouse_reader)
+				data = warehouse_reader.read_all
 				stock = {}
 				data.each do |line|
 					stock[line.sku_code] = line.count

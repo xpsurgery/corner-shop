@@ -8,7 +8,7 @@ module Filestore
 			@filename = filename
 		end
 
-		def readAll
+		def read_all
 			lines = []
 			begin
 				File.foreach(@filename) do |line|

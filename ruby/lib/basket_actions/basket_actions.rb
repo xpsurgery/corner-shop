@@ -12,11 +12,11 @@ module BasketActions
 			@warehouse = warehouse
 		end
 
-		def addToBasket
+		def add_to_basket
 			AddToBasketCommand.new(@basket, @catalogue, @warehouse)
 		end
 
-		def displayBasket
+		def display_basket
 			DisplayBasketCommand.new(@basket)
 		end
 
