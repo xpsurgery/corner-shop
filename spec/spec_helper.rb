@@ -2,9 +2,7 @@ require 'pty'
 
 class Shop
 
-  def initialize(opts)
-    @echo_lines = opts[:echo_lines]
-    @first_command = true
+  def initialize
     @stdout, @stdin, @pid = PTY.spawn('make run')
     read__all_command_output
   end
@@ -34,14 +32,13 @@ class Shop
 end
 
 class Shopkeeper
-  def initialize(dir, opts)
+  def initialize(dir)
     @dir = dir
-    @opts = opts
   end
 
   def open
     Dir.chdir(@dir) do
-      shop = Shop.new(@opts)
+      shop = Shop.new
       yield(shop)
       shop.close
     end

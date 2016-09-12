@@ -1,19 +1,9 @@
 require 'spec_helper'
 Dir['./spec/shared/**/*.rb'].sort.each { |f| require f }
 
-{
-  'csharp' => {
-    echo_lines: 2
-  },
-  'java' => {
-    echo_lines: 1
-  },
-  'ruby' => {
-    echo_lines: 1
-  }
-}.each do |dir, opts|
+[ 'csharp', 'java', 'ruby' ].each do |dir|
   Dir.chdir(dir) do
-    shopkeeper = Shopkeeper.new(dir, opts)
+    shopkeeper = Shopkeeper.new(dir)
     describe(dir) do
       include_examples 'basket', shopkeeper
       include_examples 'add to basket', shopkeeper
