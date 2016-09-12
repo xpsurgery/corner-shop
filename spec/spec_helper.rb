@@ -11,9 +11,9 @@ class Shop
 
   def send(s)
     put(s)
-    echo_lines = @first_command ? @echo_lines : 1
-    @first_command = false
-    read__all_command_output.split(/\r\n/)[echo_lines..-2]
+    all_lines = read__all_command_output.split(/\r\n/)
+    echo_lines = all_lines[1] =~ /^\e\[\?1h\e=/ ? 2 : 1      # dotnet echoes the input twice!
+    all_lines[echo_lines..-2]
   end
 
   def close
