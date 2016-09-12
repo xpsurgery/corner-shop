@@ -18,3 +18,11 @@ command line, rather than from inside your IDE. Simply change to the
 top-level folder in the csharp project tree and run the application
 exe with no arguments.
 
+# To run the tests
+
+```
+make test
+```
+runs the common test suite that is shared by all language variants of the application.
+This depends on the Ruby `rspec` tool, which must be on your path.
+

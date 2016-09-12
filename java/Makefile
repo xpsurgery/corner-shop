@@ -1,4 +1,4 @@
-.PHONY: build run clean
+.PHONY: build run test clean
 
 FIND     := find
 JAVAC    := javac
@@ -12,14 +12,7 @@ JFLAGS = -sourcepath $(SOURCE_DIR) -d $(OUTPUT_DIR)
 
 all_javas := $(OUTPUT_DIR)/all.javas
 
-default: all
-
-.PHONY: all
-all: compile run
-
 .PHONY: compile
-compile: $(all_javas)
-	$(JAVAC) $(JFLAGS) @$<
 
 .INTERMEDIATE: $(all_javas)
 $(all_javas): $(OUTPUT_DIR)
@@ -28,7 +21,8 @@ $(all_javas): $(OUTPUT_DIR)
 $(OUTPUT_DIR):
 	$(MKDIR) $(OUTPUT_DIR)
 
-build: compile
+build: $(all_javas)
+	$(JAVAC) $(JFLAGS) @$<
 
 run:
 	@java -classpath $(OUTPUT_DIR) com.xpsurgery.cornershop.main.Application

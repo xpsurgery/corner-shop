@@ -1,9 +1,9 @@
-.PHONY: build run clean
+.PHONY: build run test clean
 
 build:
 	dotnet build
 
-run:
+run: build
 	@dotnet run
 
 test: build
