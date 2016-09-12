@@ -33,5 +33,8 @@ build: compile
 run:
 	@java -classpath $(OUTPUT_DIR) com.xpsurgery.cornershop.main.Application
 
+test: build
+	rspec --color -fdoc -I.. ../spec
+
 clean:
 	$(RM) $(OUTPUT_DIR)

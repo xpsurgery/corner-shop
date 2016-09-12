@@ -1,14 +1,13 @@
-.PHONY: build clean test
+LANGUAGES = java csharp ruby
+
+.PHONY: build clean test $(LANGUAGES)
 
 default: test
 
-LANGUAGES = java csharp ruby
+test: $(LANGUAGES)
 
-build:
-	for d in $(LANGUAGES); do $(MAKE) -C $$d build; done
-
-test: build
-	rspec --color -fdoc
+$(LANGUAGES):
+	$(MAKE) -C $@ test
 
 clean:
 	-for d in $(LANGUAGES); do $(MAKE) -C $$d clean; done

@@ -32,15 +32,9 @@ class Shop
 end
 
 class Shopkeeper
-  def initialize(dir)
-    @dir = dir
-  end
-
   def open
-    Dir.chdir(@dir) do
-      shop = Shop.new
-      yield(shop)
-      shop.close
-    end
+    shop = Shop.new
+    yield(shop)
+    shop.close
   end
 end
