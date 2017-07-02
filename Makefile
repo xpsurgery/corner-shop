@@ -1,4 +1,4 @@
-LANGUAGES = java csharp ruby
+LANGUAGES = java ruby csharp
 
 .PHONY: build clean test $(LANGUAGES)
 
