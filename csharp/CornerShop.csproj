@@ -1,72 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{05B09A31-E798-48D7-BD3B-A48EE4040A46}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CornerShop</RootNamespace>
-    <AssemblyName>CornerShop</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BasketActions\AddToBasketCommand.cs" />
-    <Compile Include="BasketActions\BasketActions.cs" />
-    <Compile Include="BasketActions\CheckoutCommand.cs" />
-    <Compile Include="BasketActions\DisplayBasketCommand.cs" />
-    <Compile Include="Basket\Basket.cs" />
-    <Compile Include="Basket\BasketItem.cs" />
-    <Compile Include="CatalogueActions\CatalogueActions.cs" />
-    <Compile Include="CatalogueActions\DisplayProductDetailsCommand.cs" />
-    <Compile Include="CatalogueActions\ListProductsCommand.cs" />
-    <Compile Include="Filestore\CatalogueReader.cs" />
-    <Compile Include="Filestore\DataFileException.cs" />
-    <Compile Include="Filestore\DataFormatException.cs" />
-    <Compile Include="Filestore\StockMemento.cs" />
-    <Compile Include="Filestore\WarehouseReader.cs" />
-    <Compile Include="Products\Catalogue.cs" />
-    <Compile Include="Products\Sku.cs" />
-    <Compile Include="Ui\HelpCommand.cs" />
-    <Compile Include="Ui\UnknownCommand.cs" />
-    <Compile Include="Ui\UsageException.cs" />
-    <Compile Include="Ui\UserCommand.cs" />
-    <Compile Include="Ui\UserInput.cs" />
-    <Compile Include="Ui\UserInterface.cs" />
-    <Compile Include="Warehouse\InvalidNumItemsException.cs" />
-    <Compile Include="Warehouse\NotEnoughStockException.cs" />
-    <Compile Include="Warehouse\Warehouse.cs" />
-    <Compile Include="WarehouseActions\ReplenishStockCommand.cs" />
-    <Compile Include="WarehouseActions\StockReportCommand.cs" />
-    <Compile Include="WarehouseActions\UnknownProductException.cs" />
-    <Compile Include="WarehouseActions\WarehouseActions.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Basket\" />
-  </ItemGroup>
+
 </Project>
