@@ -1,6 +1,8 @@
+OBJDIR := ./obj
+
 .PHONY: build run test clean
 
-build:
+build: $(OBJDIR)
 	dotnet build
 
 run: build
@@ -9,5 +11,9 @@ run: build
 test: build
 	rspec --color -fdoc -I.. ../spec
 
+$(OBJDIR):
+	dotnet restore
+
 clean:
-	rm -rf obj bin
+	rm -rf $(OBJDIR) bin
+
