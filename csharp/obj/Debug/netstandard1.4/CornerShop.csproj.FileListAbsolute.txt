@@ -1,2 +1,0 @@
-/home/adrian/code/corner-shop/csharp/bin/Debug/netstandard1.4/CornerShop.deps.json
-/home/adrian/code/corner-shop/csharp/obj/Debug/netstandard1.4/CornerShop.AssemblyInfo.cs

@@ -1,8 +1,0 @@
-/home/adrian/code/corner-shop/csharp/bin/Debug/netcoreapp1.1/CornerShop.deps.json
-/home/adrian/code/corner-shop/csharp/bin/Debug/netcoreapp1.1/CornerShop.runtimeconfig.json
-/home/adrian/code/corner-shop/csharp/bin/Debug/netcoreapp1.1/CornerShop.runtimeconfig.dev.json
-/home/adrian/code/corner-shop/csharp/bin/Debug/netcoreapp1.1/CornerShop.dll
-/home/adrian/code/corner-shop/csharp/bin/Debug/netcoreapp1.1/CornerShop.pdb
-/home/adrian/code/corner-shop/csharp/obj/Debug/netcoreapp1.1/CornerShop.AssemblyInfo.cs
-/home/adrian/code/corner-shop/csharp/obj/Debug/netcoreapp1.1/CornerShop.dll
-/home/adrian/code/corner-shop/csharp/obj/Debug/netcoreapp1.1/CornerShop.pdb
