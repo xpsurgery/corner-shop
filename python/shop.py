@@ -16,7 +16,7 @@ class Application:
     def main(self):
         self.displayWelcomeMessage()
         warehouse = Warehouse.fromFile(WarehouseReader("../warehouse.dat"))
-        catalogue = Catalogue.from_file(CatalogueReader("../catalogue.dat"))
+        catalogue = Catalogue.fromFile(CatalogueReader("../catalogue.dat"))
         basket = Basket()
         catalogueActions = CatalogueActions(catalogue)
         warehouseActions = WarehouseActions(warehouse, catalogue)

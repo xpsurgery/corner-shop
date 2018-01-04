@@ -10,8 +10,8 @@ class DisplayBasketCommand:
             return
         for item in items:
             leader = "$%8.02f %5dx     " % (item.price / 100.0, item.count)
-            poss_len = len(leader) + len(item.title)
-            title = item.title[0:60-len(leader)-3]+"..." if poss_len > 60 else item.title
+            possLen = len(leader) + len(item.title)
+            title = item.title[0:60-len(leader)-3]+"..." if possLen > 60 else item.title
             print leader + title
         total = self._basketTotal(items)
         if total > 2000:

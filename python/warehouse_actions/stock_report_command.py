@@ -6,5 +6,5 @@ class StockReportCommand:
         self.warehouse = warehouse
 
     def run(self, cmd):
-        self.warehouse.stock_report(sys.stdout)
+        self.warehouse.stockReport(sys.stdout)
 

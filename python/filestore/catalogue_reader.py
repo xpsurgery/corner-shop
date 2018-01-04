@@ -3,7 +3,7 @@ class CatalogueReader:
     def __init__(self, filename):
         self.filename = filename
 
-    def read_all(self):
+    def readAll(self):
         lines = []
         try:
             fp = open(self.filename)

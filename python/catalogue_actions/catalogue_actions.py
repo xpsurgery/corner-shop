@@ -6,9 +6,9 @@ class CatalogueActions:
     def __init__(self, catalogue):
         self.catalogue = catalogue
 
-    def display_product_details(self):
+    def displayProductDetails(self):
         return DisplayProductDetailsCommand(self.catalogue)
 
-    def list_products(self):
+    def listProducts(self):
         return ListProductsCommand(self.catalogue)
 

@@ -14,15 +14,15 @@ class Sku:
     def description(self):
         result = []
         words = self.description.split()
-        current_line = "  "
+        currentLine = "  "
         for word in words:
-            current_line += word
-            if current_line.length >= 60:
-                result << current_line
-                current_line = "  "
+            currentLine += word
+            if len(currentLine) >= 60:
+                result << currentLine
+                currentLine = "  "
             else:
-                current_line += " "
-        if current_line.length > 2:
-            result.append(current_line)
+                currentLine += " "
+        if currentLine.length > 2:
+            result.append(currentLine)
         return result
 

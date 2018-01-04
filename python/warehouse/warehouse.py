@@ -4,17 +4,17 @@ from not_enough_stock_exception import NotEnoughStockException
 class Warehouse:
 
     @staticmethod
-    def fromFile(warehouse_reader):
-        data = warehouse_reader.read_all()
+    def fromFile(warehouseReader):
+        data = warehouseReader.readAll()
         stock = {}
         for line in data:
-            stock[tuple(line.sku_code)] = line.count
+            stock[tuple(line.skuCode)] = line.count
         return Warehouse(stock)
 
     def __init__(self, stock):
         self.stock = stock
 
-    def stock_report(self, out):
+    def stockReport(self, out):
         for skuCode in sorted(self.stock.keys()):
             out.write("%s %s %s   %6d\n" % (skuCode[0], skuCode[1], skuCode[2], self.stock[skuCode]))
 
@@ -24,10 +24,10 @@ class Warehouse:
 
     def fulfill(self, sku, numItems):
         skuCode = self._lookup(sku)
-        self.must_stock(skuCode, numItems)
+        self.mustStock(skuCode, numItems)
         self._changeStockLevel(skuCode, -numItems)
 
-    def must_stock(self, sku, numItems):
+    def mustStock(self, sku, numItems):
         skuCode = self._lookup(sku[2])
         if not skuCode or self.stock[skuCode] < numItems: raise NotEnoughStockException(sku, numItems)
 

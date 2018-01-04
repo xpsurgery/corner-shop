@@ -25,21 +25,21 @@ class UserInterface:
 
     def createHandler(self, command):
         if command == 'a':
-            return self.basketActions.add_to_basket()
+            return self.basketActions.addToBasket()
         elif command == 'b':
-            return self.basketActions.display_basket()
+            return self.basketActions.displayBasket()
         elif command == 'c':
             return self.basketActions.checkout()
         elif command == 'd':
-            return self.catalogueActions.display_product_details()
+            return self.catalogueActions.displayProductDetails()
         elif command == 'h':
             return HelpCommand()
         elif command == 'p':
-            return self.catalogueActions.list_products()
+            return self.catalogueActions.listProducts()
         elif command == 'r':
-            return self.warehouseActions.replenish_stock()
+            return self.warehouseActions.replenishStock()
         elif command == 's':
-            return self.warehouseActions.stock_report()
+            return self.warehouseActions.stockReport()
         else:
             return UnknownCommand()
 

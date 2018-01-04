@@ -9,10 +9,10 @@ class BasketActions:
         self.catalogue = catalogue
         self.warehouse = warehouse
 
-    def add_to_basket(self):
+    def addToBasket(self):
         return AddToBasketCommand(self.basket, self.catalogue, self.warehouse)
 
-    def display_basket(self):
+    def displayBasket(self):
         return DisplayBasketCommand(self.basket)
 
     def checkout(self):

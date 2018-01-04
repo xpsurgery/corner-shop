@@ -12,17 +12,17 @@ class AddToBasketCommand:
             print "ERROR: Usage: a sku [numitems]"
             return
         sku = cmd.arg(1)
-        num_items = 1
+        numItems = 1
         if len(cmd.args) == 3:
             try:
-                num_items = int(cmd.arg(2))
+                numItems = int(cmd.arg(2))
             except:
                 raise UsageException("The number of items must be a number greater than zero.")
-        if num_items <= 0:
+        if numItems <= 0:
             raise UsageException("The number of items must be a number greater than zero.")
-        sku_code = self.catalogue.lookup_code(sku)
-        if not sku_code:
+        skuCode = self.catalogue.lookupCode(sku)
+        if not skuCode:
             raise UsageException("Product " + sku + " unknown.")
-        self.warehouse.must_stock(sku_code, num_items)
-        self.basket.add(sku, self.catalogue, num_items)
+        self.warehouse.mustStock(skuCode, numItems)
+        self.basket.add(sku, self.catalogue, numItems)
 

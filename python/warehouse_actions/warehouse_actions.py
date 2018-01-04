@@ -7,9 +7,9 @@ class WarehouseActions:
         self.warehouse = warehouse
         self.catalogue = catalogue
 
-    def stock_report(self):
+    def stockReport(self):
         return StockReportCommand(self.warehouse)
 
-    def replenish_stock(self):
+    def replenishStock(self):
         return ReplenishStockCommand(self.warehouse, self.catalogue)
 
