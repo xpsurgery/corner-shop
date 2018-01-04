@@ -1,4 +1,4 @@
-LANGUAGES = java ruby csharp
+LANGUAGES = java ruby csharp python
 
 .PHONY: build clean test $(LANGUAGES)
 
@@ -11,3 +11,4 @@ $(LANGUAGES):
 
 clean:
 	-for d in $(LANGUAGES); do $(MAKE) -C $$d clean; done
+
